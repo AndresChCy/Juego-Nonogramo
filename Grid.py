@@ -1,16 +1,14 @@
 import pygame
 from Cell import Cell
+from Colores import Colores
 
 class Grid:
     CELL_SIZE = 40
-    GRID_WIDTH = 10
-    GRID_HEIGHT = 10
-    BLACK = (0, 0, 0)
-    WHITE = (255, 255, 255)
-    FILLED_COLOR = (0, 128, 255)
 
-    def __init__(self, screen):
+    def __init__(self, screen, grid_width=10, grid_height=10):
         self.screen = screen
+        self.GRID_WIDTH = grid_width
+        self.GRID_HEIGHT = grid_height
         self.window_width, self.window_height = screen.get_size()
         self.grid_width_px = self.GRID_WIDTH * self.CELL_SIZE
         self.grid_height_px = self.GRID_HEIGHT * self.CELL_SIZE
@@ -40,9 +38,9 @@ class Grid:
 
     def draw_grid_lines(self):
         for row in range(self.GRID_HEIGHT + 1):
-            pygame.draw.line(self.screen, self.BLACK, (self.offset_x, self.offset_y + row * self.CELL_SIZE), (self.offset_x + self.grid_width_px, self.offset_y + row * self.CELL_SIZE))
+            pygame.draw.line(self.screen, Colores.BLACK.value, (self.offset_x, self.offset_y + row * self.CELL_SIZE), (self.offset_x + self.grid_width_px, self.offset_y + row * self.CELL_SIZE))
         for col in range(self.GRID_WIDTH + 1):
-            pygame.draw.line(self.screen, self.BLACK, (self.offset_x + col * self.CELL_SIZE, self.offset_y), (self.offset_x + col * self.CELL_SIZE, self.offset_y + self.grid_height_px))
+            pygame.draw.line(self.screen, Colores.BLACK.value, (self.offset_x + col * self.CELL_SIZE, self.offset_y), (self.offset_x + col * self.CELL_SIZE, self.offset_y + self.grid_height_px))
 
     def handle_click(self, pos):
         mouse_x, mouse_y = pos
@@ -56,3 +54,6 @@ class Grid:
         self.all_cells.draw(self.screen)
         self.draw_grid_lines()
         self.clock.tick(self.FPS)
+
+    def get_grid_logic(self):
+        return self.grid_logic

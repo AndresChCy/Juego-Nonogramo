@@ -6,11 +6,11 @@ WIDTH = 1600
 HEIGHT = 900
 
 class Window:
-    def __init__(self):
+    def __init__(self, grid_width=10, grid_height=10):
         pygame.init()
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         pygame.display.set_caption('Nonograma')
-        self.cuadricula = Grid(self.screen)
+        self.cuadricula = Grid(self.screen, grid_width, grid_height)
 
     def execute(self):
         running = True
@@ -27,5 +27,5 @@ class Window:
         sys.exit()
 
 if __name__ == "__main__":
-    ventana = Window()
+    ventana = Window(grid_width=25, grid_height=15) # Se puede cambiar el tamaño de la cuadricula
     ventana.execute()
