@@ -2,7 +2,7 @@ import pygame
 import sys
 from Grid import Grid
 
-WIDTH = 1600
+WIDTH = 1200
 HEIGHT = 900
 
 class Window:
@@ -27,5 +27,5 @@ class Window:
         sys.exit()
 
 if __name__ == "__main__":
-    ventana = Window(grid_width=25, grid_height=15) # Se puede cambiar el tamaño de la cuadricula
+    ventana = Window(grid_width=15, grid_height=15) # Se puede cambiar el tamaño de la cuadricula
     ventana.execute()
