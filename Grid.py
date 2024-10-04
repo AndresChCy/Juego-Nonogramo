@@ -1,6 +1,5 @@
+# Grid.py
 import pygame
-from Cell import Cell
-from Colores import Colores
 from CellManager import CellManager
 from ClueGenerator import ClueGenerator
 from GridRenderer import GridRenderer
@@ -23,7 +22,7 @@ class Grid:
         self.grid_logic = [[0 for _ in range(self.GRID_WIDTH)] for _ in range(self.GRID_HEIGHT)]
         self.cell_manager = CellManager(self.GRID_WIDTH, self.GRID_HEIGHT, self.CELL_SIZE, self.offset_x, self.offset_y)
         self.clue_generator = ClueGenerator(self.grid_logic)
-        self.renderer = GridRenderer(self.screen, self.cell_manager, self.clue_generator, self.offset_x, self.offset_y, self.CELL_SIZE)
+        self.renderer = GridRenderer(self.screen, self.cell_manager, self.clue_generator, self.grid_logic, self.offset_x, self.offset_y, self.CELL_SIZE)
         self.clock = pygame.time.Clock()
         self.FPS = 60
 

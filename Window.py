@@ -27,5 +27,5 @@ class Window:
         sys.exit()
 
 if __name__ == "__main__":
-    ventana = Window(grid_width=15, grid_height=15) # Se puede cambiar el tamaño de la cuadricula
+    ventana = Window(grid_width=10, grid_height=10) # Se puede cambiar el tamaño de la cuadricula
     ventana.execute()
