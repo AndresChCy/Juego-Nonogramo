@@ -1,16 +1,14 @@
 import pygame
 import sys
 from Grid import Grid
-
-WIDTH = 1200
-HEIGHT = 900
+from Colores import Colores
 
 class Window:
-    def __init__(self, grid_width=10, grid_height=10):
+    def __init__(self, matrix):
         pygame.init()
-        self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
+        self.screen = pygame.display.set_mode((1200, 900))
         pygame.display.set_caption('Nonograma')
-        self.cuadricula = Grid(self.screen, grid_width, grid_height)
+        self.cuadricula = Grid(self.screen, matrix)
 
     def execute(self):
         running = True
@@ -19,13 +17,24 @@ class Window:
                 if event.type == pygame.QUIT:
                     running = False
                 elif event.type == pygame.MOUSEBUTTONDOWN:
-                    self.cuadricula.handle_click(event.pos)
-            self.screen.fill((255, 255, 255))
+                    self.cuadricula.handle_click(event.pos, event.button)
+            self.screen.fill(Colores.WHITE.value)
             self.cuadricula.draw()
             pygame.display.flip()
         pygame.quit()
         sys.exit()
 
 if __name__ == "__main__":
-    ventana = Window(grid_width=10, grid_height=10) # Se puede cambiar el tamaño de la cuadricula
-    ventana.execute()
+    matrix = [
+        [0, 0, 1, 1, 0, 0, 1, 1, 0, 0],
+        [0, 1, 0, 0, 1, 1, 0, 0, 1, 0],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
+        [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
+        [0, 0, 0, 1, 1, 1, 1, 0, 0, 0]
+    ]  # Example matrix
+    Window(matrix).execute()

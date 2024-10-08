@@ -24,3 +24,21 @@ class GridRenderer:
         self.clues_renderer.draw_vertical_clues()
         self.clues_renderer.draw_clue_borders()
         self.miniature_renderer.draw_miniature()
+        self.draw_cells()
+
+    def draw_cells(self):
+        for row in range(len(self.grid_logic)):
+            for col in range(len(self.grid_logic[row])):
+                if self.grid_logic[row][col] == 1:  # Check for black cell
+                    color = Colores.BLACK.value
+                    pygame.draw.rect(self.screen, color,
+                                     (self.offset_x + col * self.cell_size,
+                                      self.offset_y + row * self.cell_size,
+                                      self.cell_size, self.cell_size))
+                elif self.grid_logic[row][col] == -1:  # Check for red X
+                    start_pos1 = (self.offset_x + col * self.cell_size, self.offset_y + row * self.cell_size)
+                    end_pos1 = (self.offset_x + (col + 1) * self.cell_size, self.offset_y + (row + 1) * self.cell_size)
+                    start_pos2 = (self.offset_x + (col + 1) * self.cell_size, self.offset_y + row * self.cell_size)
+                    end_pos2 = (self.offset_x + col * self.cell_size, self.offset_y + (row + 1) * self.cell_size)
+                    pygame.draw.line(self.screen, Colores.RED.value, start_pos1, end_pos1, 3)
+                    pygame.draw.line(self.screen, Colores.RED.value, start_pos2, end_pos2, 3)
