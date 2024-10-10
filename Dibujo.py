@@ -1,13 +1,16 @@
+import numpy
+
 class Dibujo:
+    
     def __init__(self , x ,y):
-        pass
-    def __init__(self ,matriz):
-        pass
+        self.boceto = numpy.zeros((x, y))
+
     def pintar(self, x, y,color):
-        pass
+        self.boceto[x][y] = color
 
     def comprimir(self, x, y, color):
         pass
     def getMatriz(self):
+        return self.boceto
+    def cargarMatriz(directorio):
         pass
-
