@@ -24,5 +24,11 @@ class CellManager:
                 cell_sprite = self.all_cells.sprites()[cell_idx]
                 if grid_logic[row][col] == 1:
                     cell_sprite.fill()
+                elif grid_logic[row][col] == -1:
+                    cell_sprite.mark()
                 else:
                     cell_sprite.empty()
+
+    def draw_cells(self, screen):
+        for cell in self.all_cells:
+            cell.draw(screen)

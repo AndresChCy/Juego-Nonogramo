@@ -7,8 +7,9 @@ class Colores(Enum):
     # --------------- Propuesta de Futuros Colores ---------------
     # Escala de Grises
     GREY = (128, 128, 128)
+    WHITE_SMOKE = (245, 245, 245)
     LIGHT_GREY = (211, 211, 211)
-    DARK_GREY = (169, 169, 169)
+    DARK_GREY = (50, 50, 50)
     # Colores Primarios
     RED = (255, 0, 0)
     GREEN = (0, 255, 0)
