@@ -18,6 +18,8 @@ class Window:
                     running = False
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     self.cuadricula.handle_click(event.pos, event.button)
+                elif event.type == pygame.MOUSEMOTION:
+                    self.cuadricula.renderer.handle_mouse_motion(event.pos)
             self.screen.fill(Colores.WHITE.value)
             self.cuadricula.draw()
             pygame.display.flip()
@@ -26,15 +28,15 @@ class Window:
 
 if __name__ == "__main__":
     matrix = [
-        [0, 0, 1, 1, 0, 0, 1, 1, 0, 0],
-        [0, 1, 0, 0, 1, 1, 0, 0, 1, 0],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
-        [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
-        [0, 0, 0, 1, 1, 1, 1, 0, 0, 0]
-    ]  # Example matrix
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
+      [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
+      [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+      [0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
+      [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
+      [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ]
     Window(matrix).execute()
