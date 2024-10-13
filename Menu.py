@@ -1,6 +1,7 @@
 import pygame
 import sys
 from pygame.locals import *
+from MenuNiveles import MenuNiveles
 
 pygame.init()
 pygame.display.set_caption('Juego Nonogram')
@@ -61,20 +62,7 @@ class MenuPrincipal:
         superficie.blit(textobj, textrect)
 
     def juego(self):
-        ejecutando=True
-        while ejecutando:
-            ventana.fill((0,0,0))
-            self.draw_text('Juego', font, (255, 255, 255), ventana, ventana.get_width()//2, ventana.get_height()//2)
-
-            for event in pygame.event.get():
-                if event.type==QUIT:
-                    pygame.quit()
-                    sys.exit()
-                if event.type==KEYDOWN and event.key==K_ESCAPE:
-                    ejecutando=False
-
-            pygame.display.update()
-            fpsControlador.tick(60)
+        MenuNiveles(ventana,[1,2,3,4,5,6,7,8,9,10,11,13,14,15,16,17,18])
 
     def opciones(self):
         ejecutando=True
