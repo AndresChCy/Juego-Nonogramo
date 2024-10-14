@@ -2,6 +2,8 @@ import pygame
 import sys
 from pygame.locals import *
 
+from Panel import Panel
+
 pygame.init()
 pygame.display.set_caption('Juego Nonogram')
 ventana = pygame.display.set_mode((800, 600), 0, 32)
