@@ -24,6 +24,7 @@
   "keyToString": {
     "Python tests.Python tests in test_matrizTotext.py.executor": "Run",
     "Python tests.Python tests in test_textTomatriz.py.executor": "Run",
+    "Python.Grid.executor": "Run",
     "Python.Menu.executor": "Run",
     "Python.MenuNiveles.executor": "Run",
     "Python.Window.executor": "Run",

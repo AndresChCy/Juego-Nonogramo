@@ -2,9 +2,10 @@ import pygame
 from CellManager import CellManager
 from ClueGenerator import ClueGenerator
 from GridRenderer import GridRenderer
+from Panel import Panel
 
 
-class Grid:
+class Grid(Panel):
     """
     Clase que representa la cuadrícula del juego.
     Es responsable de la lógica de la cuadrícula, la visualización y la interacción del usuario.
@@ -101,6 +102,12 @@ class Grid:
         """
         self.renderer.draw()
         self.clock.tick(self.FPS)
+
+    def handle_key(self, event):
+        pass
+
+    def handle_mouse_motion(self ,pos):
+        self.renderer.handle_mouse_motion(pos)
 
     def get_grid_logic(self):
         """

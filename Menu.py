@@ -4,6 +4,7 @@ from pygame.locals import *
 from MenuNiveles import MenuNiveles
 from Colores import Colores
 from Panel import Panel
+from ProxyPanel import ProxyPanel
 
 pygame.init()
 pygame.display.set_caption('Juego Nonogram')
@@ -15,7 +16,8 @@ font = pygame.font.SysFont(None, 40)
 #click = False
 class MenuPrincipal(Panel):
 
-    def __init__(self,ventana):
+    def __init__(self,ventana,proxy:ProxyPanel):
+        self.proxy = proxy
         self.clock = pygame.time.Clock()
         self.FPS = 60
         self.click = False
@@ -78,20 +80,21 @@ class MenuPrincipal(Panel):
         MenuNiveles(ventana,[1,2,3,4,5,6,7,8,9,10,11,13,14,15,16,17,18])
 
     def opciones(self):
-        ejecutando=True
-        while ejecutando:
-            ventana.fill((0,0,0))
-            self.draw_text('Opciones', font, (255, 255, 255), ventana, ventana.get_width()//2, ventana.get_height()//2)
+        self.proxy.cambiarTarget(1)
+        #ejecutando=True
+        #while ejecutando:
+            #ventana.fill((0,0,0))
+            #self.draw_text('Opciones', font, (255, 255, 255), ventana, ventana.get_width()//2, ventana.get_height()//2)
 
-            for event in pygame.event.get():
-                if event.type==QUIT:
-                    pygame.quit()
-                    sys.exit()
-                if event.type==KEYDOWN and event.key==K_ESCAPE:
-                    ejecutando=False
+       #     for event in pygame.event.get():
+          #      if event.type==QUIT:
+          #          pygame.quit()
+          #          sys.exit()
+           #     if event.type==KEYDOWN and event.key==K_ESCAPE:
+           #         ejecutando=False
 
-            pygame.display.update()
-            fpsControlador.tick(60)
+           # pygame.display.update()
+           # fpsControlador.tick(60)
 
     def salir(self):
         pygame.quit()
