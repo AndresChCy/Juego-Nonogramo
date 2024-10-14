@@ -77,7 +77,7 @@ class MenuPrincipal(Panel):
 
 
     def juego(self):
-        MenuNiveles(ventana,[1,2,3,4,5,6,7,8,9,10,11,13,14,15,16,17,18])
+        self.proxy.cambiarTarget(1)
 
     def opciones(self):
         self.proxy.cambiarTarget(1)
