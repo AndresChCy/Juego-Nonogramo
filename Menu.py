@@ -1,6 +1,8 @@
 import pygame
 import sys
 from pygame.locals import *
+
+from PanelDibujo import panelDibujo
 from MenuNiveles import MenuNiveles
 from Colores import Colores
 from Panel import Panel
@@ -17,6 +19,7 @@ font = pygame.font.SysFont(None, 40)
 class MenuPrincipal(Panel):
 
     def __init__(self,ventana,proxy:ProxyPanel):
+        self.ventana = ventana
         self.proxy = proxy
         self.clock = pygame.time.Clock()
         self.FPS = 60
@@ -35,13 +38,13 @@ class MenuPrincipal(Panel):
         superficie.blit(textobj, textrect)
 
     def draw(self):
-        pygame.draw.rect(ventana, (255, 0, 0), self.button_1)
-        pygame.draw.rect(ventana, (255, 0, 0), self.button_2)
-        pygame.draw.rect(ventana, (255, 0, 0), self.button_3)
+        pygame.draw.rect(self.ventana, (255, 0, 0), self.button_1)
+        pygame.draw.rect(self.ventana, (255, 0, 0), self.button_2)
+        pygame.draw.rect(self.ventana, (255, 0, 0), self.button_3)
 
-        self.draw_text('Jugar', font, (255, 255, 255), ventana, self.button_1.centerx, self.button_1.centery)
-        self.draw_text('Opciones', font, (255, 255, 255), ventana, self.button_2.centerx, self.button_2.centery)
-        self.draw_text('Salir', font, (255, 255, 255), ventana, self.button_3.centerx, self.button_3.centery)
+        self.draw_text('Jugar', font, (255, 255, 255), self.ventana, self.button_1.centerx, self.button_1.centery)
+        self.draw_text('Opciones', font, (255, 255, 255), self.ventana, self.button_2.centerx, self.button_2.centery)
+        self.draw_text('Salir', font, (255, 255, 255), self.ventana, self.button_3.centerx, self.button_3.centery)
 
         click = False
         for event in pygame.event.get():
@@ -80,7 +83,10 @@ class MenuPrincipal(Panel):
         self.proxy.cambiarTarget(1)
 
     def opciones(self):
-        self.proxy.cambiarTarget(1)
+        x,y = self.inputs()
+        if (x and y):
+            self.proxy.ponerTarget(panelDibujo(ventana,x,y))
+       # self.proxy.cambiarTarget(1)
         #ejecutando=True
         #while ejecutando:
             #ventana.fill((0,0,0))
@@ -99,6 +105,72 @@ class MenuPrincipal(Panel):
     def salir(self):
         pygame.quit()
         sys.exit()
+
+    def inputs(self):
+        font = pygame.font.Font(None, 32)
+        clock = pygame.time.Clock()
+        rect = pygame.Rect((ventana.get_width() - 400) // 2, 200, 400, 250)
+        input_box1 = pygame.Rect(300, 250, 140, 32)
+        input_box2 = pygame.Rect(300, 300, 140, 32)
+        color_inactive = pygame.Color('lightskyblue3')
+        color_active = pygame.Color('dodgerblue2')
+        color1 = color_inactive
+        color2 = color_inactive
+        active1 = False
+        active2 = False
+        text1 = ''
+        text2 = ''
+        done = False
+        while not done:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    done = True
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if input_box1.collidepoint(event.pos):
+                        active1 = not active1
+                    else:
+                        active1 = False
+                    if input_box2.collidepoint(event.pos):
+                        active2 = not active2
+                    else:
+                        active2 = False
+                    color1 = color_active if active1 else color_inactive
+                    color2 = color_active if active2 else color_inactive
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN:
+                        if text1 == '' or text2 == '':
+                            return False,False
+                        else:
+                            return int(text1),int(text2)
+                    if active1:
+                        if event.key == pygame.K_BACKSPACE:
+                            text1 = text1[:-1]
+                        else:
+                            if event.unicode.isdigit() :
+                                text1 += event.unicode
+                    if active2:
+                        if event.key == pygame.K_RETURN:
+                            print(text2)  # or process the number input
+                            text2 = ''
+                        elif event.key == pygame.K_BACKSPACE:
+                            text2 = text2[:-1]
+                        else:
+                            if event.unicode.isdigit() :
+                                text2 += event.unicode
+
+
+           # ventana.fill((30, 30, 30))
+            pygame.draw.rect(self.ventana, (0, 0, 0), rect)
+            txt_surface1 = font.render(text1, True, color1)
+            txt_surface2 = font.render(text2, True, color2)
+            width = max(200, txt_surface1.get_width() + 10)
+            input_box1.w = width
+            self.ventana.blit(txt_surface1, (input_box1.x + 5, input_box1.y + 5))
+            self.ventana.blit(txt_surface2, (input_box2.x + 5, input_box2.y + 5))
+            pygame.draw.rect(self.ventana, color1, input_box1, 2)
+            pygame.draw.rect(self.ventana, color2, input_box2, 2)
+            pygame.display.flip()
+            clock.tick(30)
 
 
 class Window:
@@ -130,13 +202,7 @@ if __name__ == "__main__":
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
         [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
-        [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
-        [1, 0, 1, 0, 0, 0, 0, 1, 0, 0],
-        [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
     ]
     Window(matrix).execute()
     #MenuPrincipal(ventana)

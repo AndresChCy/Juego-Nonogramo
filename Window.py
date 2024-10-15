@@ -10,7 +10,7 @@ from ProxyPanel import ProxyPanel
 class Window:
     def __init__(self, matrix):
         pygame.init()
-        self.screen = pygame.display.set_mode((1000, 700))
+        self.screen = pygame.display.set_mode((900, 600))
         pygame.display.set_caption('Nonograma')
         self.panel = ProxyPanel([])
         cuadricula = Grid(self.screen, matrix)

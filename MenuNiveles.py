@@ -69,7 +69,14 @@ class MenuNiveles(Panel):
     def botonClick(self,n):
         print("a")
         print("Se ha presionado el botón:",n)
-        self.proxy.ponerTarget(Grid(self.ventana,[[1,1],[1,0]]))
+
+        matrix = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
+            [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
+            [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
+        ]
+        self.proxy.ponerTarget(Grid(self.ventana,matrix))
 
     def handle_mouse_motion(self, event):
         pass

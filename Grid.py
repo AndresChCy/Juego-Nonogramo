@@ -49,8 +49,8 @@ class Grid(Panel):
     FPS : int
         Velocidad de actualización de la pantalla en fotogramas por segundo.
     """
-    GRID_WIDTH_PX = 600
-    GRID_HEIGHT_PX = 600
+    GRID_WIDTH_PX = 300
+    GRID_HEIGHT_PX = 300
 
     def __init__(self, screen, matrix):
         """
