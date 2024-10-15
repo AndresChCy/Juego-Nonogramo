@@ -1,20 +1,19 @@
 import pygame
 from Colores import Colores
 
-
 class VictoryMiniatureRenderer:
     def __init__(self, screen, grid_logic, offset_x, offset_y, cell_manager, width, height):
         """
-        Initializes the miniature renderer for the victory screen.
+        Inicializa el renderizador de miniaturas para la pantalla de victoria.
 
         Args:
-            screen (pygame.Surface): The screen surface where the miniature will be drawn.
-            grid_logic (list of list of int): The current grid logic.
-            offset_x (int): The x offset.
-            offset_y (int): The y offset.
-            cell_manager (CellManager): The cell manager.
-            width (int): The width of the miniature.
-            height (int): The height of the miniature.
+            screen (pygame.Surface): La superficie de la pantalla donde se dibujará la miniatura.
+            grid_logic (list of list of int): La lógica actual de la cuadrícula.
+            offset_x (int): El desplazamiento en el eje x.
+            offset_y (int): El desplazamiento en el eje y.
+            cell_manager (CellManager): El gestor de celdas.
+            width (int): El ancho de la miniatura.
+            height (int): La altura de la miniatura.
         """
         self.screen = screen
         self.grid_logic = grid_logic
@@ -29,9 +28,9 @@ class VictoryMiniatureRenderer:
 
     def draw_miniature(self):
         """
-        Draws the miniature grid on the screen with a gray border.
+        Dibuja la cuadrícula en miniatura en la pantalla con un borde gris.
         """
-        # Draw the grid cells
+        # Dibuja las celdas de la cuadrícula
         for row in range(len(self.grid_logic)):
             for col in range(len(self.grid_logic[row])):
                 color = Colores.BLACK.value if self.grid_logic[row][col] == 1 else Colores.WHITE.value
@@ -40,7 +39,7 @@ class VictoryMiniatureRenderer:
                                   self.miniature_offset_y + row * self.miniature_size,
                                   self.miniature_size, self.miniature_size))
 
-        # Draw the gray border
+        # Dibuja el borde gris
         border_rect = pygame.Rect(self.miniature_offset_x, self.miniature_offset_y,
                                   self.miniature_size * len(self.grid_logic[0]),
                                   self.miniature_size * len(self.grid_logic))
