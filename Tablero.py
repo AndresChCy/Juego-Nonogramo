@@ -4,6 +4,7 @@ class Tablero:
     def __init__(self, solucion):
         self.solucion = solucion
         self.progreso = Dibujo(len(solucion.getMatriz()), len(solucion.getMatriz()[0]))
+
     def CompararDibujos(self):
         juego = self.solucion.getMatriz()
         usuario = self.progreso.getMatriz()
@@ -14,9 +15,28 @@ class Tablero:
                     return False
         return True
 
-
     def Compresion(self):
-        pass
+        matriz = self.solucion.getMatriz()
+        comprVert = []
+        comprHor = []
+        count = 0
+        for i in range(len(matriz)):
+            if (matriz[i][0] == 1):
+                count += 1
+            else:
+                comprVert.append(count)
+                count = 0
+        comprVert.append(count)
+        count = 0
+        for i in range(len(matriz[0])):
+            if matriz[0][i] == 1:
+                count += 1
+            else:
+                comprHor.append([count])
+                count = 0
+        comprHor.append([count])
+        count = 0
+        return comprVert, comprHor
 
     def pintarProgreso(self):
         pass
