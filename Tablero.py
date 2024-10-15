@@ -19,23 +19,39 @@ class Tablero:
         matriz = self.solucion.getMatriz()
         comprVert = []
         comprHor = []
+        aux = []
         count = 0
         for i in range(len(matriz)):
-            if (matriz[i][0] == 1):
-                count += 1
-            else:
-                comprVert.append(count)
+            for j in range(len(matriz[0])):
+                if matriz[i][j] == 1:
+                    count += 1
+                else:
+                    aux.append(count)
+                    count = 0
+            if aux == []:
+                aux.append(count)
                 count = 0
-        comprVert.append(count)
+            elif count != 0:
+                aux.append(count)
+                count = 0
+            comprVert.append(aux)
+            aux = []
         count = 0
         for i in range(len(matriz[0])):
-            if matriz[0][i] == 1:
-                count += 1
-            else:
-                comprHor.append([count])
+            for j in range(len(matriz)):
+                if matriz[j][i] == 1:
+                    count += 1
+                else:
+                    aux.append(count)
+                    count = 0
+            if aux == []:
+                aux.append(count)
                 count = 0
-        comprHor.append([count])
-        count = 0
+            elif count != 0:
+                aux.append(count)
+                count = 0
+            comprHor.append(aux)
+            aux = []
         return comprVert, comprHor
 
     def pintarProgreso(self):
