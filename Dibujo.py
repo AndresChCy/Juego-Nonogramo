@@ -12,5 +12,5 @@ class Dibujo:
         pass
     def getMatriz(self):
         return self.boceto
-    def cargarMatriz(directorio):
-        pass
+    def cargarMatriz(self,matriz):
+        self.boceto = matriz

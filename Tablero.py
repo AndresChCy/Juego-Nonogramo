@@ -75,3 +75,6 @@ class Tablero:
                         if j < len(matriz[i]) - 1:
                             f.write(" ")
                     f.write("\n")
+
+    def getSol(self):
+        return self.solucion
