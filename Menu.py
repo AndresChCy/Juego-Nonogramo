@@ -2,11 +2,14 @@ import pygame
 import sys
 from pygame.locals import *
 
+from Dibujo import Dibujo
+from Grid import Grid
 from PanelDibujo import panelDibujo
 from MenuNiveles import MenuNiveles
 from Colores import Colores
 from Panel import Panel
 from ProxyPanel import ProxyPanel
+from Tablero import Tablero
 
 pygame.init()
 pygame.display.set_caption('Juego Nonogram')
@@ -43,7 +46,7 @@ class MenuPrincipal(Panel):
         pygame.draw.rect(self.ventana, (255, 0, 0), self.button_3)
 
         self.draw_text('Jugar', font, (255, 255, 255), self.ventana, self.button_1.centerx, self.button_1.centery)
-        self.draw_text('Opciones', font, (255, 255, 255), self.ventana, self.button_2.centerx, self.button_2.centery)
+        self.draw_text('Crear Nivel', font, (255, 255, 255), self.ventana, self.button_2.centerx, self.button_2.centery)
         self.draw_text('Salir', font, (255, 255, 255), self.ventana, self.button_3.centerx, self.button_3.centery)
 
         click = False
@@ -66,7 +69,7 @@ class MenuPrincipal(Panel):
         if self.button_1.collidepoint((mx, my)) and self.click:
             self.juego()
         if self.button_2.collidepoint((mx, my)) and self.click:
-            self.opciones()
+            self.crearNivel()
         if self.button_3.collidepoint((mx, my)) and self.click:
             self.salir()
         self.click = False
@@ -82,10 +85,10 @@ class MenuPrincipal(Panel):
     def juego(self):
         self.proxy.cambiarTarget(1)
 
-    def opciones(self):
+    def crearNivel(self):
         x,y = self.inputs()
         if (x and y):
-            self.proxy.ponerTarget(panelDibujo(ventana,x,y))
+            self.proxy.ponerTarget(panelDibujo(ventana,x,y,self.proxy))
        # self.proxy.cambiarTarget(1)
         #ejecutando=True
         #while ejecutando:
@@ -110,8 +113,8 @@ class MenuPrincipal(Panel):
         font = pygame.font.Font(None, 32)
         clock = pygame.time.Clock()
         rect = pygame.Rect((ventana.get_width() - 400) // 2, 200, 400, 250)
-        input_box1 = pygame.Rect(300, 250, 140, 32)
-        input_box2 = pygame.Rect(300, 300, 140, 32)
+        input_box1 = pygame.Rect(rect.x+ (rect.w-140)//2, rect.y+ (rect.h-32)//3, 140, 32)
+        input_box2 = pygame.Rect(rect.x+ (rect.w-140)//2, rect.y+ (rect.h-32)//3 + 50, 140, 32)
         color_inactive = pygame.Color('lightskyblue3')
         color_active = pygame.Color('dodgerblue2')
         color1 = color_inactive
@@ -161,10 +164,15 @@ class MenuPrincipal(Panel):
 
            # ventana.fill((30, 30, 30))
             pygame.draw.rect(self.ventana, (0, 0, 0), rect)
+            self.draw_text('Escoger dimensiones', font, (255, 255, 255), self.ventana, rect.centerx, rect.top+20)
             txt_surface1 = font.render(text1, True, color1)
             txt_surface2 = font.render(text2, True, color2)
-            width = max(200, txt_surface1.get_width() + 10)
-            input_box1.w = width
+            self.draw_text("Ancho:", font, (255, 255, 255), self.ventana, input_box1.left-50, input_box1.centery)
+            self.draw_text("Alto:", font, (255, 255, 255), self.ventana, input_box2.left-50, input_box2.centery)
+            #width1 = max(200, txt_surface1.get_width() + 10)
+            #input_box1.w = width1
+            #width2 = max(200, txt_surface1.get_width() + 10)
+            #input_box2.w = width2
             self.ventana.blit(txt_surface1, (input_box1.x + 5, input_box1.y + 5))
             self.ventana.blit(txt_surface2, (input_box2.x + 5, input_box2.y + 5))
             pygame.draw.rect(self.ventana, color1, input_box1, 2)

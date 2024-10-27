@@ -3,10 +3,11 @@ from Colores import Colores
 from GridLinesRenderer import GridLinesRenderer
 from CluesRenderer import CluesRenderer
 from MiniatureRenderer import MiniatureRenderer
+from Tablero import Tablero
 
 
 class GridRenderer:
-    def __init__(self, screen, cell_manager, clue_generator, grid_logic, offset_x, offset_y, cell_size):
+    def __init__(self, screen, cell_manager, clue_generator, tablero: Tablero, offset_x, offset_y, cell_size):
         """
         Inicializa los componentes gráficos de la cuadrícula.
 
@@ -22,13 +23,13 @@ class GridRenderer:
         self.screen = screen
         self.cell_manager = cell_manager
         self.clue_generator = clue_generator
-        self.grid_logic = grid_logic
+        self.grid_logic = tablero.getProgreso()
         self.offset_x = offset_x
         self.offset_y = offset_y
         self.cell_size = cell_size
         self.grid_lines_renderer = GridLinesRenderer(screen, cell_manager, offset_x, offset_y, cell_size)
-        self.clues_renderer = CluesRenderer(screen, clue_generator, offset_x, offset_y, cell_size)
-        self.miniature_renderer = MiniatureRenderer(screen, grid_logic, offset_x, offset_y, cell_manager)
+        self.clues_renderer = CluesRenderer(screen, tablero, offset_x, offset_y, cell_size)
+        self.miniature_renderer = MiniatureRenderer(screen, self.grid_logic, offset_x, offset_y, cell_manager)
         self.hovered_row = None
         self.hovered_col = None
 
@@ -66,6 +67,7 @@ class GridRenderer:
             elif button == 3:  # Clic derecho
                 self.grid_logic[row][col] = -1
             self.cell_manager.update_grid_visual(self.grid_logic)
+        print(self.clues_renderer.vertical_clues)
 
     def handle_mouse_events(self, event):
         """

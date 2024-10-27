@@ -1,8 +1,10 @@
 import pygame
 
+from Tablero import Tablero
+
 
 class CluesRenderer:
-    def __init__(self, screen, clue_generator, offset_x, offset_y, cell_size):
+    def __init__(self, screen, tablero: Tablero, offset_x, offset_y, cell_size):
         """
         Inicializa los gráficos de las pistas.
 
@@ -14,7 +16,7 @@ class CluesRenderer:
             cell_size (int): El tamaño de cada celda.
         """
         self.screen = screen
-        self.clue_generator = clue_generator
+        self.horizontal_clues,self.vertical_clues = tablero.Compresion()
         self.offset_x = offset_x
         self.offset_y = offset_y
         self.cell_size = cell_size
@@ -24,8 +26,8 @@ class CluesRenderer:
         """
         Dibuja las pistas horizontales en la pantalla.
         """
-        horizontal_clues = self.clue_generator.generate_horizontal_clues()
-        for row_idx, clues in enumerate(horizontal_clues):
+        #horizontal_clues = self.clue_generator.generate_horizontal_clues()
+        for row_idx, clues in enumerate(self.horizontal_clues):
             for clue_idx, clue in enumerate(clues):
                 self.draw_clue(clue, self.offset_x - (len(clues) - clue_idx) * self.cell_size,
                                self.offset_y + row_idx * self.cell_size)
@@ -34,8 +36,8 @@ class CluesRenderer:
         """
         Dibuja las pistas verticales en la pantalla.
         """
-        vertical_clues = self.clue_generator.generate_vertical_clues()
-        for col_idx, clues in enumerate(vertical_clues):
+        #vertical_clues = self.clue_generator.generate_vertical_clues()
+        for col_idx, clues in enumerate(self.vertical_clues):
             for clue_idx, clue in enumerate(clues):
                 self.draw_clue(clue, self.offset_x + col_idx * self.cell_size,
                                self.offset_y - (len(clues) - clue_idx) * self.cell_size)

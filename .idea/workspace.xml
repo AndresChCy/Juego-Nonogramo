@@ -5,11 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eebaf69e-4fd7-4128-8a77-9b71882aee86" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Juego-Nonogramo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Juego-Nonogramo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CluesRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/CluesRenderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dibujo.py" beforeDir="false" afterPath="$PROJECT_DIR$/Dibujo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GridRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/GridRenderer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MenuNiveles.py" beforeDir="false" afterPath="$PROJECT_DIR$/MenuNiveles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PanelDibujo.py" beforeDir="false" afterPath="$PROJECT_DIR$/PanelDibujo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tablero.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tablero.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Window.py" beforeDir="false" afterPath="$PROJECT_DIR$/Window.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/tablero_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/tablero_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +44,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python tests.Python tests in tablero_test.py.executor": "Run",
     "Python tests.Python tests in test_matrizTotext.py.executor": "Run",
     "Python tests.Python tests in test_textTomatriz.py.executor": "Run",
     "Python.Grid.executor": "Run",
@@ -48,7 +57,7 @@
     "git-widget-placeholder": "UnionVistas"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.Window">
     <configuration name="Window" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Juego-Nonogramo" />
       <option name="ENV_FILES" value="" />
@@ -71,9 +80,25 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests in tablero_test.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="Juego-Nonogramo" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test/tablero_test.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.Window" />
+        <item itemvalue="Python tests.Python tests in tablero_test.py" />
       </list>
     </recent_temporary>
   </component>

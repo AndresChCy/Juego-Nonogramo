@@ -25,7 +25,7 @@ class Tablero:
             for j in range(len(matriz[0])):
                 if matriz[i][j] == 1:
                     count += 1
-                else:
+                elif count != 0:
                     aux.append(count)
                     count = 0
             if aux == []:
@@ -41,7 +41,7 @@ class Tablero:
             for j in range(len(matriz)):
                 if matriz[j][i] == 1:
                     count += 1
-                else:
+                elif count != 0:
                     aux.append(count)
                     count = 0
             if aux == []:
@@ -71,7 +71,12 @@ class Tablero:
             with open(directorio, "w") as f:
                 for i in range(len(matriz)):
                     for j in range(len(matriz[i])):
-                        f.write(str(matriz[i][j]))
+                        f.write(str((int)(matriz[i][j])))
                         if j < len(matriz[i]) - 1:
                             f.write(" ")
                     f.write("\n")
+
+    def getProgreso(self):
+        return self.progreso.getMatriz()
+    def getSolucion(self):
+        return self.solucion.getMatriz()

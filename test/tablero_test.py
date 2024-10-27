@@ -27,5 +27,13 @@ class tablero_test(unittest.TestCase):
         self.assertEqual(comprVert, [[1], [0]])
         self.assertEqual(comprHor, [[1]])
 
+    def test_compresion2(self):
+        solucion = Dibujo(3, 3)
+        solucion.pintar(0, 0, 1)
+        tablero = Tablero(solucion)
+        comprVert, comprHor = tablero.Compresion()
+        self.assertEqual(comprVert, [[1],[0],[0]])
+        self.assertEqual(comprHor, [[1], [0], [0]])
+
 if __name__ == '__main__':
     unittest.main()
