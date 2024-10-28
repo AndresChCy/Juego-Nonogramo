@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eebaf69e-4fd7-4128-8a77-9b71882aee86" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Juego-Nonogramo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Juego-Nonogramo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CluesRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/CluesRenderer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dibujo.py" beforeDir="false" afterPath="$PROJECT_DIR$/Dibujo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GridRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/GridRenderer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuNiveles.py" beforeDir="false" afterPath="$PROJECT_DIR$/MenuNiveles.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PanelDibujo.py" beforeDir="false" afterPath="$PROJECT_DIR$/PanelDibujo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tablero.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tablero.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Window.py" beforeDir="false" afterPath="$PROJECT_DIR$/Window.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/tablero_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/tablero_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictoryRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictoryRenderer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

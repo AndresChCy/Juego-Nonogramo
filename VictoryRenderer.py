@@ -2,12 +2,14 @@ import pygame
 from CellManager import CellManager
 from Colores import Colores
 from FrameLoader import FrameLoader
+from Panel import Panel
+from ProxyPanel import ProxyPanel
 from VictoryMiniatureRenderer import VictoryMiniatureRenderer
 from TextRenderer import TextRenderer
 from ImageRenderer import ImageRenderer
 
-class VictoryRenderer:
-    def __init__(self, screen, grid_logic, cell_manager):
+class VictoryRenderer(Panel):
+    def __init__(self, screen,proxy: ProxyPanel ,grid_logic, cell_manager):
         """
         Inicializa el renderizador de la pantalla de victoria.
 
@@ -16,6 +18,7 @@ class VictoryRenderer:
             grid_logic (list): La lógica de la cuadrícula.
             cell_manager (CellManager): El gestor de celdas.
         """
+        self.proxy = proxy
         self.screen = screen
         miniature_width = screen.get_width() // 3
         miniature_height = miniature_width
@@ -39,6 +42,7 @@ class VictoryRenderer:
         Dibuja la pantalla de victoria.
         """
         # Dibuja la imagen de fondo a pantalla completa
+        self.screen.fill(Colores.BLACK.value)
         self.fullscreen_image_renderer.draw((self.screen.get_width() // 2, self.screen.get_height() // 2))
 
         # Renderiza el título
@@ -57,6 +61,14 @@ class VictoryRenderer:
         new_message_position = (self.screen.get_width() // 2, self.miniature_renderer.miniature_offset_y + self.miniature_renderer.height + 75)
         self.body_renderer.render("Pulse en cualquier parte para volver al Inicio.", new_message_position)
 
+    def handle_mouse_motion(self, event):
+        pass
+
+    def handle_click(self, pos, button):
+        self.proxy.cambiarTarget(0)
+
+    def handle_key(self, event):
+        pass
 
 #Código de prueba
 def main():

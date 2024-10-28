@@ -9,6 +9,8 @@ from GridRenderer import GridRenderer
 from Panel import Panel
 from ProxyPanel import ProxyPanel
 from Tablero import Tablero
+from VictoryRenderer import VictoryRenderer
+
 
 class Grid(Panel):
     """
@@ -103,7 +105,7 @@ class Grid(Panel):
                 self.grid_logic[row][col] = -1 if self.grid_logic[row][col] != -1 else 0
             self.cell_manager.update_grid_visual(self.grid_logic)
         if (self.tablero.CompararDibujos()):
-            print("si")
+            self.proxy.ponerTarget(VictoryRenderer(self.screen,self.proxy ,self.grid_logic, self.cell_manager))
 
 
     def draw(self):
