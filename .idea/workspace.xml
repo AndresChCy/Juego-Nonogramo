@@ -5,195 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eebaf69e-4fd7-4128-8a77-9b71882aee86" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Body.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrameLoader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_000_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_002_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_004_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_006_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_008_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_010_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_012_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_014_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_016_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_018_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_020_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_022_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_023_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_024_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_025_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_026_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_027_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_028_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_029_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_030_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_031_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_032_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_033_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_034_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_035_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_036_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_037_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_038_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_039_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_040_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_041_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_042_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_043_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_044_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_045_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_046_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_047_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_048_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_049_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_050_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_051_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_052_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_053_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_054_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_055_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_056_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_057_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_058_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_059_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_060_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_061_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_062_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_063_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_064_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_065_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_066_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_067_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_068_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_069_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_070_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_071_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_072_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_073_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_074_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_075_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_076_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_077_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_078_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_079_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_080_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_081_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_082_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_085_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_086_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_087_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_089_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_090_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_092_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_093_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_095_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_096_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_098_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_099_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_101_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_102_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_104_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti/frame_105_delay-0.03s.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (10).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (11).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (12).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (13).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (14).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (15).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (16).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (17).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (18).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (19).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (20).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (21).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (22).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (23).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (24).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (25).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (26).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (27).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (28).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (29).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (30).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (31).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (32).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (33).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (34).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (35).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (36).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (37).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (38).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (39).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (40).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (41).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (42).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (43).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (44).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (45).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (46).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (47).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (48).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (49).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (50).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (51).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (52).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (53).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (54).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (55).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (56).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (57).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (58).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (59).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (60).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (61).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (62).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (63).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (64).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (65).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (66).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (67).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (68).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (69).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (70).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (71).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (72).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (73).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (74).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (75).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (76).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (77).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (78).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (79).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (80).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/ (81).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/(01).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/(02).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/(03).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/(04).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/(05).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/(06).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/(07).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/(08).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gifs_Divididos/Confetti_Fullscreen/(09).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ImageRenderer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Niveles/nivel1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TextRenderer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Title.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/VictoryMiniatureRenderer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/VictoryRenderer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Juego-Nonogramo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Juego-Nonogramo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CluesRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/CluesRenderer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dibujo.py" beforeDir="false" afterPath="$PROJECT_DIR$/Dibujo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GridRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/GridRenderer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuNiveles.py" beforeDir="false" afterPath="$PROJECT_DIR$/MenuNiveles.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PanelDibujo.py" beforeDir="false" afterPath="$PROJECT_DIR$/PanelDibujo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tablero.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tablero.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Window.py" beforeDir="false" afterPath="$PROJECT_DIR$/Window.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/tablero_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/tablero_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cell.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Cell.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CellManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/CellManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClueGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/ClueGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CluesRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/CluesRenderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Colores.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Colores.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dibujo.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Logica/Dibujo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrameLoader.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/FrameLoader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Grid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GridLinesRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/GridLinesRenderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GridRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/GridRenderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/ImageRenderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuNiveles.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/MenuNiveles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniatureRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/MiniatureRenderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Niveles.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Logica/Niveles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Niveles/nivel1" beforeDir="false" afterPath="$PROJECT_DIR$/Niveles/nivel1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Panel.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Panel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PanelDibujo.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/PanelDibujo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProxyPanel.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/ProxyPanel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tablero.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Logica/Tablero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TextRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/TextRenderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictoryMiniatureRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/VictoryMiniatureRenderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictoryRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/VictoryRenderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Window.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Window.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrizTotext.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Logica/matrizTotext.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textTomatrix.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Logica/textTomatrix.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,7 +69,8 @@
     "Python.Window.executor": "Run",
     "Python.au.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging main"
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/Andrés/Documents/ProyectosGit/Juego-Nonogramo/srcs/Logica"
   }
 }]]></component>
   <component name="RunManager" selected="Python.Window">
@@ -247,7 +87,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Window.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Andrés\Documents\ProyectosGit\Juego-Nonogramo\srcs\Visuals\Window.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
