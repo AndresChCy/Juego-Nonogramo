@@ -1,4 +1,7 @@
+import sys
+
 import pygame
+from pygame.locals import *
 
 from Colores import Colores
 from CellManager import CellManager
@@ -9,6 +12,8 @@ from GridLinesRenderer import GridLinesRenderer
 from GridRenderer import GridRenderer
 from MiniatureRenderer import MiniatureRenderer
 from Panel import Panel
+from ProxyPanel import ProxyPanel
+from Tablero import Tablero
 
 
 class panelDibujo(Panel):
@@ -58,7 +63,7 @@ class panelDibujo(Panel):
     GRID_WIDTH_PX = 300
     GRID_HEIGHT_PX = 300
 
-    def __init__(self, screen, x,y):
+    def __init__(self, screen, x,y, proxy: ProxyPanel):
         """
         Inicializa la cuadrícula.
 
@@ -67,6 +72,7 @@ class panelDibujo(Panel):
             matrix (list of list of int): La matriz de que contiene la solución del Nonograma.
         """
         pygame.init()
+        self.proxy = proxy
         self.screen = screen
         self.dibujo = Dibujo(y, x)
         self.GRID_WIDTH = len(self.dibujo.getMatriz()[0])
@@ -101,6 +107,7 @@ class panelDibujo(Panel):
                 self.dibujo.pintar(row,col,1) if self.dibujo.getMatriz()[row][col] != 1 else self.dibujo.pintar(row,col,0)
             self.cell_manager.update_grid_visual(self.dibujo.getMatriz())
 
+
     def draw(self):
         """
         Dibuja la cuadrícula y actualiza la pantalla.
@@ -109,7 +116,13 @@ class panelDibujo(Panel):
         self.clock.tick(self.FPS)
 
     def handle_key(self, event):
-        pass
+        if event.type == KEYDOWN and event.key == K_ESCAPE:
+            pygame.quit()
+            sys.exit()
+        elif event.key == pygame.K_RETURN:
+            tab = Tablero(self.dibujo)
+            tab.guardarProgreso(self.dibujo.getMatriz(),"Niveles/nivel1")
+            self.proxy.cambiarTarget(0)
 
     def handle_mouse_motion(self ,pos):
         self.renderer.handle_mouse_motion(pos)

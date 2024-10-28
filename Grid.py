@@ -1,8 +1,15 @@
+import sys
+
 import pygame
+from pygame.constants import K_ESCAPE, K_RETURN, KEYDOWN
+
 from CellManager import CellManager
 from ClueGenerator import ClueGenerator
 from GridRenderer import GridRenderer
 from Panel import Panel
+from ProxyPanel import ProxyPanel
+from Tablero import Tablero
+from VictoryRenderer import VictoryRenderer
 
 
 class Grid(Panel):
@@ -49,10 +56,10 @@ class Grid(Panel):
     FPS : int
         Velocidad de actualización de la pantalla en fotogramas por segundo.
     """
-    GRID_WIDTH_PX = 300
-    GRID_HEIGHT_PX = 300
+    GRID_WIDTH_PX = 200
+    GRID_HEIGHT_PX = 200
 
-    def __init__(self, screen, matrix):
+    def __init__(self, screen, tablero: Tablero ,proxy: ProxyPanel):
         """
         Inicializa la cuadrícula.
 
@@ -62,18 +69,20 @@ class Grid(Panel):
         """
         pygame.init()
         self.screen = screen
-        self.GRID_WIDTH = len(matrix[0])
-        self.GRID_HEIGHT = len(matrix)
+        self.proxy = proxy
+        self.tablero= tablero
+        self.GRID_WIDTH = len(tablero.getProgreso()[0])
+        self.GRID_HEIGHT = len(tablero.getProgreso())
         self.window_width, self.window_height = screen.get_size()
         self.CELL_SIZE = min(self.GRID_WIDTH_PX // self.GRID_WIDTH, self.GRID_HEIGHT_PX // self.GRID_HEIGHT)
         self.actual_grid_width_px = self.GRID_WIDTH * self.CELL_SIZE
         self.actual_grid_height_px = self.GRID_HEIGHT * self.CELL_SIZE
         self.offset_x = (self.window_width - self.actual_grid_width_px) // 2
         self.offset_y = (self.window_height - self.actual_grid_height_px) // 2
-        self.grid_logic = [[0 for _ in range(self.GRID_WIDTH)] for _ in range(self.GRID_HEIGHT)]
+        self.grid_logic = self.tablero.getProgreso()
         self.cell_manager = CellManager(self.GRID_WIDTH, self.GRID_HEIGHT, self.CELL_SIZE, self.offset_x, self.offset_y)
-        self.clue_generator = ClueGenerator(matrix)
-        self.renderer = GridRenderer(self.screen, self.cell_manager, self.clue_generator, self.grid_logic,
+        self.clue_generator = ClueGenerator(tablero.getProgreso())
+        self.renderer = GridRenderer(self.screen, self.cell_manager, self.clue_generator, self.tablero,
                                      self.offset_x, self.offset_y, self.CELL_SIZE)
         self.clock = pygame.time.Clock()
         self.FPS = 60
@@ -95,6 +104,9 @@ class Grid(Panel):
             elif button == 3:  # Clic derecho
                 self.grid_logic[row][col] = -1 if self.grid_logic[row][col] != -1 else 0
             self.cell_manager.update_grid_visual(self.grid_logic)
+        if (self.tablero.CompararDibujos()):
+            self.proxy.ponerTarget(VictoryRenderer(self.screen,self.proxy ,self.grid_logic, self.cell_manager))
+
 
     def draw(self):
         """
@@ -104,7 +116,11 @@ class Grid(Panel):
         self.clock.tick(self.FPS)
 
     def handle_key(self, event):
-        pass
+        if event.type == KEYDOWN and event.key == K_ESCAPE:
+            pygame.quit()
+            sys.exit()
+        elif event.key == K_RETURN:
+            self.proxy.cambiarTarget(0)
 
     def handle_mouse_motion(self ,pos):
         self.renderer.handle_mouse_motion(pos)

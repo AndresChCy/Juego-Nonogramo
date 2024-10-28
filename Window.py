@@ -13,12 +13,12 @@ class Window:
         self.screen = pygame.display.set_mode((900, 600))
         pygame.display.set_caption('Nonograma')
         self.panel = ProxyPanel([])
-        cuadricula = Grid(self.screen, matrix)
+        #cuadricula = Grid(self.screen, matrix,self.panel)
         menu = MenuPrincipal(self.screen,self.panel)
         menuNiveles = MenuNiveles(self.screen,[1,2,3,4,5,6,7,8,9],self.panel)
         self.panel.addToList(menu)
         self.panel.addToList(menuNiveles)
-        self.panel.addToList(cuadricula)
+      #  self.panel.addToList(cuadricula)
 
     def execute(self):
         running = True

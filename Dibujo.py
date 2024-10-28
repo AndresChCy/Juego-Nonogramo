@@ -12,5 +12,15 @@ class Dibujo:
         pass
     def getMatriz(self):
         return self.boceto
-    def cargarMatriz(self,matriz):
-        self.boceto = matriz
+    def cargarMatriz(self,directorio):
+        with open(directorio, 'r') as f:
+            datos = f.readlines()
+
+        matriz = []
+        for linea in datos:
+            # Eliminamos el salto de línea y dividimos por espacios (o puedes usar otro separador)
+            matriz.append(linea.strip().split())
+        self.boceto = numpy.zeros((len(matriz),len(matriz[0])))
+        for i in range(len(matriz)):
+            for j in range(len(matriz[0])):
+                self.pintar(i,j,(int)(matriz[i][j]))

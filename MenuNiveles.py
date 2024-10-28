@@ -2,9 +2,11 @@ import pygame
 import sys
 from pygame.locals import *
 
+from Dibujo import Dibujo
 from Grid import Grid
 from Panel import Panel
 from ProxyPanel import ProxyPanel
+from Tablero import Tablero
 
 pygame.init()
 pygame.display.set_caption('Juego Nonogram')
@@ -76,7 +78,9 @@ class MenuNiveles(Panel):
             [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
             [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
         ]
-        self.proxy.ponerTarget(Grid(self.ventana,matrix))
+        aux = Dibujo(1, 1)
+        aux.cargarMatriz("Niveles/nivel1")
+        self.proxy.ponerTarget(Grid(self.ventana, Tablero(aux), self.proxy))
 
     def handle_mouse_motion(self, event):
         pass
