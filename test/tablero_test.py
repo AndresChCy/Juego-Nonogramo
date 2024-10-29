@@ -1,7 +1,7 @@
 import unittest
 
-from Dibujo import Dibujo
-from Tablero import Tablero
+from srcs.Logica.Dibujo import Dibujo
+from srcs.Logica.Tablero import Tablero
 
 
 class tablero_test(unittest.TestCase):

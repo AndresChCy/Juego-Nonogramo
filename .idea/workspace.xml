@@ -5,34 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eebaf69e-4fd7-4128-8a77-9b71882aee86" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Juego-Nonogramo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Juego-Nonogramo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cell.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Cell.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CellManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/CellManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClueGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/ClueGenerator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CluesRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/CluesRenderer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Colores.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Colores.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dibujo.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Logica/Dibujo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrameLoader.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/FrameLoader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Grid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GridLinesRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/GridLinesRenderer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GridRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/GridRenderer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImageRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/ImageRenderer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuNiveles.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/MenuNiveles.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MiniatureRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/MiniatureRenderer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Niveles.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Logica/Niveles.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Niveles/nivel1" beforeDir="false" afterPath="$PROJECT_DIR$/Niveles/nivel1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Panel.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Panel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PanelDibujo.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/PanelDibujo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProxyPanel.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/ProxyPanel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tablero.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Logica/Tablero.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TextRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/TextRenderer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VictoryMiniatureRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/VictoryMiniatureRenderer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VictoryRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/VictoryRenderer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Window.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Window.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matrizTotext.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Logica/matrizTotext.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/textTomatrix.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Logica/textTomatrix.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Logica/Niveles.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Logica/Niveles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Logica/Tablero.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Logica/Tablero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/CellManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/CellManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/CluesRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/CluesRenderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/Grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Grid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/GridLinesRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/GridLinesRenderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/GridRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/GridRenderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/MenuNiveles.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/MenuNiveles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/MiniatureRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/MiniatureRenderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/PanelDibujo.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/PanelDibujo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/ProxyPanel.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/ProxyPanel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/VictoryMiniatureRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/VictoryMiniatureRenderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/VictoryRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/VictoryRenderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/dibujo_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/dibujo_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/niveles_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/niveles_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/tablero_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/tablero_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,23 +49,74 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Python tests in tablero_test.py.executor": "Run",
-    "Python tests.Python tests in test_matrizTotext.py.executor": "Run",
-    "Python tests.Python tests in test_textTomatriz.py.executor": "Run",
-    "Python.Grid.executor": "Run",
-    "Python.Menu.executor": "Run",
-    "Python.MenuNiveles.executor": "Run",
-    "Python.PanelDibujo.executor": "Run",
-    "Python.Window.executor": "Run",
-    "Python.au.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Andrés/Documents/ProyectosGit/Juego-Nonogramo/srcs/Logica"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests in tablero_test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_matrizTotext.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_textTomatriz.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Grid.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Menu.executor&quot;: &quot;Run&quot;,
+    &quot;Python.MenuNiveles.executor&quot;: &quot;Run&quot;,
+    &quot;Python.PanelDibujo.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Window (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.Window.executor&quot;: &quot;Run&quot;,
+    &quot;Python.au.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Andrés/Documents/ProyectosGit/Juego-Nonogramo/srcs/Visuals&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Python.Window">
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Andrés\Documents\ProyectosGit\Juego-Nonogramo\srcs\Visuals" />
+      <recent name="C:\Users\Andrés\Documents\ProyectosGit\Juego-Nonogramo\srcs\Logica" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.Window (1)">
+    <configuration name="Window (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Juego-Nonogramo" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/srcs/Visuals" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/srcs/Visuals/Window.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Window" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Juego-Nonogramo" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\Andrés\Documents\ProyectosGit\Juego-Nonogramo\srcs\Visuals\Window.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Window" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Juego-Nonogramo" />
       <option name="ENV_FILES" value="" />
@@ -113,6 +156,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Window (1)" />
+        <item itemvalue="Python.Window (1)" />
         <item itemvalue="Python.Window" />
         <item itemvalue="Python tests.Python tests in tablero_test.py" />
       </list>

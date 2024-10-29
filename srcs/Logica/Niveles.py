@@ -1,7 +1,7 @@
 from os import listdir
 
-from Dibujo import Dibujo
-from Tablero import Tablero
+from srcs.Logica.Dibujo import Dibujo
+from srcs.Logica.Tablero import Tablero
 from textTomatrix import TextToMatrix
 
 class Niveles:

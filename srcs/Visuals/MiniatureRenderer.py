@@ -1,5 +1,5 @@
 import pygame
-from Colores import Colores
+from srcs.Visuals.Colores import Colores
 
 
 class MiniatureRenderer:

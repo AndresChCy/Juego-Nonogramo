@@ -8,7 +8,7 @@ from ClueGenerator import ClueGenerator
 from GridRenderer import GridRenderer
 from Panel import Panel
 from ProxyPanel import ProxyPanel
-from Tablero import Tablero
+from srcs.Logica.Tablero import Tablero
 from VictoryRenderer import VictoryRenderer
 
 

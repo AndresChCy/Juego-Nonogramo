@@ -2,14 +2,10 @@ import pygame
 import sys
 from pygame.locals import *
 
-from Dibujo import Dibujo
-from Grid import Grid
 from PanelDibujo import panelDibujo
-from MenuNiveles import MenuNiveles
-from Colores import Colores
+from srcs.Visuals.Colores import Colores
 from Panel import Panel
 from ProxyPanel import ProxyPanel
-from Tablero import Tablero
 
 pygame.init()
 pygame.display.set_caption('Juego Nonogram')

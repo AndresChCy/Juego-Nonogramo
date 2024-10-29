@@ -1,5 +1,5 @@
 
-from Dibujo import Dibujo
+from srcs.Logica.Dibujo import Dibujo
 
 class Tablero:
     def __init__(self, solucion):

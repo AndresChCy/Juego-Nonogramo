@@ -1,5 +1,5 @@
 import pygame
-from Cell import Cell
+from srcs.Visuals.Cell import Cell
 
 
 class CellManager:

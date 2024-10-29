@@ -1,5 +1,5 @@
 import unittest
-from Dibujo import Dibujo
+from srcs.Logica.Dibujo import Dibujo
 
 class dibujo_test(unittest.TestCase):
    def test_pintar(self):

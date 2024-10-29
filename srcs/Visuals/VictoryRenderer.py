@@ -1,12 +1,12 @@
 import pygame
-from CellManager import CellManager
-from Colores import Colores
-from FrameLoader import FrameLoader
-from Panel import Panel
-from ProxyPanel import ProxyPanel
-from VictoryMiniatureRenderer import VictoryMiniatureRenderer
-from TextRenderer import TextRenderer
-from ImageRenderer import ImageRenderer
+from srcs.Visuals.CellManager import CellManager
+from srcs.Visuals.Colores import Colores
+from srcs.Visuals.FrameLoader import FrameLoader
+from srcs.Visuals.Panel import Panel
+from srcs.Visuals.ProxyPanel import ProxyPanel
+from srcs.Visuals.VictoryMiniatureRenderer import VictoryMiniatureRenderer
+from srcs.Visuals.TextRenderer import TextRenderer
+from srcs.Visuals.ImageRenderer import ImageRenderer
 
 class VictoryRenderer(Panel):
     def __init__(self, screen,proxy: ProxyPanel ,grid_logic, cell_manager):
@@ -24,8 +24,8 @@ class VictoryRenderer(Panel):
         miniature_height = miniature_width
 
         # Inicializa los renderizadores de texto
-        self.title_renderer = TextRenderer(screen, 'Title.otf', 100, Colores.ORANGE.value)
-        self.body_renderer = TextRenderer(screen, 'Body.ttf', 50, Colores.WHITE.value)
+        self.title_renderer = TextRenderer(screen, '../../Title.otf', 100, Colores.ORANGE.value)
+        self.body_renderer = TextRenderer(screen, '../../Body.ttf', 50, Colores.WHITE.value)
 
         # Inicializa el renderizador de la miniatura
         self.miniature_renderer = VictoryMiniatureRenderer(screen, grid_logic, screen.get_width() // 2 - miniature_width // 2,
@@ -33,9 +33,9 @@ class VictoryRenderer(Panel):
                                                            miniature_height)
 
         # Inicializa los renderizadores de imágenes
-        self.left_image_renderer = ImageRenderer(screen, FrameLoader('Gifs_Divididos/Confetti').get_frames(), flip_x=True)
-        self.right_image_renderer = ImageRenderer(screen, FrameLoader('Gifs_Divididos/Confetti').get_frames())
-        self.fullscreen_image_renderer = ImageRenderer(screen, FrameLoader('Gifs_Divididos/Confetti_Fullscreen').get_frames())
+        self.left_image_renderer = ImageRenderer(screen, FrameLoader('../../Gifs_Divididos/Confetti').get_frames(), flip_x=True)
+        self.right_image_renderer = ImageRenderer(screen, FrameLoader('../../Gifs_Divididos/Confetti').get_frames())
+        self.fullscreen_image_renderer = ImageRenderer(screen, FrameLoader('../../Gifs_Divididos/Confetti_Fullscreen').get_frames())
 
     def draw(self):
         """

@@ -3,17 +3,14 @@ import sys
 import pygame
 from pygame.locals import *
 
-from Colores import Colores
-from CellManager import CellManager
-from ClueGenerator import ClueGenerator
-from CluesRenderer import CluesRenderer
-from Dibujo import Dibujo
-from GridLinesRenderer import GridLinesRenderer
-from GridRenderer import GridRenderer
-from MiniatureRenderer import MiniatureRenderer
-from Panel import Panel
+from srcs.Visuals.Colores import Colores
+from srcs.Visuals.CellManager import CellManager
+from srcs.Visuals.ClueGenerator import ClueGenerator
+from srcs.Logica.Dibujo import Dibujo
+from srcs.Visuals.GridLinesRenderer import GridLinesRenderer
+from srcs.Visuals.Panel import Panel
 from ProxyPanel import ProxyPanel
-from Tablero import Tablero
+from srcs.Logica.Tablero import Tablero
 
 
 class panelDibujo(Panel):
@@ -121,7 +118,7 @@ class panelDibujo(Panel):
             sys.exit()
         elif event.key == pygame.K_RETURN:
             tab = Tablero(self.dibujo)
-            tab.guardarProgreso(self.dibujo.getMatriz(),"Niveles/nivel1")
+            tab.guardarProgreso(self.dibujo.getMatriz(),"../../Niveles/nivel1")
             self.proxy.cambiarTarget(0)
 
     def handle_mouse_motion(self ,pos):

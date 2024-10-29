@@ -1,6 +1,6 @@
 import pygame
 
-from Tablero import Tablero
+from srcs.Logica.Tablero import Tablero
 
 
 class CluesRenderer:

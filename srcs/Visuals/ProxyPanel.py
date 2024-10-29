@@ -1,4 +1,4 @@
-from Panel import Panel
+from srcs.Visuals.Panel import Panel
 
 
 class ProxyPanel(Panel):

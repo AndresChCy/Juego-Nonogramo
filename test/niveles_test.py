@@ -1,7 +1,5 @@
-import unittest
-
-from Niveles import Niveles
-from matrizTotext import MatrizToText
+from srcs.Logica.Niveles import Niveles
+from srcs.Logica.matrizTotext import MatrizToText
 
 
 def test_niveles( tmp_path):

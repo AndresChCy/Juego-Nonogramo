@@ -1,5 +1,5 @@
 import pygame
-from Colores import Colores
+from srcs.Visuals.Colores import Colores
 
 class VictoryMiniatureRenderer:
     def __init__(self, screen, grid_logic, offset_x, offset_y, cell_manager, width, height):
