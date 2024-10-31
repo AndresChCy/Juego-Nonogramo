@@ -1,13 +1,21 @@
 import pygame
+
+from srcs.Visuals.CellManager import CellManager
 from srcs.Visuals.Colores import Colores
 from srcs.Visuals.GridLinesRenderer import GridLinesRenderer
 from srcs.Visuals.CluesRenderer import CluesRenderer
-from MiniatureRenderer import MiniatureRenderer
+from srcs.Visuals.MiniatureRenderer import MiniatureRenderer
 from srcs.Logica.Tablero import Tablero
+from srcs.Visuals.Panel import Panel
+from srcs.Visuals.ProxyPanel import ProxyPanel
+from srcs.Visuals.VictoryRenderer import VictoryRenderer
 
 
-class GridRenderer:
-    def __init__(self, screen, cell_manager, clue_generator, tablero: Tablero, offset_x, offset_y, cell_size):
+class GrillaVisual(Panel):
+    GRID_WIDTH_PX = 200
+    GRID_HEIGHT_PX = 200
+
+    def __init__(self, screen, tablero: Tablero, proxy:ProxyPanel):
         """
         Inicializa los componentes gráficos de la cuadrícula.
 
@@ -20,16 +28,21 @@ class GridRenderer:
             offset_y (int): El desplazamiento en el eje y.
             cell_size (int): El tamaño de cada celda.
         """
+        self.proxy = proxy
         self.screen = screen
-        self.cell_manager = cell_manager
-        self.clue_generator = clue_generator
-        self.grid_logic = tablero.getProgreso()
-        self.offset_x = offset_x
-        self.offset_y = offset_y
-        self.cell_size = cell_size
-        self.grid_lines_renderer = GridLinesRenderer(screen, cell_manager, offset_x, offset_y, cell_size)
-        self.clues_renderer = CluesRenderer(screen, tablero, offset_x, offset_y, cell_size)
-        self.miniature_renderer = MiniatureRenderer(screen, self.grid_logic, offset_x, offset_y, cell_manager)
+        self.tablero = tablero
+
+        self.GRID_WIDTH = len(tablero.getProgreso()[0])
+        self.GRID_HEIGHT = len(tablero.getProgreso())
+        window_width, window_height = screen.get_size()
+        self.cell_size = min(self.GRID_WIDTH_PX // self.GRID_WIDTH, self.GRID_HEIGHT_PX // self.GRID_HEIGHT)
+        actual_grid_width_px = self.GRID_WIDTH * self.cell_size
+        actual_grid_height_px = self.GRID_HEIGHT * self.cell_size
+        self.offset_x = (window_width - actual_grid_width_px) // 2
+        self.offset_y = (window_height - actual_grid_height_px) // 2
+
+        self.cell_manager = CellManager(self.GRID_WIDTH, self.GRID_HEIGHT,self.cell_size, self.offset_x, self.offset_y)
+        self.grid_lines_renderer = GridLinesRenderer(screen, self.cell_manager, self.offset_x, self.offset_y,self.cell_size)
         self.hovered_row = None
         self.hovered_col = None
 
@@ -43,14 +56,14 @@ class GridRenderer:
         mouse_x, mouse_y = pos
         col = (mouse_x - self.offset_x) // self.cell_size
         row = (mouse_y - self.offset_y) // self.cell_size
-        if 0 <= col < len(self.grid_logic[0]) and 0 <= row < len(self.grid_logic):
+        if 0 <= col < self.GRID_WIDTH and 0 <= row < self.GRID_HEIGHT:
             self.hovered_row = row
             self.hovered_col = col
         else:
             self.hovered_row = None
             self.hovered_col = None
 
-    def handle_mouse_click(self, pos, button):
+    def handle_click(self, pos, button):
         """
         Maneja los clics del ratón.
 
@@ -61,13 +74,14 @@ class GridRenderer:
         mouse_x, mouse_y = pos
         col = (mouse_x - self.offset_x) // self.cell_size
         row = (mouse_y - self.offset_y) // self.cell_size
-        if 0 <= col < len(self.grid_logic[0]) and 0 <= row < len(self.grid_logic):
+        if 0 <= col < self.GRID_WIDTH and 0 <= row < self.GRID_HEIGHT:
             if button == 1:  # Clic izquierdo
-                self.grid_logic[row][col] = 1 if self.grid_logic[row][col] != 1 else 0
+                self.tablero.getProgreso()[row][col] = 1 if self.tablero.getProgreso()[row][col] != 1 else 0
             elif button == 3:  # Clic derecho
-                self.grid_logic[row][col] = -1 if self.grid_logic[row][col] != -1 else 0
-            self.cell_manager.update_grid_visual(self.grid_logic)
-        print(self.clues_renderer.vertical_clues)
+                self.tablero.getProgreso()[row][col] = -1 if self.tablero.getProgreso()[row][col] != -1 else 0
+            self.cell_manager.update_grid_visual(self.tablero.getProgreso())
+        if (self.tablero.CompararDibujos()):
+            self.proxy.ponerTarget(VictoryRenderer(self.screen, self.proxy, self.tablero.getProgreso(), self.cell_manager))
 
     def handle_mouse_events(self, event):
         """
@@ -86,25 +100,26 @@ class GridRenderer:
         self.cell_manager.draw_cells(self.screen)
         self.draw_hover_effect()
         self.grid_lines_renderer.draw_grid_lines()
-        self.clues_renderer.draw_horizontal_clues()
-        self.clues_renderer.draw_vertical_clues()
-        self.clues_renderer.draw_clue_borders()
-        self.miniature_renderer.draw_miniature()
+        #self.clues_renderer.draw_horizontal_clues()
+       # self.clues_renderer.draw_vertical_clues()
+       # self.clues_renderer.draw_clue_borders()
+       # self.miniature_renderer.draw_miniature()
+
+    def handle_key(self, event):
+        pass
 
     def draw_hover_effect(self):
         """
         Dibuja el efecto de resaltar la celda sobre la que se encuentra el ratón.
         """
         if self.hovered_row is not None and self.hovered_col is not None:
-            for col in range(len(self.grid_logic[0])):
-                if self.grid_logic[self.hovered_row][col] == 0:
+            for col in range(self.GRID_WIDTH):
+                if self.tablero.getProgreso()[self.hovered_row][col] == 0:
                     pygame.draw.rect(self.screen, Colores.WHITE_SMOKE.value,
                                      (self.offset_x + col * self.cell_size, self.offset_y + self.hovered_row * self.cell_size,
                                       self.cell_size, self.cell_size))
-            for row in range(len(self.grid_logic)):
-                if self.grid_logic[row][self.hovered_col] == 0:
+            for row in range(self.GRID_HEIGHT):
+                if self.tablero.getProgreso()[row][self.hovered_col] == 0:
                     pygame.draw.rect(self.screen, Colores.WHITE_SMOKE.value,
                                      (self.offset_x + self.hovered_col * self.cell_size, self.offset_y + row * self.cell_size,
                                       self.cell_size, self.cell_size))
-            self.clues_renderer.draw_horizontal_clues()
-            self.clues_renderer.draw_vertical_clues()

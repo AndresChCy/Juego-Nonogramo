@@ -95,7 +95,8 @@ class Grid(Panel):
             pos (tuple of int): La posición (x, y) del clic del ratón.
             button (int): El botón del ratón que se ha pulsado (1 para clic izquierdo, 3 para clic derecho).
         """
-        mouse_x, mouse_y = pos
+        """
+         mouse_x, mouse_y = pos
         col = (mouse_x - self.offset_x) // self.CELL_SIZE
         row = (mouse_y - self.offset_y) // self.CELL_SIZE
         if 0 <= col < self.GRID_WIDTH and 0 <= row < self.GRID_HEIGHT:
@@ -106,6 +107,11 @@ class Grid(Panel):
             self.cell_manager.update_grid_visual(self.grid_logic)
         if (self.tablero.CompararDibujos()):
             self.proxy.ponerTarget(VictoryRenderer(self.screen,self.proxy ,self.grid_logic, self.cell_manager))
+        """
+        self.renderer.handle_mouse_click(pos,button)
+        if (self.tablero.CompararDibujos()):
+            self.proxy.ponerTarget(VictoryRenderer(self.screen, self.proxy, self.grid_logic, self.cell_manager))
+
 
 
     def draw(self):

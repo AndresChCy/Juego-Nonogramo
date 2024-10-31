@@ -55,8 +55,8 @@ class Tablero:
             aux = []
         return comprVert, comprHor
 
-    def pintarProgreso(self):
-        pass
+    def pintarProgreso(self,x,y,color):
+        self.progreso.pintar(x,y,color)
 
     def cargarProgreso(directorio):
             with open(directorio, 'r') as f:
