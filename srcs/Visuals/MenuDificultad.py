@@ -1,11 +1,6 @@
 import pygame
-from pygame.locals import *
-
-from srcs.Logica.Dibujo import Dibujo
-from srcs.Visuals.Grid import Grid
 from Panel import Panel
 from ProxyPanel import ProxyPanel
-from srcs.Logica.Tablero import Tablero
 
 pygame.init()
 pygame.display.set_caption('Juego Nonogram')
@@ -36,15 +31,29 @@ class MenuDificultad(Panel):
         pygame.draw.rect(self.ventana, (255, 0, 0), self.button_normal)
         pygame.draw.rect(self.ventana, (255, 0, 0), self.button_dificil)
 
-        self.draw_text('Facil', font, (255, 255, 255), self.ventana, self.button_1.centerx, self.button_1.centery)
-        self.draw_text('Normal', font, (255, 255, 255), self.ventana, self.button_2.centerx, self.button_2.centery)
-        self.draw_text('Dificil', font, (255, 255, 255), self.ventana, self.button_3.centerx, self.button_3.centery)
+        self.draw_text('Facil', font, (255, 255, 255), self.ventana, self.button_facil.centerx, self.button_facil.centery)
+        self.draw_text('Normal', font, (255, 255, 255), self.ventana, self.button_normal.centerx, self.button_normal.centery)
+        self.draw_text('Dificil', font, (255, 255, 255), self.ventana, self.button_dificil.centerx, self.button_dificil.centery)
 
     def handle_mouse_motion(self,event):
         pass
+
     def handle_click(self, pos, button):
-        pass
+        mx, my = pos
+        click = False
+        if button == 1:
+            click = True
+
+        ##if self.button_facil.collidepoint(mx, my) and click:
+            #poner pantalla con niveles faciles
+        ##if self.button_normal.collidepoint(mx, my) and click:
+            #poner pantalla con niveles normales
+        ##if self.button_dificil.collidepoint(mx, my) and click:
+            #poner pantalla con niveles dificiles
+
     def handle_key(self,event):
         pass
-    def draw(self):
-        pass
+
+
+if __name__ == '__main__':
+    MenuDificultad(ventana, ProxyPanel())
