@@ -1,17 +1,36 @@
 import pygame
 
-from srcs.Visuals.CellManager import CellManager
+from srcs.Visuals.Grilla.CellManager import CellManager
 from srcs.Visuals.Colores import Colores
-from srcs.Visuals.GridLinesRenderer import GridLinesRenderer
-from srcs.Visuals.CluesRenderer import CluesRenderer
-from srcs.Visuals.MiniatureRenderer import MiniatureRenderer
+from srcs.Visuals.Grilla.GridLinesRenderer import GridLinesRenderer
 from srcs.Logica.Tablero import Tablero
 from srcs.Visuals.Panel import Panel
 from srcs.Visuals.ProxyPanel import ProxyPanel
 from srcs.Visuals.VictoryRenderer import VictoryRenderer
+from abc import ABC , abstractmethod
 
+class GrillaRender(Panel,ABC):
+    @abstractmethod
+    def getScreen(self):
+        pass
 
-class GrillaVisual(Panel):
+    @abstractmethod
+    def getOffsets(self):
+        pass
+
+    @abstractmethod
+    def getCellSize(self):
+        pass
+
+    @abstractmethod
+    def getTablero(self):
+        pass
+
+    @abstractmethod
+    def getGridDimensions(self):
+        pass
+
+class GrillaVisual(GrillaRender):
     GRID_WIDTH_PX = 200
     GRID_HEIGHT_PX = 200
 
@@ -80,7 +99,7 @@ class GrillaVisual(Panel):
             elif button == 3:  # Clic derecho
                 self.tablero.getProgreso()[row][col] = -1 if self.tablero.getProgreso()[row][col] != -1 else 0
             self.cell_manager.update_grid_visual(self.tablero.getProgreso())
-        if (self.tablero.CompararDibujos()):
+        if self.tablero.CompararDibujos():
             self.proxy.ponerTarget(VictoryRenderer(self.screen, self.proxy, self.tablero.getProgreso(), self.cell_manager))
 
     def handle_mouse_events(self, event):
@@ -123,3 +142,14 @@ class GrillaVisual(Panel):
                     pygame.draw.rect(self.screen, Colores.WHITE_SMOKE.value,
                                      (self.offset_x + self.hovered_col * self.cell_size, self.offset_y + row * self.cell_size,
                                       self.cell_size, self.cell_size))
+
+    def getScreen(self):
+        return self.screen
+    def getOffsets(self):
+        return self.offset_x,self.offset_y
+    def getCellSize(self):
+        return self.cell_size
+    def getTablero(self):
+        return self.tablero
+    def getGridDimensions(self):
+        return self.GRID_HEIGHT,self.GRID_WIDTH

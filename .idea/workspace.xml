@@ -5,12 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eebaf69e-4fd7-4128-8a77-9b71882aee86" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Niveles/nivel1" beforeDir="false" afterPath="$PROJECT_DIR$/Niveles/nivel1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/Logica/Tablero.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Logica/Tablero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/CellManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Grilla/CellManager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/Visuals/Grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Grid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/GridLinesRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Grilla/GridLinesRenderer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/Visuals/GridRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/GridRenderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/Grilla/GrillaDecorator.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Grilla/GrillaDecorator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/Grilla/GrillaVisual.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Grilla/GrillaVisual.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/Visuals/MenuNiveles.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/MenuNiveles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/PanelDibujo.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/PanelDibujo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/VictoryRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/VictoryRenderer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,6 +1,6 @@
 import pygame
 from srcs.Visuals.Colores import Colores
-from srcs.Visuals.GridLinesRenderer import GridLinesRenderer
+from srcs.Visuals.Grilla.GridLinesRenderer import GridLinesRenderer
 from srcs.Visuals.CluesRenderer import CluesRenderer
 from MiniatureRenderer import MiniatureRenderer
 from srcs.Logica.Tablero import Tablero

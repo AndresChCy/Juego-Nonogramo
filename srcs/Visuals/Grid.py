@@ -3,7 +3,7 @@ import sys
 import pygame
 from pygame.constants import K_ESCAPE, K_RETURN, KEYDOWN
 
-from CellManager import CellManager
+from srcs.Visuals.Grilla.CellManager import CellManager
 from ClueGenerator import ClueGenerator
 from GridRenderer import GridRenderer
 from Panel import Panel

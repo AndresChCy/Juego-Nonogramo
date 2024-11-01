@@ -4,10 +4,10 @@ import pygame
 from pygame.locals import *
 
 from srcs.Visuals.Colores import Colores
-from srcs.Visuals.CellManager import CellManager
+from srcs.Visuals.Grilla.CellManager import CellManager
 from srcs.Visuals.ClueGenerator import ClueGenerator
 from srcs.Logica.Dibujo import Dibujo
-from srcs.Visuals.GridLinesRenderer import GridLinesRenderer
+from srcs.Visuals.Grilla.GridLinesRenderer import GridLinesRenderer
 from srcs.Visuals.Panel import Panel
 from ProxyPanel import ProxyPanel
 from srcs.Logica.Tablero import Tablero
