@@ -5,6 +5,7 @@ from Colores import Colores
 from Menu import MenuPrincipal
 from MenuNiveles import MenuNiveles
 from ProxyPanel import ProxyPanel
+from srcs.Visuals.SeleccionTipoNivel import SeleccionTipoNivel
 
 
 class Window:
@@ -16,6 +17,7 @@ class Window:
         #cuadricula = Grid(self.screen, matrix,self.panel)
         menu = MenuPrincipal(self.screen,self.panel)
         menuNiveles = MenuNiveles(self.screen,[1,2,3,4,5,6,7,8,9],self.panel)
+        menuNiveles = SeleccionTipoNivel(self.screen, self.panel)
         self.panel.addToList(menu)
         self.panel.addToList(menuNiveles)
       #  self.panel.addToList(cuadricula)
