@@ -3,9 +3,14 @@ import sys
 from pygame.locals import *
 
 from PanelDibujo import panelDibujo
+from srcs.Comandos.Command import Ejecutador
+from srcs.Comandos.CommandCambiarPanel import CommandCambiarPanel
+from srcs.Comandos.CommandGuardar import CommandGuardar
+from srcs.Logica.Dibujo import Dibujo
 from srcs.Visuals.Colores import Colores
 from Panel import Panel
 from ProxyPanel import ProxyPanel
+from srcs.Visuals.Grilla.GrillaVisual import GrillaRender, GrillaVisual
 
 pygame.init()
 pygame.display.set_caption('Juego Nonogram')
@@ -84,7 +89,12 @@ class MenuPrincipal(Panel):
     def crearNivel(self):
         x,y = self.inputs()
         if (x and y):
-            self.proxy.ponerTarget(panelDibujo(ventana,x,y,self.proxy))
+            dibujo = Dibujo(x,y)
+            com = Ejecutador()
+            com.addCommand(CommandGuardar(dibujo))
+            com.addCommand(CommandCambiarPanel(self,self.proxy))
+           # self.proxy.ponerTarget(panelDibujo(ventana,x,y,self.proxy))
+            self.proxy.ponerTarget(GrillaVisual(ventana,dibujo,self.proxy,com))
        # self.proxy.cambiarTarget(1)
         #ejecutando=True
         #while ejecutando:
