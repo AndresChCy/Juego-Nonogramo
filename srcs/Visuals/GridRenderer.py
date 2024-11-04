@@ -1,6 +1,6 @@
 import pygame
 from srcs.Visuals.Colores import Colores
-from srcs.Visuals.GridLinesRenderer import GridLinesRenderer
+from srcs.Visuals.Grilla.GridLinesRenderer import GridLinesRenderer
 from srcs.Visuals.CluesRenderer import CluesRenderer
 from MiniatureRenderer import MiniatureRenderer
 from srcs.Logica.Tablero import Tablero
@@ -63,9 +63,9 @@ class GridRenderer:
         row = (mouse_y - self.offset_y) // self.cell_size
         if 0 <= col < len(self.grid_logic[0]) and 0 <= row < len(self.grid_logic):
             if button == 1:  # Clic izquierdo
-                self.grid_logic[row][col] = 1
+                self.grid_logic[row][col] = 1 if self.grid_logic[row][col] != 1 else 0
             elif button == 3:  # Clic derecho
-                self.grid_logic[row][col] = -1
+                self.grid_logic[row][col] = -1 if self.grid_logic[row][col] != -1 else 0
             self.cell_manager.update_grid_visual(self.grid_logic)
         print(self.clues_renderer.vertical_clues)
 

@@ -1,14 +1,15 @@
 
-from srcs.Logica.Dibujo import Dibujo
+from srcs.Logica.Dibujo import Dibujo, Pintable
 
-class Tablero:
+
+class Tablero(Pintable):
     def __init__(self, solucion):
         self.solucion = solucion
-        self.progreso = Dibujo(len(solucion.getMatriz()), len(solucion.getMatriz()[0]))
+        self.progreso = Dibujo(len(solucion.getProgreso()), len(solucion.getProgreso()[0]))
 
     def CompararDibujos(self):
-        juego = self.solucion.getMatriz()
-        usuario = self.progreso.getMatriz()
+        juego = self.solucion.getProgreso()
+        usuario = self.progreso.getProgreso()
 
         for i in range(len(juego)):
             for j in range(len(juego[0])):
@@ -17,7 +18,7 @@ class Tablero:
         return True
 
     def Compresion(self):
-        matriz = self.solucion.getMatriz()
+        matriz = self.solucion.getProgreso()
         comprVert = []
         comprHor = []
         aux = []
@@ -55,8 +56,8 @@ class Tablero:
             aux = []
         return comprVert, comprHor
 
-    def pintarProgreso(self):
-        pass
+    def pintar(self, x, y, color):
+        self.progreso.pintar(x,y,color)
 
     def cargarProgreso(directorio):
             with open(directorio, 'r') as f:
@@ -78,7 +79,7 @@ class Tablero:
                     f.write("\n")
 
     def getProgreso(self):
-        return self.progreso.getMatriz()
+        return self.progreso.getProgreso()
     def getSolucion(self):
-        return self.solucion.getMatriz()
+        return self.solucion.getProgreso()
 

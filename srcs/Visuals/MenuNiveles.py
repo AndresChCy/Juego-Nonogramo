@@ -6,6 +6,8 @@ from srcs.Visuals.Grid import Grid
 from Panel import Panel
 from ProxyPanel import ProxyPanel
 from srcs.Logica.Tablero import Tablero
+from srcs.Visuals.Grilla.GrillaDecorator import DecoratorClues, DecoratorMiniatureRender
+from srcs.Visuals.Grilla.GrillaVisual import GrillaVisual
 
 pygame.init()
 pygame.display.set_caption('Juego Nonogram')
@@ -79,7 +81,10 @@ class MenuNiveles(Panel):
         ]
         aux = Dibujo(1, 1)
         aux.cargarMatriz("../../Niveles/nivel1")
-        self.proxy.ponerTarget(Grid(self.ventana, Tablero(aux), self.proxy))
+        g = GrillaVisual(self.ventana, Tablero(aux), self.proxy,None)
+        gc = DecoratorClues(g)
+        gcm = DecoratorMiniatureRender(gc)
+        self.proxy.ponerTarget(gcm)
 
     def handle_mouse_motion(self, event):
         pass

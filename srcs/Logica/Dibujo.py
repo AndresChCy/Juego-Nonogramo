@@ -1,6 +1,16 @@
 import numpy
+from abc import ABC , abstractmethod
 
-class Dibujo:
+class Pintable(ABC):
+    @abstractmethod
+    def pintar(self, x, y,color):
+        pass
+
+    @abstractmethod
+    def getProgreso(self):
+        pass
+
+class Dibujo(Pintable):
     
     def __init__(self , x ,y):
         self.boceto = numpy.zeros((x, y))
@@ -10,7 +20,7 @@ class Dibujo:
 
     def comprimir(self, x, y, color):
         pass
-    def getMatriz(self):
+    def getProgreso(self):
         return self.boceto
     def cargarMatriz(self,directorio):
         with open(directorio, 'r') as f:

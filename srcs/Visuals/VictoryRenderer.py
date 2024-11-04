@@ -1,5 +1,5 @@
 import pygame
-from srcs.Visuals.CellManager import CellManager
+from srcs.Visuals.Grilla.CellManager import CellManager
 from srcs.Visuals.Colores import Colores
 from srcs.Visuals.FrameLoader import FrameLoader
 from srcs.Visuals.Panel import Panel

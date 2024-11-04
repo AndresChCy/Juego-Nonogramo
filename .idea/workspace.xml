@@ -5,13 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eebaf69e-4fd7-4128-8a77-9b71882aee86" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Juego-Nonograma.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/srcs/Visuals/MenuCrearNivel.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/srcs/Visuals/MenuDificultad.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      
+<changes>
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Juego-Nonograma.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Niveles/nivel1" beforeDir="false" afterPath="$PROJECT_DIR$/Niveles/nivel1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Logica/Dibujo.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Logica/Dibujo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Logica/Tablero.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Logica/Tablero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/Grilla/GrillaVisual.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Grilla/GrillaVisual.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/MenuNiveles.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/MenuNiveles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/MenuCrearNivel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/MenuDificultad.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/PanelDibujo.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/PanelDibujo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/dibujo_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/dibujo_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+</changes>
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,12 +71,14 @@
     "Python tests.Python tests in test_textTomatriz.py.executor": "Run",
     "Python.Grid.executor": "Run",
     "Python.Menu.executor": "Run",
-    "Python.MenuDificultad.executor": "Run",
+
     "Python.MenuNiveles.executor": "Run",
+    "Python.MenuDificultad.executor": "Run",
     "Python.PanelDibujo.executor": "Run",
     "Python.Window (1).executor": "Run",
     "Python.Window.executor": "Run",
     "Python.au.executor": "Run",
+    "Python.prueba.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "Merging selector-niveles",
     "last_opened_file_path": "C:/Users/Andrés/Documents/ProyectosGit/Juego-Nonogramo/srcs/Visuals",
@@ -75,10 +88,13 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
+
+
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Andrés\Documents\ProyectosGit\Juego-Nonogramo\srcs\Visuals\Grilla" />
       <recent name="C:\Users\Andrés\Documents\ProyectosGit\Juego-Nonogramo\srcs\Visuals" />
       <recent name="C:\Users\Andrés\Documents\ProyectosGit\Juego-Nonogramo\srcs\Logica" />
     </key>
@@ -175,6 +191,50 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="au" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Juego-Nonogramo" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/srcs/Logica" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/srcs/Logica/au.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="prueba" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Juego-Nonogramo" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/srcs/Logica" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/srcs/Logica/prueba.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Python tests in tablero_test.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="Juego-Nonogramo" />
       <option name="ENV_FILES" value="" />
@@ -194,8 +254,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.MenuDificultad" />
+        <item itemvalue="Python.au" />
+        <item itemvalue="Python.prueba" />
         <item itemvalue="Python.Window" />
-        <item itemvalue="Python.Window (1)" />
         <item itemvalue="Python.Window (1)" />
         <item itemvalue="Python tests.Python tests in tablero_test.py" />
       </list>
