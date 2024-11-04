@@ -6,7 +6,7 @@ from random import randint
 
 from srcs.Logica.Dibujo import Dibujo
 from srcs.Logica.Tablero import Tablero
-from textTomatrix import TextToMatrix
+
 
 class Niveles:
     def __init__(self):
