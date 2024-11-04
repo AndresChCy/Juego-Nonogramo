@@ -15,11 +15,11 @@ class NonogramPanel(Panel):
         self.x = screen.get_width() - width
 
         self.buttons = [
-            Button(screen, "1", BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - 10, height - BUTTON_SIZE - 10, Colores.BLUE.value, Colores.WHITE.value, self.button1_action),
-            Button(screen, "2", BUTTON_SIZE, BUTTON_SIZE, self.x + 10, height - BUTTON_SIZE - 10, Colores.RED.value, Colores.WHITE.value, self.button2_action),
-            Button(screen, "3", BUTTON_SIZE, BUTTON_SIZE, self.x + 10, 10, Colores.BROWN.value, Colores.WHITE.value, self.button3_action),
-            Button(screen, "4", BUTTON_SIZE, BUTTON_SIZE, self.x + width // 2 - BUTTON_SIZE // 2, 10, Colores.YELLOW.value, Colores.BLACK.value, self.button4_action),
-            Button(screen, "5", BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - 10, 10, Colores.MAGENTA.value, Colores.WHITE.value, self.button5_action)
+            Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - 10, height - BUTTON_SIZE - 10, Colores.BLUE.value, Colores.WHITE.value, self.button1_action, image_path="../../Img/config.png"),
+            Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + 10, height - BUTTON_SIZE - 10, Colores.RED.value, Colores.WHITE.value, self.button2_action, image_path="../../Img/pista.png"),
+            Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + 10, 10, Colores.WHITE.value, Colores.WHITE.value, self.button3_action, draw_rectangle=True, opacity=150),
+            Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width // 2 - BUTTON_SIZE // 2, 10, Colores.WHITE.value, Colores.BLACK.value, self.button4_action, draw_cross=True, opacity=150),
+            Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - 10, 10, Colores.WHITE.value, Colores.WHITE.value, self.button5_action, draw_point=True, opacity=150)
         ]
 
     def handle_click(self, pos, button):
@@ -35,25 +35,24 @@ class NonogramPanel(Panel):
         pass
 
     def draw(self):
-        pygame.draw.rect(self.screen, Colores.GREEN.value, pygame.Rect(self.x, 0, self.width, self.height))
+        pygame.draw.rect(self.screen, Colores.KHAKI.value, pygame.Rect(self.x, 0, self.width, self.height))
         for btn in self.buttons:
             btn.draw()
 
     def button1_action(self):
-        print("Button 1 clicked!")
+        print("Boton pistas")
 
     def button2_action(self):
-        print("Button 2 clicked!")
+        print("Boton configuracion")
 
     def button3_action(self):
-        print("Button 3 clicked!")
         self.grilla_visual.left_click_value = 1
         self.grilla_visual.right_click_value = -1
 
     def button4_action(self):
-        print("Button 4 clicked!")
         self.grilla_visual.left_click_value = -1
         self.grilla_visual.right_click_value = 1
 
     def button5_action(self):
-        print("Button 5 clicked!")
+        self.grilla_visual.left_click_value = -2
+        self.grilla_visual.right_click_value = -1
