@@ -83,3 +83,6 @@ class Tablero(Pintable):
     def getSolucion(self):
         return self.solucion.getProgreso()
 
+    def reiniciar(self):
+        self.progreso = Dibujo(len(self.solucion.getProgreso()), len(self.solucion.getProgreso()[0]))
+

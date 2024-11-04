@@ -80,8 +80,8 @@ class MenuNiveles(Panel):
             [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
         ]
         aux = Dibujo(1, 1)
-        aux.cargarMatriz("../../Niveles/nivel1")
-        g = GrillaVisual(self.ventana, Tablero(aux), self.proxy,None)
+        aux.cargarMatriz("Niveles/nivel1")
+        g = GrillaVisual(self.ventana, self.listaNiveles[n-1], self.proxy,None)
         gc = DecoratorClues(g)
         gcm = DecoratorMiniatureRender(gc)
         self.proxy.ponerTarget(gcm)

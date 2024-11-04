@@ -107,7 +107,7 @@ class GrillaVisual(GrillaRender):
             if self.tablero.__class__ == Tablero:
                 if self.tablero.CompararDibujos():
                     self.proxy.ponerTarget(VictoryRenderer(self.screen, self.proxy, self.tablero.getProgreso(), self.cell_manager))
-
+                    self.tablero.reiniciar()
     def handle_mouse_events(self, event):
         """
         Maneja los eventos del ratón.

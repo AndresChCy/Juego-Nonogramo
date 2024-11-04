@@ -3,6 +3,13 @@ import sys
 from Panel import Panel
 from pygame.locals import *
 
+from srcs.Comandos.Command import Ejecutador, Command
+from srcs.Comandos.CommandCambiarPanel import CommandCambiarPanel
+from srcs.Comandos.CommandGuardar import CommandGuardar
+from srcs.Logica.Dibujo import Dibujo
+from srcs.Visuals.Grilla.GrillaVisual import GrillaVisual
+from srcs.Visuals.ProxyPanel import ProxyPanel
+
 pygame.init()
 ventana = pygame.display.set_mode((800, 600), 0, 32)
 font = pygame.font.SysFont(None, 40)
@@ -12,11 +19,14 @@ pygame.display.set_caption("Nonogram")
 fpsControlador = pygame.time.Clock()
 
 class CrearNivel(Panel):
-    def __init__(self, ventana, titulo, ancho, largo):
+    def __init__(self, ventana, titulo, ancho, largo,proxy: ProxyPanel,volver: Command):
         self.ventana = ventana
         self.titulo = titulo
         self.ancho = ancho
         self.largo = largo
+
+        self.proxy = proxy
+        self.volver = volver
 
         self.active1 = False
         self.active2 = False
@@ -72,6 +82,15 @@ class CrearNivel(Panel):
 
         if self.boton_aceptar.collidepoint(pos):
             print("Botón Aceptar presionado")
+            if (self.text1 != "" and self.text2 != ""):
+                dibujo = Dibujo(int(self.text1), int(self.text2))
+                com = Ejecutador()
+                com.addCommand(CommandGuardar(dibujo))
+                com.addCommand(self.volver)
+                # self.proxy.ponerTarget(panelDibujo(ventana,x,y,self.proxy))
+                self.proxy.ponerTarget(GrillaVisual(ventana, dibujo, self.proxy, com))
+            else:
+                self.volver.execute()
 
         self.color1 = self.color_active if self.active1 else self.color_inactive
         self.color2 = self.color_active if self.active2 else self.color_inactive
@@ -79,9 +98,14 @@ class CrearNivel(Panel):
     def handle_key(self,event):
         if event.key == pygame.K_RETURN:
             if self.text1 == '' or self.text2 == '':
-                return False, False
+                self.volver.execute()
             else:
-                return int(self.text1), int(self.text2)
+                dibujo = Dibujo(int(self.text1), int(self.text2))
+                com = Ejecutador()
+                com.addCommand(CommandGuardar(dibujo))
+                com.addCommand(self.volver)
+                # self.proxy.ponerTarget(panelDibujo(ventana,x,y,self.proxy))
+                self.proxy.ponerTarget(GrillaVisual(ventana, dibujo, self.proxy, com))
 
         if self.active1:
             if event.key == pygame.K_BACKSPACE:

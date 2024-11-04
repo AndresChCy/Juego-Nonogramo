@@ -8,6 +8,7 @@ from srcs.Logica.Tablero import Tablero
 
 class almacenar_test(unittest.TestCase):
     def setUp(self):
+        Niveles._instance = None
         self.niveles = Niveles()
 
     def test_agregarTableroPredeterminado(self):
