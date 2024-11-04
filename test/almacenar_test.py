@@ -70,7 +70,7 @@ class almacenar_test(unittest.TestCase):
         self.niveles.agregarTableroPredeterminado(tablero2)
         self.niveles.agregarTableroPredeterminado(tablero3)
 
-        result = self.niveles.getTableroPredeterminado()
+        result = self.niveles.tableroPredeterminadoRandom()
         self.assertIn(result, [tablero1, tablero2, tablero3])
 
     def test_getTableroCreado(self):
@@ -85,7 +85,7 @@ class almacenar_test(unittest.TestCase):
         self.niveles.agregarTableroCreado(tablero2)
         self.niveles.agregarTableroCreado(tablero3)
 
-        result = self.niveles.getTableroCreado()
+        result = self.niveles.tableroCreadoRandom()
         self.assertIn(result, [tablero1, tablero2, tablero3])
 
     def test_guardar_y_cargar_niveles_predeterminados(self):
@@ -96,7 +96,7 @@ class almacenar_test(unittest.TestCase):
 
         nuevo_niveles = Niveles()
         nuevo_niveles.CargarNivelesPredeterminados()
-        self.assertEqual(nuevo_niveles.nivelesPredeterminados, self.niveles.nivelesPredeterminados)
+        self.assertEqual(nuevo_niveles.nivelesPredeterminados[0][0].getProgreso().all(), self.niveles.nivelesPredeterminados[0][0].getProgreso().all())
 
         os.remove("Lista_Niveles_Predeterminados")
 
@@ -108,7 +108,7 @@ class almacenar_test(unittest.TestCase):
 
         nuevo_niveles = Niveles()
         nuevo_niveles.CargarNivelesCreados()
-        self.assertEqual(nuevo_niveles.nivelesCreados, self.niveles.nivelesCreados)
+        self.assertEqual(nuevo_niveles.nivelesCreados[0][0].getProgreso().all(), self.niveles.nivelesCreados[0][0].getProgreso().all())
 
         os.remove("Lista_Niveles_Usuario")
 

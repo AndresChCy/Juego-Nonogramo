@@ -23,8 +23,11 @@ class Niveles:
        #     tablero = Tablero(dibujo)
        #     self.niveles.append(tablero)
 
-    def agregarTableroPredeterminado(self, tablero):
-        num_casillas = len(tablero)*len(tablero[0])
+    def agregarTableroPredeterminado(self, tablero:Tablero):
+        if (tablero == None):
+            print("Invalido")
+            return
+        num_casillas = len(tablero.getProgreso())*len(tablero.getProgreso()[0])
         if num_casillas<=0:
             print("Invalido.")
             return
@@ -36,8 +39,11 @@ class Niveles:
         elif 1000<num_casillas:
             self.nivelesPredeterminados[2].append(tablero)
 
-    def agregarTableroCreado(self, tablero):
-        num_casillas = len(tablero) * len(tablero[0])
+    def agregarTableroCreado(self, tablero: Tablero):
+        if (tablero == None):
+            print("Invalido")
+            return
+        num_casillas = len(tablero.getProgreso()) * len(tablero.getProgreso()[0])
         if num_casillas<=0:
             print("Invalido.")
             return
@@ -49,7 +55,7 @@ class Niveles:
         elif 1000 < num_casillas:
             self.nivelesCreados[2].append(tablero)
 
-    def getTableroPredeterminado(self):
+    def tableroPredeterminadoRandom(self):
         if not any(self.nivelesPredeterminados):
             print("No hay niveles.")
             return
@@ -62,7 +68,7 @@ class Niveles:
         tablero = random.choice(nivelAleatorio)
         return tablero
 
-    def getTableroCreado(self):
+    def tableroCreadoRandom(self):
         if not any(self.nivelesCreados):
             print("No hay niveles.")
             return
@@ -108,3 +114,9 @@ class Niveles:
         fichero = open("Lista_Niveles_Predeterminados", "rb")
         self.nivelesPredeterminados = pickle.load(fichero)
         print(self.nivelesPredeterminados)
+
+    def getNivelesBase(self):
+        return self.nivelesPredeterminados
+
+    def getNivelesCreados(self):
+        return self.nivelesCreados
