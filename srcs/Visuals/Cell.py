@@ -35,6 +35,7 @@ class Cell(pygame.sprite.Sprite):
         self.rect.topleft = (x, y)
         self.filled = False
         self.marked = False
+        self.pointed = False
 
     def fill(self):
         """
@@ -42,6 +43,7 @@ class Cell(pygame.sprite.Sprite):
         """
         self.filled = True
         self.marked = False
+        self.pointed = False
         self.image.fill(Colores.DARK_GREY.value)
 
     def empty(self):
@@ -50,6 +52,7 @@ class Cell(pygame.sprite.Sprite):
         """
         self.filled = False
         self.marked = False
+        self.pointed = False
         self.image.fill(Colores.WHITE.value)
 
     def mark(self):
@@ -58,7 +61,17 @@ class Cell(pygame.sprite.Sprite):
         """
         self.marked = True
         self.filled = False
+        self.pointed = False
         self.image.fill(Colores.WHITE.value)
+
+    def point(self):
+        """
+        Marca la celda con un punto y cambia su color.
+        """
+        self.marked = False
+        self.filled = False
+        self.pointed = True
+        pygame.draw.circle(self.image, Colores.BLACK.value, (self.rect.width // 2, self.rect.height // 2), 5)
 
     def draw(self, screen):
         """
@@ -73,5 +86,7 @@ class Cell(pygame.sprite.Sprite):
         elif self.marked:
             pygame.draw.line(screen, Colores.RED.value, self.rect.topleft, self.rect.bottomright, 4)
             pygame.draw.line(screen, Colores.RED.value, self.rect.topright, self.rect.bottomleft, 4)
+        elif self.pointed:
+            pygame.draw.circle(screen, Colores.BLACK.value, (self.rect.x + self.rect.width // 2, self.rect.y + self.rect.height // 2), 5)
         else:
             pygame.draw.rect(screen, Colores.WHITE.value, self.rect)
