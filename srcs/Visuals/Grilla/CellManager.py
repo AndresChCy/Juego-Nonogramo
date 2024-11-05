@@ -46,6 +46,8 @@ class CellManager:
                     cell_sprite.fill()
                 elif grid_logic[row][col] == -1:
                     cell_sprite.mark()
+                elif grid_logic[row][col] == -2:
+                    cell_sprite.point()
                 else:
                     cell_sprite.empty()
 

@@ -45,3 +45,5 @@ class Colores(Enum):
     DARK_PURPLE = (75, 0, 130)
     DARK_PINK = (199, 21, 133)
     DARK_BROWN = (139, 69, 19)
+    # Colores Complementarios
+    KHAKI = (240, 230, 140)
