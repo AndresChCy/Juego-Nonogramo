@@ -14,7 +14,10 @@ class Tablero(Pintable):
         for i in range(len(juego)):
             for j in range(len(juego[0])):
                 if(usuario[i][j] != juego[i][j]):
-                    return False
+                    if (usuario[i][j] >= 0 and juego[i][j] >= 0):
+                        return False
+                    elif(usuario[i][j] < 0 and juego[i][j] == 1):
+                        return False
         return True
 
     def Compresion(self):

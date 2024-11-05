@@ -5,6 +5,7 @@ from pygame.constants import KEYDOWN, K_ESCAPE
 
 from srcs.Comandos.Command import Command
 from srcs.Logica.Dibujo import Pintable
+from srcs.Logica.Niveles import Niveles
 from srcs.Visuals.Grilla.CellManager import CellManager
 from srcs.Visuals.Colores import Colores
 from srcs.Visuals.Grilla.GridLinesRenderer import GridLinesRenderer
@@ -36,8 +37,8 @@ class GrillaRender(Panel,ABC):
         pass
 
 class GrillaVisual(GrillaRender):
-    GRID_WIDTH_PX = 200
-    GRID_HEIGHT_PX = 200
+    GRID_WIDTH_PX = 300
+    GRID_HEIGHT_PX = 300
 
     def __init__(self, screen, tablero: Pintable, proxy:ProxyPanel, enter: Command):
         """
@@ -133,9 +134,12 @@ class GrillaVisual(GrillaRender):
     def handle_key(self, event):
         if event.type == KEYDOWN and event.key == K_ESCAPE:
             pygame.quit()
+            niveles = Niveles()
+            niveles.GuardarNivelesCreados()
+            niveles.GuardarNivelesPredeterminados()
             sys.exit()
         elif event.key == pygame.K_RETURN:
-            if self.enter.__class__ != None:
+            if self.enter != None:
                 self.enter.execute()
 
 
