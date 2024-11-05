@@ -3,9 +3,16 @@ import sys
 from pygame.locals import *
 
 from PanelDibujo import panelDibujo
+from srcs.Comandos.Command import Ejecutador
+from srcs.Comandos.CommandCambiarPanel import CommandCambiarPanel
+from srcs.Comandos.CommandGuardar import CommandGuardar
+from srcs.Logica.Dibujo import Dibujo
 from srcs.Visuals.Colores import Colores
 from Panel import Panel
 from ProxyPanel import ProxyPanel
+from srcs.Visuals.Grilla.GrillaVisual import GrillaRender, GrillaVisual
+from srcs.Visuals.MenuCrearNivel import CrearNivel
+from srcs.Visuals.SeleccionTipoNivel import SeleccionTipoNivel
 
 pygame.init()
 pygame.display.set_caption('Juego Nonogram')
@@ -30,7 +37,7 @@ class MenuPrincipal(Panel):
         self.button_2 = pygame.Rect((ventana.get_width() - button_width) // 2, 300, button_width, button_height)
         self.button_3 = pygame.Rect((ventana.get_width() - button_width) // 2, 400, button_width, button_height)
 
-
+        self.menuJugar = SeleccionTipoNivel(self.ventana,self.proxy)
     def draw_text(self,texto, font, color, superficie, x, y):
         textobj = font.render(texto, 1, color)
         textrect = textobj.get_rect(center=(x, y))
@@ -79,12 +86,18 @@ class MenuPrincipal(Panel):
 
 
     def juego(self):
-        self.proxy.cambiarTarget(1)
+        self.proxy.ponerTarget(self.menuJugar)
 
     def crearNivel(self):
-        x,y = self.inputs()
-        if (x and y):
-            self.proxy.ponerTarget(panelDibujo(ventana,x,y,self.proxy))
+        self.proxy.ponerTarget(CrearNivel(self.ventana,"Escoger dimensiones",400,300,self.proxy,CommandCambiarPanel(self,self.proxy)))
+       # x,y = self.inputs()
+        #if (x and y):
+         #   dibujo = Dibujo(x,y)
+          #  com = Ejecutador()
+           # com.addCommand(CommandGuardar(dibujo))
+            #com.addCommand(CommandCambiarPanel(self,self.proxy))
+           # self.proxy.ponerTarget(panelDibujo(ventana,x,y,self.proxy))
+            #self.proxy.ponerTarget(GrillaVisual(ventana,dibujo,self.proxy,com))
        # self.proxy.cambiarTarget(1)
         #ejecutando=True
         #while ejecutando:

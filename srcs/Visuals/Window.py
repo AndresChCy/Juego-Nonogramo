@@ -5,6 +5,9 @@ from Colores import Colores
 from Menu import MenuPrincipal
 from MenuNiveles import MenuNiveles
 from ProxyPanel import ProxyPanel
+from srcs.Logica.Niveles import Niveles
+from srcs.Visuals.MenuDificultad import MenuDificultad
+from srcs.Visuals.SeleccionTipoNivel import SeleccionTipoNivel
 
 
 class Window:
@@ -13,11 +16,16 @@ class Window:
         self.screen = pygame.display.set_mode((900, 600))
         pygame.display.set_caption('Nonograma')
         self.panel = ProxyPanel([])
+
         #cuadricula = Grid(self.screen, matrix,self.panel)
+        niveles = Niveles()
+        #niveles.GuardarNivelesCreados()
+        #niveles.GuardarNivelesPredeterminados()
+        niveles.CargarNivelesCreados()
+        niveles.CargarNivelesPredeterminados()
         menu = MenuPrincipal(self.screen,self.panel)
-        menuNiveles = MenuNiveles(self.screen,[1,2,3,4,5,6,7,8,9],self.panel)
+        menuTipos = SeleccionTipoNivel(self.screen, self.panel)
         self.panel.addToList(menu)
-        self.panel.addToList(menuNiveles)
       #  self.panel.addToList(cuadricula)
 
     def execute(self):
@@ -25,6 +33,8 @@ class Window:
         while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
+                    niveles = Niveles()
+                    niveles.GuardarNivelesCreados()
                     running = False
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     self.panel.handle_click(event.pos, event.button)

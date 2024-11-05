@@ -1,5 +1,10 @@
-import pygame
+import sys
 
+import pygame
+from pygame.constants import KEYDOWN, K_ESCAPE
+
+from srcs.Comandos.Command import Command
+from srcs.Logica.Dibujo import Pintable
 from srcs.Visuals.Grilla.CellManager import CellManager
 from srcs.Visuals.Colores import Colores
 from srcs.Visuals.Grilla.GridLinesRenderer import GridLinesRenderer
@@ -35,7 +40,7 @@ class GrillaVisual(GrillaRender):
     GRID_WIDTH_PX = 200
     GRID_HEIGHT_PX = 200
 
-    def __init__(self, screen, tablero: Tablero, proxy:ProxyPanel):
+    def __init__(self, screen, tablero: Pintable, proxy:ProxyPanel, enter: Command):
         """
         Inicializa los componentes gráficos de la cuadrícula.
 
@@ -51,8 +56,10 @@ class GrillaVisual(GrillaRender):
         self.proxy = proxy
         self.screen = screen
         self.tablero = tablero
+
         self.right_click_value = -1
         self.left_click_value = 1
+        self.enter = enter
 
         self.GRID_WIDTH = len(tablero.getProgreso()[0])
         self.GRID_HEIGHT = len(tablero.getProgreso())
@@ -105,9 +112,10 @@ class GrillaVisual(GrillaRender):
             elif button == 3:  # Clic derecho
                 self.tablero.getProgreso()[row][col] = self.right_click_value if self.tablero.getProgreso()[row][col] != self.right_click_value else 0
             self.cell_manager.update_grid_visual(self.tablero.getProgreso())
-        if self.tablero.CompararDibujos():
-            self.proxy.ponerTarget(VictoryRenderer(self.screen, self.proxy, self.tablero.getProgreso(), self.cell_manager))
-
+            if self.tablero.__class__ == Tablero:
+                if self.tablero.CompararDibujos():
+                    self.proxy.ponerTarget(VictoryRenderer(self.screen, self.proxy, self.tablero.getProgreso(), self.cell_manager))
+                    self.tablero.reiniciar()
     def handle_mouse_events(self, event):
         """
         Maneja los eventos del ratón.
@@ -132,7 +140,13 @@ class GrillaVisual(GrillaRender):
        # self.miniature_renderer.draw_miniature()
 
     def handle_key(self, event):
-        pass
+        if event.type == KEYDOWN and event.key == K_ESCAPE:
+            pygame.quit()
+            sys.exit()
+        elif event.key == pygame.K_RETURN:
+            if self.enter.__class__ != None:
+                self.enter.execute()
+
 
     def draw_hover_effect(self):
         """

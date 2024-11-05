@@ -72,8 +72,8 @@ class panelDibujo(Panel):
         self.proxy = proxy
         self.screen = screen
         self.dibujo = Dibujo(y, x)
-        self.GRID_WIDTH = len(self.dibujo.getMatriz()[0])
-        self.GRID_HEIGHT = len(self.dibujo.getMatriz())
+        self.GRID_WIDTH = len(self.dibujo.getProgreso()[0])
+        self.GRID_HEIGHT = len(self.dibujo.getProgreso())
         self.window_width, self.window_height = screen.get_size()
         self.CELL_SIZE = min(self.GRID_WIDTH_PX // self.GRID_WIDTH, self.GRID_HEIGHT_PX // self.GRID_HEIGHT)
         self.actual_grid_width_px = self.GRID_WIDTH* self.CELL_SIZE
@@ -81,8 +81,8 @@ class panelDibujo(Panel):
         self.offset_x = (self.window_width - self.actual_grid_width_px) // 2
         self.offset_y = (self.window_height - self.actual_grid_height_px) // 2
         self.cell_manager = CellManager(self.GRID_WIDTH, self.GRID_HEIGHT, self.CELL_SIZE, self.offset_x, self.offset_y)
-        self.renderer = dibujoRenderer(self.screen, self.cell_manager, self.dibujo.getMatriz(),
-                                     self.offset_x, self.offset_y, self.CELL_SIZE)
+        self.renderer = dibujoRenderer(self.screen, self.cell_manager, self.dibujo.getProgreso(),
+                                       self.offset_x, self.offset_y, self.CELL_SIZE)
         self.clock = pygame.time.Clock()
         self.FPS = 60
 
@@ -99,10 +99,10 @@ class panelDibujo(Panel):
         row = (mouse_y - self.offset_y) // self.CELL_SIZE
         if 0 <= col < self.GRID_WIDTH and 0 <= row < self.GRID_HEIGHT:
             if button == 1:  # Clic izquierdo
-                self.dibujo.pintar(row,col,1) if self.dibujo.getMatriz()[row][col] != 1 else self.dibujo.pintar(row,col,0)
+                self.dibujo.pintar(row,col,1) if self.dibujo.getProgreso()[row][col] != 1 else self.dibujo.pintar(row, col, 0)
             elif button == 3:  # Clic derecho
-                self.dibujo.pintar(row,col,1) if self.dibujo.getMatriz()[row][col] != 1 else self.dibujo.pintar(row,col,0)
-            self.cell_manager.update_grid_visual(self.dibujo.getMatriz())
+                self.dibujo.pintar(row,col,1) if self.dibujo.getProgreso()[row][col] != 1 else self.dibujo.pintar(row, col, 0)
+            self.cell_manager.update_grid_visual(self.dibujo.getProgreso())
 
 
     def draw(self):
@@ -118,7 +118,7 @@ class panelDibujo(Panel):
             sys.exit()
         elif event.key == pygame.K_RETURN:
             tab = Tablero(self.dibujo)
-            tab.guardarProgreso(self.dibujo.getMatriz(),"../../Niveles/nivel1")
+            tab.guardarProgreso(self.dibujo.getProgreso(), "../../Niveles/nivel1")
             self.proxy.cambiarTarget(0)
 
     def handle_mouse_motion(self ,pos):
