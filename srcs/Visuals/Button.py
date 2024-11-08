@@ -63,6 +63,7 @@ class Button:
                 self.image.set_alpha(opacity)
             except pygame.error as e:
                 print(f"Error loading image at {image_path}: {e}")
+                self.image = None
 
         # Opciones de dibujo adicionales.
         self.draw_rectangle = draw_rectangle

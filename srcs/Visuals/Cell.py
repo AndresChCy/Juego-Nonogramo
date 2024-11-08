@@ -37,14 +37,14 @@ class Cell(pygame.sprite.Sprite):
         self.marked = False
         self.pointed = False
 
-    def fill(self):
+    def fill(self, color):
         """
         Llena la celda y cambia su color.
         """
         self.filled = True
         self.marked = False
         self.pointed = False
-        self.image.fill(Colores.DARK_GREY.value)
+        self.image.fill(color)
 
     def empty(self):
         """
@@ -80,13 +80,15 @@ class Cell(pygame.sprite.Sprite):
         Args:
             screen (pygame.Surface): La superficie de la pantalla donde se dibujará la celda.
         """
+        # Dibuja la celda con su imagen actual (color ya establecido por fill)
         screen.blit(self.image, self.rect.topleft)
-        if self.filled:
-            pygame.draw.rect(screen, Colores.DARK_GREY.value, self.rect)
-        elif self.marked:
+
+        # Opciones adicionales de dibujo según el estado de la celda
+        if self.marked:
             pygame.draw.line(screen, Colores.RED.value, self.rect.topleft, self.rect.bottomright, 4)
             pygame.draw.line(screen, Colores.RED.value, self.rect.topright, self.rect.bottomleft, 4)
         elif self.pointed:
-            pygame.draw.circle(screen, Colores.BLACK.value, (self.rect.x + self.rect.width // 2, self.rect.y + self.rect.height // 2), 5)
-        else:
-            pygame.draw.rect(screen, Colores.WHITE.value, self.rect)
+            pygame.draw.circle(screen, Colores.BLACK.value,
+                               (self.rect.x + self.rect.width // 2, self.rect.y + self.rect.height // 2), 5)
+        elif not self.filled and not self.marked and not self.pointed:
+            pygame.draw.rect(screen, Colores.WHITE.value, self.rect, 1)

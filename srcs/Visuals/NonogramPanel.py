@@ -40,9 +40,9 @@ class NonogramPanel(Panel):
         # Configuración de los botones con posiciones, colores y acciones específicas.
         self.buttons = [
             Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - 10, height - BUTTON_SIZE - 10,
-                   Colores.BLUE.value, self.button1_action, image_path="../../Img/config.png"),
+                   Colores.BLUE.value, self.button1_action, image_path="Img/config.png"),
             Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + 10, height - BUTTON_SIZE - 10,
-                   Colores.RED.value, self.button2_action, image_path="../../Img/pista.png"),
+                   Colores.RED.value, self.button2_action, image_path="Img/pista.png"),
             Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + 10, 10,
                    Colores.WHITE.value, self.button3_action, draw_rectangle=True, opacity=150),
             Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width // 2 - BUTTON_SIZE // 2, 10,

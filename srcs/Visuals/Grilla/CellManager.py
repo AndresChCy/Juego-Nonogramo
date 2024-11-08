@@ -1,5 +1,6 @@
 import pygame
 from srcs.Visuals.Cell import Cell
+from srcs.Visuals.Colores import Colores
 
 
 class CellManager:
@@ -38,15 +39,29 @@ class CellManager:
         Args:
             grid_logic (list of list of int): La lógica actual de la cuadrícula.
         """
+        color_mapping = [
+            Colores.BLACK.value, Colores.DARK_GREY.value, Colores.GREY.value, Colores.LIGHT_GREY.value,
+            Colores.DARK_GREY.value, Colores.RED.value, Colores.GREEN.value, Colores.BLUE.value,
+            Colores.YELLOW.value, Colores.CYAN.value, Colores.MAGENTA.value, Colores.ORANGE.value,
+            Colores.PURPLE.value, Colores.PINK.value, Colores.BROWN.value, Colores.LIGHT_RED.value,
+            Colores.LIGHT_BLUE.value, Colores.LIGHT_GREEN.value, Colores.LIGHT_YELLOW.value,
+            Colores.LIGHT_CYAN.value, Colores.LIGHT_MAGENTA.value, Colores.LIGHT_ORANGE.value,
+            Colores.LIGHT_PURPLE.value, Colores.LIGHT_PINK.value, Colores.LIGHT_BROWN.value,
+            Colores.DARK_RED.value, Colores.DARK_BLUE.value, Colores.DARK_GREEN.value,
+            Colores.DARK_YELLOW.value, Colores.DARK_CYAN.value, Colores.DARK_MAGENTA.value,
+            Colores.DARK_ORANGE.value, Colores.DARK_PURPLE.value, Colores.DARK_PINK.value,
+            Colores.DARK_BROWN.value, Colores.KHAKI.value
+        ]
         for row in range(self.grid_height):
             for col in range(self.grid_width):
                 cell_idx = row * self.grid_width + col
                 cell_sprite = self.all_cells.sprites()[cell_idx]
-                if grid_logic[row][col] == 1:
-                    cell_sprite.fill()
-                elif grid_logic[row][col] == -1:
+                cell_value = int(grid_logic[row][col])
+                if 0 < cell_value < len(color_mapping):
+                    cell_sprite.fill(color_mapping[cell_value])
+                elif cell_value == -1:
                     cell_sprite.mark()
-                elif grid_logic[row][col] == -2:
+                elif cell_value == -2:
                     cell_sprite.point()
                 else:
                     cell_sprite.empty()
