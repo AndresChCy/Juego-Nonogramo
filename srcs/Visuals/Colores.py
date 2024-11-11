@@ -5,7 +5,6 @@ class Colores(Enum):
     # Colores Básicos
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
-    # --------------- Propuesta de Futuros Colores ---------------
     # Escala de Grises
     GREY = (128, 128, 128)
     WHITE_SMOKE = (245, 245, 245)
@@ -55,3 +54,7 @@ class Colores(Enum):
     @classmethod
     def get_reverse_mapping(cls):
         return {member.value: number for number, member in enumerate(cls, start=1)}
+
+    @classmethod
+    def get_number_mapping(cls):
+        return {number: member.value for number, member in enumerate(cls, start=1)}

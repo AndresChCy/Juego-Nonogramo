@@ -21,7 +21,11 @@ class CellManager:
         self.offset_x = offset_x
         self.offset_y = offset_y
         self.all_cells = pygame.sprite.Group()
+
+        # Inicializa las celdas y los mapeos de colores
         self._initialize_cells()
+        self.mapping_colores = Colores.get_number_mapping()  # Mapeo numérico de colores
+        self.mapping_colores_inverso = Colores.get_reverse_mapping()  # Mapeo inverso de colores
 
     def _initialize_cells(self):
         """
@@ -32,6 +36,9 @@ class CellManager:
                 cell = Cell(self.offset_x + col * self.cell_size, self.offset_y + row * self.cell_size, self.cell_size)
                 self.all_cells.add(cell)
 
+        for cell in self.all_cells:
+            cell.empty()
+
     def update_grid_visual(self, grid_logic):
         """
         Actualiza la visualización de la cuadrícula basada en la lógica de la cuadrícula.
@@ -39,32 +46,22 @@ class CellManager:
         Args:
             grid_logic (list of list of int): La lógica actual de la cuadrícula.
         """
-        color_mapping = [
-            Colores.BLACK.value, Colores.DARK_GREY.value, Colores.GREY.value, Colores.LIGHT_GREY.value,
-            Colores.DARK_GREY.value, Colores.RED.value, Colores.GREEN.value, Colores.BLUE.value,
-            Colores.YELLOW.value, Colores.CYAN.value, Colores.MAGENTA.value, Colores.ORANGE.value,
-            Colores.PURPLE.value, Colores.PINK.value, Colores.BROWN.value, Colores.LIGHT_RED.value,
-            Colores.LIGHT_BLUE.value, Colores.LIGHT_GREEN.value, Colores.LIGHT_YELLOW.value,
-            Colores.LIGHT_CYAN.value, Colores.LIGHT_MAGENTA.value, Colores.LIGHT_ORANGE.value,
-            Colores.LIGHT_PURPLE.value, Colores.LIGHT_PINK.value, Colores.LIGHT_BROWN.value,
-            Colores.DARK_RED.value, Colores.DARK_BLUE.value, Colores.DARK_GREEN.value,
-            Colores.DARK_YELLOW.value, Colores.DARK_CYAN.value, Colores.DARK_MAGENTA.value,
-            Colores.DARK_ORANGE.value, Colores.DARK_PURPLE.value, Colores.DARK_PINK.value,
-            Colores.DARK_BROWN.value, Colores.KHAKI.value
-        ]
         for row in range(self.grid_height):
             for col in range(self.grid_width):
                 cell_idx = row * self.grid_width + col
                 cell_sprite = self.all_cells.sprites()[cell_idx]
-                cell_value = int(grid_logic[row][col])
-                if 0 < cell_value < len(color_mapping):
-                    cell_sprite.fill(color_mapping[cell_value])
-                elif cell_value == -1:
-                    cell_sprite.mark()
-                elif cell_value == -2:
-                    cell_sprite.point()
-                else:
+                cell_value = int(grid_logic[row][col])  # Identificador de color o acción especial
+                # Usa el mapeo para determinar el color o la acción especial
+                if 1 <= cell_value <= 36:
+                    cell_sprite.fill(cell_value, self.mapping_colores)  # Pinta la celda con el color correspondiente
+                elif cell_value == 0:
                     cell_sprite.empty()
+                elif cell_value == -1:
+                    cell_sprite.mark()  # Marca la celda
+                elif cell_value == -2:
+                    cell_sprite.point()  # Pone la celda en estado apuntado
+                else:
+                    cell_sprite.empty()  # Limpia la celda
 
     def draw_cells(self, screen):
         """

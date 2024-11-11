@@ -30,21 +30,24 @@ class Cell(pygame.sprite.Sprite):
         """
         super().__init__()
         self.image = pygame.Surface((size, size))
-        self.image.fill(Colores.WHITE.value)
-        self.rect = self.image.get_rect()
-        self.rect.topleft = (x, y)
+        self.rect = self.image.get_rect(topleft=(x, y))
         self.filled = False
         self.marked = False
         self.pointed = False
 
-    def fill(self, color):
+    def fill(self, color_key, color_mapping):
         """
-        Llena la celda y cambia su color.
+        Llena la celda usando el identificador de color y cambia su color.
+
+        Args:
+            color_key: Identificador del color en el mapeo de colores.
+            color_mapping: Diccionario que mapea los identificadores de color a los valores RGB.
         """
         self.filled = True
         self.marked = False
         self.pointed = False
-        self.image.fill(color)
+        color_rgb = color_mapping.get(color_key, Colores.WHITE.value)  # Usa blanco como predeterminado si no se encuentra el color
+        self.image.fill(color_rgb)
 
     def empty(self):
         """
