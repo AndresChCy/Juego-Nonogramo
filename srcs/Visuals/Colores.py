@@ -47,3 +47,11 @@ class Colores(Enum):
     DARK_BROWN = (139, 69, 19)
     # Colores Complementarios
     KHAKI = (240, 230, 140)
+
+    @classmethod
+    def get_mapping(cls):
+        return {member.name: member.value for member in cls}
+
+    @classmethod
+    def get_reverse_mapping(cls):
+        return {member.value: number for number, member in enumerate(cls, start=1)}

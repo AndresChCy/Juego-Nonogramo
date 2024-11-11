@@ -76,7 +76,7 @@ class GrillaVisual(GrillaRender):
         self.hovered_row = None
         self.hovered_col = None
 
-        self.nonogram_panel = NonogramPanel(screen, window_width * 0.2, window_height, self)
+        self.nonogram_panel = NonogramPanel(screen, int(window_width * 0.2), window_height, self)
 
     def handle_mouse_motion(self, pos):
         """
