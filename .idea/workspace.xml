@@ -5,19 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eebaf69e-4fd7-4128-8a77-9b71882aee86" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Juego-Nonogramo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Juego-Nonogramo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lista_Niveles_Usuario" beforeDir="false" afterPath="$PROJECT_DIR$/Lista_Niveles_Usuario" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/Logica/Niveles.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Logica/Niveles.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/Logica/Tablero.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Logica/Tablero.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/Visuals/Grilla/GrillaVisual.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Grilla/GrillaVisual.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/Visuals/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/Visuals/MenuDificultad.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/MenuDificultad.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/Visuals/MenuNiveles.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/MenuNiveles.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/Visuals/SeleccionTipoNivel.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/SeleccionTipoNivel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/Visuals/VictoryRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/VictoryRenderer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/Visuals/Window.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Window.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +55,7 @@
     "Python tests.Python tests in test_textTomatriz.py.executor": "Run",
     "Python.Grid.executor": "Run",
     "Python.GrillaVisual.executor": "Run",
+    "Python.Logros.executor": "Run",
     "Python.Menu.executor": "Run",
     "Python.MenuDificultad.executor": "Run",
     "Python.MenuNiveles.executor": "Run",
@@ -78,7 +67,7 @@
     "Python.au.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/martin/Codigo/Python/Juego-Nonogramo",
+    "last_opened_file_path": "/home/martin/Codigo/Python/Proyecto_Ing_Software",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -219,10 +208,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Window (1)" />
         <item itemvalue="Python.Window" />
         <item itemvalue="Python tests.Python tests in almacenar_test.py" />
         <item itemvalue="Python.MenuDificultad" />
-        <item itemvalue="Python.Window (1)" />
         <item itemvalue="Python.Window (1)" />
       </list>
     </recent_temporary>
@@ -248,6 +237,11 @@
       <workItem from="1730473311000" duration="7870000" />
       <workItem from="1730490603835" duration="1958000" />
       <workItem from="1730741538931" duration="6091000" />
+      <workItem from="1730803305812" duration="654000" />
+      <workItem from="1731448948829" duration="71000" />
+      <workItem from="1731450038150" duration="735000" />
+      <workItem from="1731451283711" duration="22000" />
+      <workItem from="1731451315796" duration="4393000" />
     </task>
     <servers />
   </component>
@@ -277,8 +271,10 @@
     <SUITE FILE_PATH="coverage/Window_py$Window.coverage" NAME="Window Coverage Results" MODIFIED="1730747772051" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/srcs/Visuals" />
     <SUITE FILE_PATH="coverage/Window_py$MenuNiveles.coverage" NAME="MenuNiveles Coverage Results" MODIFIED="1730492383522" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/srcs/Visuals" />
     <SUITE FILE_PATH="coverage/Window_py$SeleccionTipoNivel.coverage" NAME="SeleccionTipoNivel Coverage Results" MODIFIED="1730746217182" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/srcs/Visuals" />
+    <SUITE FILE_PATH="coverage/Window_py$Logros.coverage" NAME="Logros Coverage Results" MODIFIED="1731458940859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/srcs/Logica" />
     <SUITE FILE_PATH="coverage/Window_py$Menu.coverage" NAME="Menu Coverage Results" MODIFIED="1730744387092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/srcs/Visuals" />
     <SUITE FILE_PATH="coverage/Window_py$MenuDificultad.coverage" NAME="MenuDificultad Coverage Results" MODIFIED="1730746276084" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/srcs/Visuals" />
+    <SUITE FILE_PATH="coverage/Window_py$Window__1_.coverage" NAME="Window (1) Coverage Results" MODIFIED="1731451333458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/srcs/Visuals" />
     <SUITE FILE_PATH="coverage/Window_py$Tablero.coverage" NAME="Tablero Coverage Results" MODIFIED="1730745172028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/srcs/Logica" />
   </component>
 </project>
