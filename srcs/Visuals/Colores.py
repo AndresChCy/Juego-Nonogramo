@@ -6,45 +6,52 @@ class Colores(Enum):
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
     # Escala de Grises
+    DARK_GREY = (50, 50, 50)
     GREY = (128, 128, 128)
     WHITE_SMOKE = (245, 245, 245)
     LIGHT_GREY = (211, 211, 211)
-    DARK_GREY = (50, 50, 50)
-    # Colores Primarios
+
+    #-------------- Colores Rojizos --------------
+    WINE = (114, 47, 55)
     RED = (255, 0, 0)
-    GREEN = (0, 255, 0)
-    BLUE = (0, 0, 255)
-    # Colores Secundarios
-    YELLOW = (255, 255, 0)
-    CYAN = (0, 255, 255)
-    MAGENTA = (255, 0, 255)
-    ORANGE = (255, 165, 0)
-    PURPLE = (128, 0, 128)
-    PINK = (255, 192, 203)
-    BROWN = (165, 42, 42)
-    # Colores Claros
-    LIGHT_RED = (255, 192, 203)
-    LIGHT_BLUE = (173, 216, 230)
-    LIGHT_GREEN = (144, 238, 144)
-    LIGHT_YELLOW = (255, 255, 224)
-    LIGHT_CYAN = (224, 255, 255)
-    LIGHT_MAGENTA = (255, 224, 255)
+    LIGHT_RED = (255, 185, 185)
+
+    #-------------- Colores Naranjas --------------
+    MARMALADE = (128, 64, 0)
+    ORANGE = (255, 185, 0)
     LIGHT_ORANGE = (255, 218, 185)
-    LIGHT_PURPLE = (229, 128, 255)
-    LIGHT_PINK = (255, 182, 193)
-    LIGHT_BROWN = (210, 105, 30)
-    # Colores Oscuros
-    DARK_RED = (139, 0, 0)
-    DARK_BLUE = (0, 0, 139)
+
+    #-------------- Colores Amarillos --------------
+    DARK_YELLOW = (137, 137, 27)
+    YELLOW = (255, 255, 0)
+    LIGHT_YELLOW = (255, 255, 185)
+
+    #-------------- Colores Verdes --------------
     DARK_GREEN = (0, 100, 0)
-    DARK_YELLOW = (139, 139, 0)
-    DARK_CYAN = (0, 139, 139)
-    DARK_MAGENTA = (139, 0, 139)
-    DARK_ORANGE = (255, 140, 0)
-    DARK_PURPLE = (75, 0, 130)
-    DARK_PINK = (199, 21, 133)
-    DARK_BROWN = (139, 69, 19)
-    # Colores Complementarios
+    GREEN = (0, 255, 0)
+    LIGHT_GREEN = (185, 255, 185)
+
+    #-------------- Colores Azulados --------------
+    DARK_BLUE = (0, 0, 139)
+    BLUE = (0, 0, 255)
+    LIGHT_BLUE = (218, 218, 255)
+
+    #-------------- Colores Morados --------------
+    DARK_PURPLE = (128, 0, 128)
+    PURPLE = (195, 0, 255)
+    LIGHT_PURPLE = (255, 218, 255)
+
+    #-------------- Colores Rosados --------------
+    DARK_PINK = (175, 0, 137)
+    PINK = (255, 131, 203)
+    LIGHT_PINK = (255, 182, 193)
+
+    #-------------- Colores Marrones --------------
+    DARK_BROWN = (104, 55, 25)
+    BROWN = (165, 89, 42)
+    LIGHT_BROWN = (255, 196, 160)
+
+    #-------------- Colores Complementarios --------------
     KHAKI = (240, 230, 140)
 
     @classmethod
