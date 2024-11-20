@@ -20,7 +20,7 @@ class NonogramPanel(Panel):
         colores_extra (list): Lista de botones adicionales a mostrar en el panel extendido.
     """
 
-    def __init__(self, screen, width, height, grilla_visual, colores_extra=None):
+    def __init__(self, screen, width, height, grilla_visual, colores_extra=None, dibujo : bool =False):
         """
         Inicializa el panel de Nonogram con una serie de botones de interacción.
 
@@ -39,26 +39,33 @@ class NonogramPanel(Panel):
         self.x = screen.get_width() - width
         self.colores_extra = colores_extra
         self.reverse_mapping_colores = Colores.get_reverse_mapping()
+        self.dibujo = dibujo
 
         # Crear los botones principales del panel
-        self.buttons = [
-            Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - 10, height - BUTTON_SIZE - 10,
-                   Colores.BLUE.value, self.button1_action, image_path="Img/config.png"),
-            Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + 10, height - BUTTON_SIZE - 10,
-                   Colores.RED.value, self.button2_action, image_path="Img/pista.png"),
-            Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + 10, 10,
-                   Colores.WHITE.value, self.button3_action, draw_rectangle=True, opacity=150),
-            Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width // 2 - BUTTON_SIZE // 2, 10,
-                   Colores.WHITE.value, self.button4_action, draw_cross=True, opacity=150),
-            Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - 10, 10,
-                   Colores.WHITE.value, self.button5_action, draw_point=True, opacity=150),
-            Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + 10, 20 + BUTTON_SIZE,
-                   Colores.GREEN.value, self.button6_action, text="6"),
-            Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width // 2 - BUTTON_SIZE // 2, 20 + BUTTON_SIZE,
-                   Colores.GREEN.value, self.button7_action, text="7"),
-            Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - 10, 20 + BUTTON_SIZE,
-                   Colores.GREEN.value, self.button8_action, text="8")
-        ]
+        if not self.dibujo:
+            self.buttons = [
+                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - 10, height - BUTTON_SIZE - 10,
+                       Colores.BLUE.value, self.button1_action, image_path="Img/config.png"),
+                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + 10, height - BUTTON_SIZE - 10,
+                       Colores.RED.value, self.button2_action, image_path="Img/pista.png"),
+                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + 10, 10,
+                       Colores.WHITE.value, self.button3_action, draw_rectangle=True, opacity=150),
+                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width // 2 - BUTTON_SIZE // 2, 10,
+                       Colores.WHITE.value, self.button4_action, draw_cross=True, opacity=150),
+                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - 10, 10,
+                       Colores.WHITE.value, self.button5_action, draw_point=True, opacity=150),
+                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + 10, 20 + BUTTON_SIZE,
+                       Colores.GREEN.value, self.button6_action, text="6"),
+                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width // 2 - BUTTON_SIZE // 2, 20 + BUTTON_SIZE,
+                       Colores.GREEN.value, self.button7_action, text="7"),
+                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - 10, 20 + BUTTON_SIZE,
+                       Colores.GREEN.value, self.button8_action, text="8")
+            ]
+
+        else:
+            self.grilla_visual.right_click_value = 1
+            self.buttons = []
+            self._create_color_buttons()
 
         if colores_extra is not None:
             self.extended_panel_button_visible = True
@@ -96,6 +103,28 @@ class NonogramPanel(Panel):
                                text=str(color))
 
             self.botones_extra.append(color)
+
+    def _create_color_buttons(self):
+        self.buttons = []
+
+        # Filtrar los colores que no deben ser considerados
+        colores_filtrados = [color for color in self.reverse_mapping_colores if color not in [(255, 255, 255), (245, 245, 245)]]
+
+        for i, color in enumerate(colores_filtrados):
+            if i % 3 == 1:
+                color = Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + 10,
+                               ((i // 3) + 1) * 10 + (i // 3) * BUTTON_SIZE,
+                               color, lambda c=color: self.button10_action(c))
+            elif i % 3 == 2:
+                color = Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.width // 2 - BUTTON_SIZE // 2,
+                               ((i // 3) + 1) * 10 + (i // 3) * BUTTON_SIZE, color,
+                               lambda c=color: self.button10_action(c))
+            else:
+                color = Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.width - BUTTON_SIZE - 10,
+                               (i // 3) * 10 + ((i // 3) - 1) * BUTTON_SIZE, color,
+                               lambda c=color: self.button10_action(c))
+
+            self.buttons.append(color)
 
 
     def handle_mouse_motion(self, pos):

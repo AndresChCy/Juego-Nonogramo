@@ -41,7 +41,7 @@ class GrillaVisual(GrillaRender):
     GRID_WIDTH_PX = 300
     GRID_HEIGHT_PX = 300
 
-    def __init__(self, screen, tablero: Pintable, proxy:ProxyPanel, enter: Command):
+    def __init__(self, screen, tablero: Pintable, proxy:ProxyPanel, enter: Command, dibujo: bool = False):
         """
         Inicializa los componentes gráficos de la cuadrícula.
 
@@ -76,7 +76,7 @@ class GrillaVisual(GrillaRender):
         self.hovered_row = None
         self.hovered_col = None
 
-        self.nonogram_panel = NonogramPanel(screen, int(window_width * 0.2), window_height, self)
+        self.nonogram_panel = NonogramPanel(screen, int(window_width * 0.2), window_height, self, dibujo=dibujo)
 
     def handle_mouse_motion(self, pos):
         """
