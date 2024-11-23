@@ -7,6 +7,7 @@ from srcs.Comandos.Command import Ejecutador
 from srcs.Comandos.CommandCambiarPanel import CommandCambiarPanel
 from srcs.Comandos.CommandGuardar import CommandGuardar
 from srcs.Logica.Dibujo import Dibujo
+from srcs.Logica.Niveles import Niveles
 from srcs.Visuals.Colores import Colores
 from Panel import Panel
 from ProxyPanel import ProxyPanel
@@ -37,7 +38,7 @@ class MenuPrincipal(Panel):
         self.button_2 = pygame.Rect((ventana.get_width() - button_width) // 2, 300, button_width, button_height)
         self.button_3 = pygame.Rect((ventana.get_width() - button_width) // 2, 400, button_width, button_height)
 
-        self.menuJugar = SeleccionTipoNivel(self.ventana,self.proxy)
+        self.menuJugar = SeleccionTipoNivel(self.ventana,self.proxy,CommandCambiarPanel(self,self.proxy))
     def draw_text(self,texto, font, color, superficie, x, y):
         textobj = font.render(texto, 1, color)
         textrect = textobj.get_rect(center=(x, y))
@@ -116,6 +117,9 @@ class MenuPrincipal(Panel):
 
     def salir(self):
         pygame.quit()
+        niveles = Niveles()
+        niveles.GuardarNivelesCreados()
+        niveles.GuardarNivelesPredeterminados()
         sys.exit()
 
     def inputs(self):

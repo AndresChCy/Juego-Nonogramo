@@ -1,4 +1,6 @@
 import pygame
+from pygame import KEYDOWN, K_ESCAPE
+
 from Panel import Panel
 from ProxyPanel import ProxyPanel
 from srcs.Comandos.Command import Command
@@ -10,13 +12,13 @@ fpsControlador = pygame.time.Clock()
 font = pygame.font.SysFont(None, 40)
 
 class MenuDificultad(Panel):
-    def __init__(self, ventana, proxy: ProxyPanel, facil : Command ,mid : Command, hard : Command):
+    def __init__(self, ventana, proxy: ProxyPanel, facil : Command ,mid : Command, hard : Command,esc: Command):
         self.ventana = ventana
         self.proxy = proxy
         self.click = False
         button_width = 200
         button_height = 50
-
+        self.esc = esc
         self.button_facil = pygame.Rect((ventana.get_width() - button_width) // 2, 200, button_width, button_height)
         self.button_normal = pygame.Rect((ventana.get_width() - button_width) // 2, 300, button_width, button_height)
         self.button_dificil = pygame.Rect((ventana.get_width() - button_width) // 2, 400, button_width, button_height)
@@ -55,7 +57,8 @@ class MenuDificultad(Panel):
             self.hard.execute()
 
     def handle_key(self,event):
-        pass
+        if event.type == KEYDOWN and event.key == K_ESCAPE:
+            self.esc.execute()
 
 
 if __name__ == '__main__':

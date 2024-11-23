@@ -5,10 +5,12 @@ from pygame.constants import KEYDOWN, K_ESCAPE
 
 from srcs.Comandos.Command import Command
 from srcs.Logica.Dibujo import Pintable
+from srcs.Logica.Niveles import Niveles
 from srcs.Visuals.Grilla.CellManager import CellManager
 from srcs.Visuals.Colores import Colores
 from srcs.Visuals.Grilla.GridLinesRenderer import GridLinesRenderer
 from srcs.Logica.Tablero import Tablero
+from srcs.Visuals.NonogramPanel import NonogramPanel
 from srcs.Visuals.Panel import Panel
 from srcs.Visuals.ProxyPanel import ProxyPanel
 from srcs.Visuals.VictoryRenderer import VictoryRenderer
@@ -36,8 +38,8 @@ class GrillaRender(Panel,ABC):
         pass
 
 class GrillaVisual(GrillaRender):
-    GRID_WIDTH_PX = 200
-    GRID_HEIGHT_PX = 200
+    GRID_WIDTH_PX = 300
+    GRID_HEIGHT_PX = 300
 
     def __init__(self, screen, tablero: Pintable, proxy:ProxyPanel, enter: Command):
         """
@@ -55,7 +57,11 @@ class GrillaVisual(GrillaRender):
         self.proxy = proxy
         self.screen = screen
         self.tablero = tablero
+
+        self.right_click_value = -1
+        self.left_click_value = 1
         self.enter = enter
+
         self.GRID_WIDTH = len(tablero.getProgreso()[0])
         self.GRID_HEIGHT = len(tablero.getProgreso())
         window_width, window_height = screen.get_size()
@@ -69,6 +75,8 @@ class GrillaVisual(GrillaRender):
         self.grid_lines_renderer = GridLinesRenderer(screen, self.cell_manager, self.offset_x, self.offset_y,self.cell_size)
         self.hovered_row = None
         self.hovered_col = None
+
+        self.nonogram_panel = NonogramPanel(screen, window_width * 0.2, window_height, self)
 
     def handle_mouse_motion(self, pos):
         """
@@ -98,11 +106,12 @@ class GrillaVisual(GrillaRender):
         mouse_x, mouse_y = pos
         col = (mouse_x - self.offset_x) // self.cell_size
         row = (mouse_y - self.offset_y) // self.cell_size
+        self.nonogram_panel.handle_click(pos, button)
         if 0 <= col < self.GRID_WIDTH and 0 <= row < self.GRID_HEIGHT:
             if button == 1:  # Clic izquierdo
-                self.tablero.getProgreso()[row][col] = 1 if self.tablero.getProgreso()[row][col] != 1 else 0
+                self.tablero.getProgreso()[row][col] = self.left_click_value if self.tablero.getProgreso()[row][col] != self.left_click_value else 0
             elif button == 3:  # Clic derecho
-                self.tablero.getProgreso()[row][col] = -1 if self.tablero.getProgreso()[row][col] != -1 else 0
+                self.tablero.getProgreso()[row][col] = self.right_click_value if self.tablero.getProgreso()[row][col] != self.right_click_value else 0
             self.cell_manager.update_grid_visual(self.tablero.getProgreso())
             if self.tablero.__class__ == Tablero:
                 if self.tablero.CompararDibujos():
@@ -125,6 +134,7 @@ class GrillaVisual(GrillaRender):
         self.cell_manager.draw_cells(self.screen)
         self.draw_hover_effect()
         self.grid_lines_renderer.draw_grid_lines()
+        self.nonogram_panel.draw()
         #self.clues_renderer.draw_horizontal_clues()
        # self.clues_renderer.draw_vertical_clues()
        # self.clues_renderer.draw_clue_borders()
@@ -133,9 +143,12 @@ class GrillaVisual(GrillaRender):
     def handle_key(self, event):
         if event.type == KEYDOWN and event.key == K_ESCAPE:
             pygame.quit()
+            niveles = Niveles()
+            niveles.GuardarNivelesCreados()
+            niveles.GuardarNivelesPredeterminados()
             sys.exit()
         elif event.key == pygame.K_RETURN:
-            if self.enter.__class__ != None:
+            if self.enter != None:
                 self.enter.execute()
 
 

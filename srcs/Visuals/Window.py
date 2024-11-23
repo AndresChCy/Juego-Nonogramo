@@ -13,7 +13,7 @@ from srcs.Visuals.SeleccionTipoNivel import SeleccionTipoNivel
 class Window:
     def __init__(self, matrix):
         pygame.init()
-        self.screen = pygame.display.set_mode((900, 600))
+        self.screen = pygame.display.set_mode((1000, 700))
         pygame.display.set_caption('Nonograma')
         self.panel = ProxyPanel([])
 
@@ -24,9 +24,9 @@ class Window:
         niveles.CargarNivelesCreados()
         niveles.CargarNivelesPredeterminados()
         menu = MenuPrincipal(self.screen,self.panel)
-        menuTipos = SeleccionTipoNivel(self.screen, self.panel)
+        #menuTipos = SeleccionTipoNivel(self.screen, self.panel)
         self.panel.addToList(menu)
-      #  self.panel.addToList(cuadricula)
+        #self.panel.addToList(cuadricula)
 
     def execute(self):
         running = True

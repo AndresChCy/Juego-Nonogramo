@@ -1,6 +1,9 @@
 import pygame
+from pygame import KEYDOWN, K_ESCAPE
+
 from Panel import Panel
 from ProxyPanel import ProxyPanel
+from srcs.Comandos.Command import Command
 from srcs.Comandos.CommandCambiarPanel import CommandCambiarPanel
 from srcs.Logica.Niveles import Niveles
 from srcs.Visuals.Grilla.GrillaDecorator import DecoratorClues, DecoratorMiniatureRender
@@ -15,17 +18,19 @@ fpsControlador = pygame.time.Clock()
 font = pygame.font.SysFont(None, 40)
 
 class SeleccionTipoNivel(Panel):
-    def __init__(self, ventana, proxy: ProxyPanel):
+    def __init__(self, ventana, proxy: ProxyPanel, enter: Command):
         self.ventana = ventana
         self.proxy = proxy
         self.click = False
         button_width = 220
         button_height = 50
+        self.enter = enter
 
         self.button_niveles = pygame.Rect((ventana.get_width() - button_width) // 2, 200, button_width, button_height)
         self.button_ninveles_creados = pygame.Rect((ventana.get_width() - button_width) // 2, 300, button_width, button_height)
         self.button_al_azar = pygame.Rect((ventana.get_width() - button_width) // 2, 400, button_width, button_height)
         niveles = Niveles()
+        toMe = CommandCambiarPanel(self,self.proxy)
         menuNivelesBase = MenuNiveles(self.ventana, niveles.getNivelesBase()[0], self.proxy)
         menuNivelesBase2 = MenuNiveles(self.ventana, niveles.getNivelesBase()[1], self.proxy)
         menuNivelesBase3 = MenuNiveles(self.ventana, niveles.getNivelesBase()[2], self.proxy)
@@ -40,8 +45,8 @@ class SeleccionTipoNivel(Panel):
         toNivelesCrea2 = CommandCambiarPanel(menuNivelesCrea2, self.proxy)
         toNivelesCrea3 = CommandCambiarPanel(menuNivelesCrea3, self.proxy)
 
-        self.nivelesBase =  MenuDificultad(self.ventana,self.proxy, toNivelesBase, toNivelesBase2, toNivelesBase3)
-        self.nivelesCrea = MenuDificultad(self.ventana, self.proxy, toNivelesCrea, toNivelesCrea2, toNivelesCrea3)
+        self.nivelesBase =  MenuDificultad(self.ventana,self.proxy, toNivelesBase, toNivelesBase2, toNivelesBase3,toMe)
+        self.nivelesCrea = MenuDificultad(self.ventana, self.proxy, toNivelesCrea, toNivelesCrea2, toNivelesCrea3,toMe)
 
     def draw_text(self,texto, font, color, superficie, x, y):
         textobj = font.render(texto, 1, color)
@@ -80,9 +85,9 @@ class SeleccionTipoNivel(Panel):
             toNivelesCrea = CommandCambiarPanel(menuNivelesCrea, self.proxy)
             toNivelesCrea2 = CommandCambiarPanel(menuNivelesCrea2, self.proxy)
             toNivelesCrea3 = CommandCambiarPanel(menuNivelesCrea3, self.proxy)
-
-            self.nivelesBase = MenuDificultad(self.ventana, self.proxy, toNivelesBase, toNivelesBase2, toNivelesBase3)
-            self.nivelesCrea = MenuDificultad(self.ventana, self.proxy, toNivelesCrea, toNivelesCrea2, toNivelesCrea3)
+            toMe = CommandCambiarPanel(self, self.proxy)
+            self.nivelesBase = MenuDificultad(self.ventana, self.proxy, toNivelesBase, toNivelesBase2, toNivelesBase3,toMe)
+            self.nivelesCrea = MenuDificultad(self.ventana, self.proxy, toNivelesCrea, toNivelesCrea2, toNivelesCrea3,toMe)
             self.proxy.ponerTarget(self.nivelesBase)
         if self.button_ninveles_creados.collidepoint(mx, my) and click:
             niveles = Niveles()
@@ -99,9 +104,9 @@ class SeleccionTipoNivel(Panel):
             toNivelesCrea = CommandCambiarPanel(menuNivelesCrea, self.proxy)
             toNivelesCrea2 = CommandCambiarPanel(menuNivelesCrea2, self.proxy)
             toNivelesCrea3 = CommandCambiarPanel(menuNivelesCrea3, self.proxy)
-
-            self.nivelesBase = MenuDificultad(self.ventana, self.proxy, toNivelesBase, toNivelesBase2, toNivelesBase3)
-            self.nivelesCrea = MenuDificultad(self.ventana, self.proxy, toNivelesCrea, toNivelesCrea2, toNivelesCrea3)
+            toMe = CommandCambiarPanel(self, self.proxy)
+            self.nivelesBase = MenuDificultad(self.ventana, self.proxy, toNivelesBase, toNivelesBase2, toNivelesBase3,toMe)
+            self.nivelesCrea = MenuDificultad(self.ventana, self.proxy, toNivelesCrea, toNivelesCrea2, toNivelesCrea3,toMe)
             self.proxy.ponerTarget(self.nivelesCrea)
         if self.button_al_azar.collidepoint(mx, my) and click:
             tablero = Niveles().getTableroAleatorio()
@@ -112,7 +117,8 @@ class SeleccionTipoNivel(Panel):
                 self.proxy.ponerTarget(gcm)
 
     def handle_key(self,event):
-        pass
+        if event.type == KEYDOWN and event.key == K_ESCAPE:
+            self.enter.execute()
 
 
 if __name__ == '__main__':
