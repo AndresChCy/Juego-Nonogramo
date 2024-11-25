@@ -26,34 +26,49 @@ class Tablero(Pintable):
         comprHor = []
         aux = []
         count = 0
+        color : int = 0
         for i in range(len(matriz)):
+            color : int = matriz[i][0]
             for j in range(len(matriz[0])):
-                if matriz[i][j] == 1:
+                if matriz[i][j] == color and color != 0:
                     count += 1
                 elif count != 0:
-                    aux.append(count)
+                    aux.append((count,int(color)))
                     count = 0
+                    color : int = matriz[i][j]
+                    if color != 0:
+                        count += 1
+                elif matriz[i][j] != 0:
+                    count+=1
+                    color = matriz[i][j]
             if aux == []:
-                aux.append(count)
+                aux.append((count,1))
                 count = 0
             elif count != 0:
-                aux.append(count)
+                aux.append((count,int(color)))
                 count = 0
             comprVert.append(aux)
             aux = []
         count = 0
         for i in range(len(matriz[0])):
+            color = matriz[0][i]
             for j in range(len(matriz)):
-                if matriz[j][i] == 1:
+                if matriz[j][i] == color and color != 0:
                     count += 1
                 elif count != 0:
-                    aux.append(count)
+                    aux.append((count,int(color)))
                     count = 0
+                    color = matriz[j][i]
+                    if color != 0:
+                        count += 1
+                elif matriz[j][i] != 0:
+                    count += 1
+                    color = matriz[j][i]
             if aux == []:
-                aux.append(count)
+                aux.append((count,1))
                 count = 0
             elif count != 0:
-                aux.append(count)
+                aux.append((count,int(color)))
                 count = 0
             comprHor.append(aux)
             aux = []

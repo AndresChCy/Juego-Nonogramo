@@ -78,6 +78,8 @@ class GrillaVisual(GrillaRender):
 
         self.nonogram_panel = NonogramPanel(screen, int(window_width * 0.2), window_height, self, dibujo=dibujo)
 
+
+
     def handle_mouse_motion(self, pos):
         """
         Maneja el movimiento del ratón.

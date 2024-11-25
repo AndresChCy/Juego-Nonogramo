@@ -61,8 +61,10 @@ class DecoratorClues(DecoratorGrilla):
         #horizontal_clues = self.clue_generator.generate_horizontal_clues()
         for row_idx, clues in enumerate(horizontal_clues):
             for clue_idx, clue in enumerate(clues):
-                self.draw_clue(clue, offset_x - (len(clues) - clue_idx) * cell_size,
-                               offset_y + row_idx * cell_size,cell_size)
+                cant = clue[0]
+                color = clue[1]
+                self.draw_clue(cant, offset_x - (len(clues) - clue_idx) * cell_size,
+                               offset_y + row_idx * cell_size,cell_size,color)
 
     def draw_vertical_clues(self,vertical_clues):
         """
@@ -73,10 +75,12 @@ class DecoratorClues(DecoratorGrilla):
         #vertical_clues = self.clue_generator.generate_vertical_clues()
         for col_idx, clues in enumerate(vertical_clues):
             for clue_idx, clue in enumerate(clues):
-                self.draw_clue(clue, offset_x + col_idx * cell_size,
-                               offset_y - (len(clues) - clue_idx) * cell_size,cell_size)
+                cant = clue[0]
+                color = clue[1]
+                self.draw_clue(cant, offset_x + col_idx * cell_size,
+                               offset_y - (len(clues) - clue_idx) * cell_size,cell_size,color)
 
-    def draw_clue(self, clue, x, y,cell_size):
+    def draw_clue(self, clue, x, y,cell_size,color):
         """
         Dibuja una pista en la pantalla.
 
@@ -85,9 +89,13 @@ class DecoratorClues(DecoratorGrilla):
             x (int): La posición x donde se dibujará la pista.
             y (int): La posición y donde se dibujará la pista.
         """
+        if color == 1:
+            cell_color = (200,200,200)
+        else:
+            cell_color = Colores.get_number_mapping().get(color,(100,100,100))
         font = pygame.font.SysFont(None, cell_size // 2)
         rect = pygame.Rect(x, y, cell_size,cell_size)
-        pygame.draw.rect(self._component.getScreen(), (200, 200, 200), rect)
+        pygame.draw.rect(self._component.getScreen(), cell_color, rect)
         text_surface = font.render(str(clue), True, (0, 0, 0))
         text_rect = text_surface.get_rect(center=rect.center)
         self._component.getScreen().blit(text_surface, text_rect)

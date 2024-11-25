@@ -105,23 +105,23 @@ class Niveles:
         return tablero
 
     def GuardarNivelesCreados(self):
-        fichero_binario = open("../../Lista_Niveles_Usuario", "wb")
+        fichero_binario = open("Lista_Niveles_Usuario", "wb")
         pickle.dump(self.nivelesCreados, fichero_binario)
         fichero_binario.close()
         del (fichero_binario)
 
     def CargarNivelesCreados(self):
-        fichero = open("../../Lista_Niveles_Usuario", "rb")
+        fichero = open("Lista_Niveles_Usuario", "rb")
         self.nivelesCreados = pickle.load(fichero)
 
     def GuardarNivelesPredeterminados(self):
-        fichero_binario = open("../../Lista_Niveles_Predeterminados", "wb")
+        fichero_binario = open("Lista_Niveles_Predeterminados", "wb")
         pickle.dump(self.nivelesPredeterminados, fichero_binario)
         fichero_binario.close()
         del(fichero_binario)
 
     def CargarNivelesPredeterminados(self):
-        fichero = open("../../Lista_Niveles_Predeterminados", "rb")
+        fichero = open("Lista_Niveles_Predeterminados", "rb")
         self.nivelesPredeterminados = pickle.load(fichero)
         print(self.nivelesPredeterminados)
 
