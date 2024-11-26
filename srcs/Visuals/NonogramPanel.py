@@ -87,20 +87,19 @@ class NonogramPanel(Panel):
         """
         self.botones_extra = []
         for i, color in enumerate(self.colores_extra, start=2):
+            color = Colores.get_number_mapping().get(color)
             if i % 3 == 1:
                 color = Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + 10,
                                ((i // 3) + 1) * 10 + (i // 3) * BUTTON_SIZE,
-                               color, lambda c=color: self.button10_action(c), text=str(color))
+                               color, lambda c=color: self.button10_action(c))
             elif i % 3 == 2:
                 color = Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.width // 2 - BUTTON_SIZE // 2,
                                ((i // 3) + 1) * 10 + (i // 3) * BUTTON_SIZE, color,
-                               lambda c=color: self.button10_action(c),
-                               text=str(color))
+                               lambda c=color: self.button10_action(c))
             else:
                 color = Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.width - BUTTON_SIZE - 10,
                                (i // 3) * 10 + ((i // 3) - 1) * BUTTON_SIZE, color,
-                               lambda c=color: self.button10_action(c),
-                               text=str(color))
+                               lambda c=color: self.button10_action(c))
 
             self.botones_extra.append(color)
 
@@ -169,14 +168,14 @@ class NonogramPanel(Panel):
                     btn.click()
                     break
 
-    def handle_key(self, key):
+    def handle_key(self, event):
         """
         Maneja las pulsaciones de teclas en el panel.
 
         Args:
             key (int): Código de la tecla presionada.
         """
-        if key == pygame.K_c:
+        if event.key == pygame.K_c:
             if self.extended_panel_visible:
                 self.extended_panel_visible = False
             else:

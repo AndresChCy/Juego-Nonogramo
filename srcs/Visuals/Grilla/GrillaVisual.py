@@ -75,9 +75,10 @@ class GrillaVisual(GrillaRender):
         self.grid_lines_renderer = GridLinesRenderer(screen, self.cell_manager, self.offset_x, self.offset_y,self.cell_size)
         self.hovered_row = None
         self.hovered_col = None
-
-        self.nonogram_panel = NonogramPanel(screen, int(window_width * 0.2), window_height, self, dibujo=dibujo)
-
+        if self.tablero.__class__ == Tablero :
+            self.nonogram_panel = NonogramPanel(screen, int(window_width * 0.2), window_height, self ,colores_extra=list(tablero.getColors()))
+        else:
+            self.nonogram_panel = NonogramPanel(screen, int(window_width * 0.2), window_height, self ,dibujo=dibujo)
 
 
     def handle_mouse_motion(self, pos):
@@ -152,7 +153,7 @@ class GrillaVisual(GrillaRender):
         elif event.key == pygame.K_RETURN:
             if self.enter != None:
                 self.enter.execute()
-
+        self.nonogram_panel.handle_key(event)
 
     def draw_hover_effect(self):
         """

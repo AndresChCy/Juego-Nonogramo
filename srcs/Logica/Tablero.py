@@ -3,9 +3,13 @@ from srcs.Logica.Dibujo import Dibujo, Pintable
 
 
 class Tablero(Pintable):
+
     def __init__(self, solucion):
         self.solucion = solucion
         self.progreso = Dibujo(len(solucion.getProgreso()), len(solucion.getProgreso()[0]))
+        self.colors = set()
+        self.comprVer,self.comprHor = self.Compresion()
+
 
     def CompararDibujos(self):
         juego = self.solucion.getProgreso()
@@ -26,16 +30,17 @@ class Tablero(Pintable):
         comprHor = []
         aux = []
         count = 0
-        color : int = 0
+        color = 0
         for i in range(len(matriz)):
-            color : int = matriz[i][0]
+            color = matriz[i][0]
             for j in range(len(matriz[0])):
                 if matriz[i][j] == color and color != 0:
                     count += 1
                 elif count != 0:
-                    aux.append((count,int(color)))
+                    aux.append((count,color))
+                    self.colors.add(color)
                     count = 0
-                    color : int = matriz[i][j]
+                    color = matriz[i][j]
                     if color != 0:
                         count += 1
                 elif matriz[i][j] != 0:
@@ -45,7 +50,7 @@ class Tablero(Pintable):
                 aux.append((count,1))
                 count = 0
             elif count != 0:
-                aux.append((count,int(color)))
+                aux.append((count,color))
                 count = 0
             comprVert.append(aux)
             aux = []
@@ -56,7 +61,7 @@ class Tablero(Pintable):
                 if matriz[j][i] == color and color != 0:
                     count += 1
                 elif count != 0:
-                    aux.append((count,int(color)))
+                    aux.append((count,color))
                     count = 0
                     color = matriz[j][i]
                     if color != 0:
@@ -68,7 +73,7 @@ class Tablero(Pintable):
                 aux.append((count,1))
                 count = 0
             elif count != 0:
-                aux.append((count,int(color)))
+                aux.append((count,color))
                 count = 0
             comprHor.append(aux)
             aux = []
@@ -100,6 +105,11 @@ class Tablero(Pintable):
         return self.progreso.getProgreso()
     def getSolucion(self):
         return self.solucion.getProgreso()
+    def getCompresiones(self):
+        return self.comprVer,self.comprHor
+
+    def getColors(self):
+        return self.colors
 
     def reiniciar(self):
         self.progreso = Dibujo(len(self.solucion.getProgreso()), len(self.solucion.getProgreso()[0]))
