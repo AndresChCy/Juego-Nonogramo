@@ -18,4 +18,3 @@ class SoundManager:
     def stop_all(self):
 
         pygame.mixer.stop()
-    
