@@ -20,7 +20,7 @@ class Tablero(Pintable):
                 if(usuario[i][j] != juego[i][j]):
                     if (usuario[i][j] >= 0 and juego[i][j] >= 0):
                         return False
-                    elif(usuario[i][j] < 0 and juego[i][j] == 1):
+                    elif(usuario[i][j] < 0 and juego[i][j] >= 1):
                         return False
         return True
 
@@ -47,7 +47,7 @@ class Tablero(Pintable):
                     count+=1
                     color = matriz[i][j]
             if aux == []:
-                aux.append((count,1))
+                aux.append((count,color))
                 count = 0
             elif count != 0:
                 aux.append((count,color))
@@ -70,7 +70,7 @@ class Tablero(Pintable):
                     count += 1
                     color = matriz[j][i]
             if aux == []:
-                aux.append((count,1))
+                aux.append((count,color))
                 count = 0
             elif count != 0:
                 aux.append((count,color))
