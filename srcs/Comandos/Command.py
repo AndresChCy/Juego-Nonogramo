@@ -6,6 +6,9 @@ class Command(ABC):
     def execute(self) -> None:
         pass
 
+    def __call__(self):
+        self.execute()
+
 class Ejecutador(Command):
     def __init__(self):
         self.commands = []

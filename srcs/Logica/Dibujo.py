@@ -10,6 +10,11 @@ class Pintable(ABC):
     def getProgreso(self):
         pass
 
+
+    def reiniciar(self):
+        pass
+
+
 class Dibujo(Pintable):
     
     def __init__(self , x ,y):

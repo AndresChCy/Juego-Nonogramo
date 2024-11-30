@@ -8,6 +8,7 @@ class Colores(Enum):
     # Escala de Grises
     DARK_GREY = (50, 50, 50)
     GREY = (128, 128, 128)
+    #BLACK = (0, 0, 0)
     WHITE_SMOKE = (245, 245, 245)
     LIGHT_GREY = (211, 211, 211)
 

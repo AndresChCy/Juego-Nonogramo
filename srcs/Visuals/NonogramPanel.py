@@ -196,6 +196,7 @@ class NonogramPanel(Panel):
         Acción del botón 2. Imprime un mensaje de pista.
         """
         print("Boton pistas")
+        self.grilla_visual.pista()
 
     def button3_action(self):
         """

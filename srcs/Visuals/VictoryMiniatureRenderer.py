@@ -25,6 +25,7 @@ class VictoryMiniatureRenderer:
         self.miniature_size = min(width // cell_manager.grid_width, height // cell_manager.grid_height)
         self.miniature_offset_x = offset_x
         self.miniature_offset_y = offset_y
+        self.color_mapping = Colores.get_number_mapping()  # Mapeo de colores
 
     def draw_miniature(self):
         """
@@ -33,7 +34,8 @@ class VictoryMiniatureRenderer:
         # Dibuja las celdas de la cuadrícula
         for row in range(len(self.grid_logic)):
             for col in range(len(self.grid_logic[row])):
-                color = Colores.BLACK.value if self.grid_logic[row][col] == 1 else Colores.WHITE.value
+                cell_value = self.grid_logic[row][col]
+                color = self.color_mapping.get(cell_value, Colores.WHITE.value)
                 pygame.draw.rect(self.screen, color,
                                  (self.miniature_offset_x + col * self.miniature_size,
                                   self.miniature_offset_y + row * self.miniature_size,
@@ -44,3 +46,4 @@ class VictoryMiniatureRenderer:
                                   self.miniature_size * len(self.grid_logic[0]),
                                   self.miniature_size * len(self.grid_logic))
         pygame.draw.rect(self.screen, Colores.GREY.value, border_rect, 3)
+

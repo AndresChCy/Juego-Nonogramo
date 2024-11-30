@@ -1,6 +1,6 @@
 
 from srcs.Logica.Dibujo import Dibujo, Pintable
-
+import random
 
 class Tablero(Pintable):
 
@@ -81,6 +81,7 @@ class Tablero(Pintable):
 
     def pintar(self, x, y, color):
         self.progreso.pintar(x,y,color)
+        self.CompararDibujos()
 
     def cargarProgreso(directorio):
             with open(directorio, 'r') as f:
@@ -100,6 +101,19 @@ class Tablero(Pintable):
                         if j < len(matriz[i]) - 1:
                             f.write(" ")
                     f.write("\n")
+
+    def pista(self):
+        juego = self.solucion.getProgreso()
+        usuario = self.progreso.getProgreso()
+        i = random.randint(0, len(juego)-1)
+        j = random.randint(0, len(juego[0])-1)
+        while(True):
+            if juego[i][j] != usuario[i][j]:
+                self.pintar(i,j,juego[i][j])
+                break
+            else:
+                i = random.randint(0, len(juego)-1)
+                j = random.randint(0, len(juego[0])-1)
 
     def getProgreso(self):
         return self.progreso.getProgreso()
