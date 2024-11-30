@@ -111,8 +111,15 @@ class Niveles:
         del (fichero_binario)
 
     def CargarNivelesCreados(self):
-        fichero = open("Lista_Niveles_Usuario", "rb")
-        self.nivelesCreados = pickle.load(fichero)
+        try:
+            with open("Lista_Niveles_Usuario", "rb") as fichero:
+                if fichero.peek(1):
+                    self.nivelesCreados = pickle.load(fichero)
+                else:
+                    print("El archivo 'Lista_Niveles_Usuario' está vacío.")
+        except (EOFError, FileNotFoundError) as e:
+            print(f"Error al cargar niveles creados: {e}")
+            self.nivelesCreados = [[], [], []]
 
     def GuardarNivelesPredeterminados(self):
         fichero_binario = open("Lista_Niveles_Predeterminados", "wb")

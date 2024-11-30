@@ -23,7 +23,8 @@ class Button:
     """
 
     def __init__(self, screen, width, height, x, y, color, callback, text_color=Colores.WHITE.value,
-                 text="", image_path=None, draw_rectangle=False, draw_cross=False, draw_point=False, opacity=255):
+                 text="", image_path=None, draw_rectangle=False, draw_cross=False, draw_point=False,
+                 opacity=255, button_margin=True, background_opacity=0):
         """
         Inicializa un botón con las propiedades y opciones visuales especificadas.
 
@@ -42,6 +43,7 @@ class Button:
             draw_cross (bool): Dibuja una cruz en el botón si es True.
             draw_point (bool): Dibuja un punto en el centro si es True.
             opacity (int): Nivel de opacidad del botón (0-255).
+            button_margin (bool): Establece si se debe aplicar un margen al botón
         """
         self.screen = screen
         self.text = text
@@ -54,6 +56,8 @@ class Button:
         self.callback = callback
         self.font = pygame.font.Font(None, 36)
         self.image = None
+        self.button_margin = button_margin
+        self.background_opacity = background_opacity
 
         # Cargar imagen si se proporciona una ruta y establecer su opacidad.
         if image_path:
@@ -78,6 +82,9 @@ class Button:
         # Dibujar imagen si existe, de lo contrario, dibujar un rectángulo de color.
         if self.image:
             self.screen.blit(self.image, (self.x, self.y))
+            surface = pygame.Surface((self.width, self.height), pygame.SRCALPHA)
+            surface.fill((*self.color, self.background_opacity))
+            self.screen.blit(surface, (self.x, self.y))
         else:
             # Crear una superficie transparente con opacidad.
             surface = pygame.Surface((self.width, self.height), pygame.SRCALPHA)
@@ -106,6 +113,8 @@ class Button:
         text_surface = self.font.render(self.text, True, self.text_color)
         text_rect = text_surface.get_rect(center=(self.x + self.width // 2, self.y + self.height // 2))
         self.screen.blit(text_surface, text_rect)
+        if self.button_margin:
+            pygame.draw.rect(self.screen, Colores.BLACK.value, (self.x, self.y, self.width, self.height), 2)
 
     def is_clicked(self, pos):
         """

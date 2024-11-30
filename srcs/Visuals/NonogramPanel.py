@@ -45,9 +45,10 @@ class NonogramPanel(Panel):
         if not self.dibujo:
             self.buttons = [
                 Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - 10, height - BUTTON_SIZE - 10,
-                       Colores.BLUE.value, self.button1_action, image_path="Img/config.png"),
+                       Colores.WHITE.value, self.button1_action, image_path="Img/config.png", button_margin=False,
+                       background_opacity=100),
                 Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + 10, height - BUTTON_SIZE - 10,
-                       Colores.RED.value, self.button2_action, image_path="Img/pista.png"),
+                       Colores.RED.value, self.button2_action, image_path="Img/pista.png", button_margin=False),
                 Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + 10, 10,
                        Colores.WHITE.value, self.button3_action, draw_rectangle=True, opacity=150),
                 Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width // 2 - BUTTON_SIZE // 2, 10,
@@ -70,7 +71,7 @@ class NonogramPanel(Panel):
         if colores_extra is not None:
             self.extended_panel_button_visible = True
             colors = Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width // 2 - BUTTON_SIZE // 2, 30 + 2 * BUTTON_SIZE,
-                            Colores.GREEN.value, self.button9_action, text="C")
+                            Colores.WHITE.value, self.button9_action, image_path="Img/palette.png")
             self.buttons.append(colors)
             self._create_extended_buttons()
         else:
@@ -86,6 +87,8 @@ class NonogramPanel(Panel):
             list: Lista de instancias de botones adicionales.
         """
         self.botones_extra = []
+        retroceso = Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.width // 2 - BUTTON_SIZE // 2,
+                           self.height - BUTTON_SIZE - 10, Colores.RED.value, self.button9_action)
         for i, color in enumerate(self.colores_extra, start=2):
             color = Colores.get_number_mapping().get(color)
             if i % 3 == 1:
@@ -238,12 +241,13 @@ class NonogramPanel(Panel):
         """
         Acción del botón 9.
         """
-        print("Boton 9")
-        self.extended_panel_visible = True
+        if self.extended_panel_visible:
+            self.extended_panel_visible = False
+        else:
+            self.extended_panel_visible = True
 
     def button10_action(self, color):
         """
         Acción del botón 10.
         """
         self.grilla_visual.left_click_value = self.reverse_mapping_colores.get(color)
-        print(self.reverse_mapping_colores.get(color))
