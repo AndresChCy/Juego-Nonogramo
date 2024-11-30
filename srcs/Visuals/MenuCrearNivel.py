@@ -88,7 +88,7 @@ class CrearNivel(Panel):
                 com.addCommand(CommandGuardar(dibujo))
                 com.addCommand(self.volver)
                 # self.proxy.ponerTarget(panelDibujo(ventana,x,y,self.proxy))
-                self.proxy.ponerTarget(GrillaVisual(ventana, dibujo, self.proxy, com))
+                self.proxy.ponerTarget(GrillaVisual(ventana, dibujo, self.proxy, com, dibujo=True))
             else:
                 self.volver.execute()
 

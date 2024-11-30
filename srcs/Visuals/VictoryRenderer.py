@@ -24,8 +24,8 @@ class VictoryRenderer(Panel):
         miniature_height = miniature_width
 
         # Inicializa los renderizadores de texto
-        self.title_renderer = TextRenderer(screen, '../../Title.otf', 100, Colores.ORANGE.value)
-        self.body_renderer = TextRenderer(screen, '../../Body.ttf', 50, Colores.WHITE.value)
+        self.title_renderer = TextRenderer(screen, 'Title.otf', 100, Colores.ORANGE.value)
+        self.body_renderer = TextRenderer(screen, 'Body.ttf', 50, Colores.WHITE.value)
 
         # Inicializa el renderizador de la miniatura
         self.miniature_renderer = VictoryMiniatureRenderer(screen, grid_logic, screen.get_width() // 2 - miniature_width // 2,
@@ -33,9 +33,9 @@ class VictoryRenderer(Panel):
                                                            miniature_height)
 
         # Inicializa los renderizadores de imágenes
-        self.left_image_renderer = ImageRenderer(screen, FrameLoader('../../Gifs_Divididos/Confetti').get_frames(), flip_x=True)
-        self.right_image_renderer = ImageRenderer(screen, FrameLoader('../../Gifs_Divididos/Confetti').get_frames())
-        self.fullscreen_image_renderer = ImageRenderer(screen, FrameLoader('../../Gifs_Divididos/Confetti_Fullscreen').get_frames())
+        self.left_image_renderer = ImageRenderer(screen, FrameLoader('Gifs_Divididos/Confetti').get_frames(), flip_x=True)
+        self.right_image_renderer = ImageRenderer(screen, FrameLoader('Gifs_Divididos/Confetti').get_frames())
+        self.fullscreen_image_renderer = ImageRenderer(screen, FrameLoader('Gifs_Divididos/Confetti_Fullscreen').get_frames())
 
     def draw(self):
         """

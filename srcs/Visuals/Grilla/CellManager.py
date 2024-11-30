@@ -1,5 +1,6 @@
 import pygame
 from srcs.Visuals.Cell import Cell
+from srcs.Visuals.Colores import Colores
 
 
 class CellManager:
@@ -20,7 +21,11 @@ class CellManager:
         self.offset_x = offset_x
         self.offset_y = offset_y
         self.all_cells = pygame.sprite.Group()
+
+        # Inicializa las celdas y los mapeos de colores
         self._initialize_cells()
+        self.mapping_colores = Colores.get_number_mapping()  # Mapeo numérico de colores
+        self.mapping_colores_inverso = Colores.get_reverse_mapping()  # Mapeo inverso de colores
 
     def _initialize_cells(self):
         """
@@ -30,6 +35,9 @@ class CellManager:
             for col in range(self.grid_width):
                 cell = Cell(self.offset_x + col * self.cell_size, self.offset_y + row * self.cell_size, self.cell_size)
                 self.all_cells.add(cell)
+
+        for cell in self.all_cells:
+            cell.empty()
 
     def update_grid_visual(self, grid_logic):
         """
@@ -42,14 +50,18 @@ class CellManager:
             for col in range(self.grid_width):
                 cell_idx = row * self.grid_width + col
                 cell_sprite = self.all_cells.sprites()[cell_idx]
-                if grid_logic[row][col] == 1:
-                    cell_sprite.fill()
-                elif grid_logic[row][col] == -1:
-                    cell_sprite.mark()
-                elif grid_logic[row][col] == -2:
-                    cell_sprite.point()
-                else:
+                cell_value = int(grid_logic[row][col])  # Identificador de color o acción especial
+                # Usa el mapeo para determinar el color o la acción especial
+                if 1 <= cell_value <= 36:
+                    cell_sprite.fill(cell_value, self.mapping_colores)  # Pinta la celda con el color correspondiente
+                elif cell_value == 0:
                     cell_sprite.empty()
+                elif cell_value == -1:
+                    cell_sprite.mark()  # Marca la celda
+                elif cell_value == -2:
+                    cell_sprite.point()  # Pone la celda en estado apuntado
+                else:
+                    cell_sprite.empty()  # Limpia la celda
 
     def draw_cells(self, screen):
         """

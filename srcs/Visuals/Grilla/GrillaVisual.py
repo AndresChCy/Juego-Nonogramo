@@ -16,6 +16,9 @@ from srcs.Visuals.ProxyPanel import ProxyPanel
 from srcs.Visuals.VictoryRenderer import VictoryRenderer
 from abc import ABC , abstractmethod
 
+
+
+
 class GrillaRender(Panel,ABC):
     @abstractmethod
     def getScreen(self):
@@ -41,7 +44,7 @@ class GrillaVisual(GrillaRender):
     GRID_WIDTH_PX = 300
     GRID_HEIGHT_PX = 300
 
-    def __init__(self, screen, tablero: Pintable, proxy:ProxyPanel, enter: Command):
+    def __init__(self, screen, tablero: Pintable, proxy:ProxyPanel, enter: Command, dibujo: bool = False):
         """
         Inicializa los componentes gráficos de la cuadrícula.
 
@@ -75,8 +78,11 @@ class GrillaVisual(GrillaRender):
         self.grid_lines_renderer = GridLinesRenderer(screen, self.cell_manager, self.offset_x, self.offset_y,self.cell_size)
         self.hovered_row = None
         self.hovered_col = None
+        if self.tablero.__class__ == Tablero :
+            self.nonogram_panel = NonogramPanel(screen, int(window_width * 0.2), window_height, self ,colores_extra=list(tablero.getColors()))
+        else:
+            self.nonogram_panel = NonogramPanel(screen, int(window_width * 0.2), window_height, self ,dibujo=dibujo)
 
-        self.nonogram_panel = NonogramPanel(screen, window_width * 0.2, window_height, self)
 
     def handle_mouse_motion(self, pos):
         """
@@ -131,6 +137,7 @@ class GrillaVisual(GrillaRender):
         """
         Dibuja la cuadrícula y sus componentes en la pantalla.
         """
+        self.cell_manager.update_grid_visual(self.tablero.getProgreso())
         self.cell_manager.draw_cells(self.screen)
         self.draw_hover_effect()
         self.grid_lines_renderer.draw_grid_lines()
@@ -150,7 +157,7 @@ class GrillaVisual(GrillaRender):
         elif event.key == pygame.K_RETURN:
             if self.enter != None:
                 self.enter.execute()
-
+        self.nonogram_panel.handle_key(event)
 
     def draw_hover_effect(self):
         """
@@ -167,6 +174,12 @@ class GrillaVisual(GrillaRender):
                     pygame.draw.rect(self.screen, Colores.WHITE_SMOKE.value,
                                      (self.offset_x + self.hovered_col * self.cell_size, self.offset_y + row * self.cell_size,
                                       self.cell_size, self.cell_size))
+
+    def pista(self):
+        self.tablero.pista()
+        if (self.tablero.CompararDibujos()):
+            self.proxy.ponerTarget(VictoryRenderer(self.screen, self.proxy, self.tablero.getProgreso(), self.cell_manager))
+            self.tablero.reiniciar()
 
     def getScreen(self):
         return self.screen

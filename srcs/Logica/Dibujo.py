@@ -10,10 +10,15 @@ class Pintable(ABC):
     def getProgreso(self):
         pass
 
+
+    def reiniciar(self):
+        pass
+
+
 class Dibujo(Pintable):
     
     def __init__(self , x ,y):
-        self.boceto = numpy.zeros((x, y))
+        self.boceto = numpy.zeros((x, y),dtype=int)
 
     def pintar(self, x, y,color):
         self.boceto[x][y] = color
