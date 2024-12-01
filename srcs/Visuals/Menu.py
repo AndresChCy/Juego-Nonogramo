@@ -15,6 +15,8 @@ from srcs.Visuals.Grilla.GrillaVisual import GrillaRender, GrillaVisual
 from srcs.Visuals.MenuCrearNivel import CrearNivel
 from srcs.Visuals.SeleccionTipoNivel import SeleccionTipoNivel
 
+from Musica.SoundManager import *
+
 pygame.init()
 pygame.display.set_caption('Juego Nonogram')
 ventana = pygame.display.set_mode((800, 600), 0, 32)
@@ -37,6 +39,12 @@ class MenuPrincipal(Panel):
         self.button_1 = pygame.Rect((ventana.get_width() - button_width) // 2, 200, button_width, button_height)
         self.button_2 = pygame.Rect((ventana.get_width() - button_width) // 2, 300, button_width, button_height)
         self.button_3 = pygame.Rect((ventana.get_width() - button_width) // 2, 400, button_width, button_height)
+
+        soundManager = SoundManager()
+        soundManager.load_sound("MainMenuTheme", "Musica/MainMenuTheme.mp3")
+        soundManager.load_sound("guiclick", "Musica/guiclick.ogg")
+        soundManager.play_sound("MainMenuTheme")
+
 
         self.menuJugar = SeleccionTipoNivel(self.ventana,self.proxy,CommandCambiarPanel(self,self.proxy))
     def draw_text(self,texto, font, color, superficie, x, y):
@@ -68,13 +76,19 @@ class MenuPrincipal(Panel):
         fpsControlador.tick(60)
 
     def handle_click(self, pos, button):
+        soundManager = SoundManager()
+        soundManager.load_sound("guiclick", "Musica/guiclick.ogg")
+
         mx, my = pygame.mouse.get_pos()
         self.click = True
         if self.button_1.collidepoint((mx, my)) and self.click:
+            soundManager.play_sound("guiclick")
             self.juego()
         if self.button_2.collidepoint((mx, my)) and self.click:
+            soundManager.play_sound("guiclick")
             self.crearNivel()
         if self.button_3.collidepoint((mx, my)) and self.click:
+            soundManager.play_sound("guiclick")
             self.salir()
         self.click = False
 

@@ -9,6 +9,8 @@ from srcs.Logica.Tablero import Tablero
 from srcs.Visuals.Grilla.GrillaDecorator import DecoratorClues, DecoratorMiniatureRender
 from srcs.Visuals.Grilla.GrillaVisual import GrillaVisual
 
+from Musica.SoundManager import *
+
 pygame.init()
 pygame.display.set_caption('Juego Nonogram')
 ventana = pygame.display.set_mode((800, 600), 0, 32)
@@ -90,6 +92,10 @@ class MenuNiveles(Panel):
         pass
 
     def handle_click(self, pos, button):
+        soundManager = SoundManager()
+        soundManager.load_sound("guiclick", "Musica/guiclick.ogg")
+        soundManager.load_sound("error", "Musica/error.wav")
+
         mx, my = pos
         click = False
         if button == 1:
@@ -98,13 +104,24 @@ class MenuNiveles(Panel):
             # parte de accionar de los botones de navegacion
 
         if self.boton_izquierda.collidepoint(mx, my) and self.paginaActual > 0 and click:
+            soundManager.play_sound("guiclick")
             self.paginaActual -= 1
+
+        if self.boton_izquierda.collidepoint(mx, my) and self.paginaActual <= 0 and click:
+            soundManager.play_sound("error")
+
         if self.boton_derecha.collidepoint(mx, my) and self.paginaActual < self.numPaginas - 1 and click:
+            soundManager.play_sound("guiclick")
             self.paginaActual += 1
+
+        if self.boton_derecha.collidepoint(mx, my) and self.paginaActual >= self.numPaginas - 1 and click:
+            soundManager.play_sound("error")
+
 
             # parte para la interaccion delos botones
         for numBoton, boton in enumerate(self.botones, start=self.paginaActual * self.nivelesPorPagina + 1):
             if boton.collidepoint(mx, my) and click:
+                soundManager.play_sound("guiclick")
                 self.botonClick(numBoton)
 
 
