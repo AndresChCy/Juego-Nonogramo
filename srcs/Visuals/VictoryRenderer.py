@@ -1,4 +1,6 @@
 import pygame
+
+from Musica.SoundManager import SoundManager
 from srcs.Visuals.Grilla.CellManager import CellManager
 from srcs.Visuals.Colores import Colores
 from srcs.Visuals.FrameLoader import FrameLoader
@@ -37,6 +39,11 @@ class VictoryRenderer(Panel):
         self.right_image_renderer = ImageRenderer(screen, FrameLoader('Gifs_Divididos/Confetti').get_frames())
         self.fullscreen_image_renderer = ImageRenderer(screen, FrameLoader('Gifs_Divididos/Confetti_Fullscreen').get_frames())
 
+        sound_manager = SoundManager()
+        sound_manager.stop_all()
+        sound_manager.load_sound("victory", "Musica/victory.mp3")
+        sound_manager.play_sound("victory")
+
     def draw(self):
         """
         Dibuja la pantalla de victoria.
@@ -65,6 +72,10 @@ class VictoryRenderer(Panel):
         pass
 
     def handle_click(self, pos, button):
+        sound_manager = SoundManager()
+        sound_manager.stop_all()
+        sound_manager.load_sound("MainMenuTheme", "Musica/MainMenuTheme.mp3")
+        sound_manager.play_sound("MainMenuTheme")
         self.proxy.cambiarTarget(0)
 
     def handle_key(self, event):
