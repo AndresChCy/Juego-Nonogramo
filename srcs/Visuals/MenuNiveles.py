@@ -81,10 +81,12 @@ class MenuNiveles(Panel):
         ]
         aux = Dibujo(1, 1)
         aux.cargarMatriz("Niveles/nivel1")
+        self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
         g = GrillaVisual(self.ventana, self.listaNiveles[n-1], self.proxy,None)
         gc = DecoratorClues(g)
         gcm = DecoratorMiniatureRender(gc)
         self.proxy.ponerTarget(gcm)
+
 
     def handle_mouse_motion(self, event):
         pass

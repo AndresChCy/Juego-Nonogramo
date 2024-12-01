@@ -13,7 +13,8 @@ from srcs.Visuals.SeleccionTipoNivel import SeleccionTipoNivel
 class Window:
     def __init__(self, matrix):
         pygame.init()
-        self.screen = pygame.display.set_mode((1000, 700))
+        self.screen = pygame.display.set_mode((1000, 650))
+        #self.screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN)
         pygame.display.set_caption('Nonograma')
         self.panel = ProxyPanel([])
 

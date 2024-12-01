@@ -58,7 +58,7 @@ class GrillaVisual(GrillaRender):
             cell_size (int): El tamaño de cada celda.
         """
         self.proxy = proxy
-        self.screen = screen
+        super().__init__(screen)
         self.tablero = tablero
 
         self.right_click_value = -1
@@ -123,6 +123,7 @@ class GrillaVisual(GrillaRender):
                 if self.tablero.CompararDibujos():
                     self.proxy.ponerTarget(VictoryRenderer(self.screen, self.proxy, self.tablero.getProgreso(), self.cell_manager))
                     self.tablero.reiniciar()
+
     def handle_mouse_events(self, event):
         """
         Maneja los eventos del ratón.
@@ -178,6 +179,7 @@ class GrillaVisual(GrillaRender):
     def pista(self):
         self.tablero.pista()
         if (self.tablero.CompararDibujos()):
+
             self.proxy.ponerTarget(VictoryRenderer(self.screen, self.proxy, self.tablero.getProgreso(), self.cell_manager))
             self.tablero.reiniciar()
 
