@@ -128,9 +128,13 @@ class Niveles:
         del(fichero_binario)
 
     def CargarNivelesPredeterminados(self):
-        fichero = open("Lista_Niveles_Predeterminados", "rb")
-        self.nivelesPredeterminados = pickle.load(fichero)
-        print(self.nivelesPredeterminados)
+        try:
+            fichero = open("Lista_Niveles_Predeterminados", "rb")
+            self.nivelesPredeterminados = pickle.load(fichero)
+            print(self.nivelesPredeterminados)
+        except (EOFError, FileNotFoundError) as e:
+            print(f"Error al cargar niveles base: {e}")
+            #self.nivelesCreados = [[], [], []]
 
     def getNivelesBase(self):
         return self.nivelesPredeterminados
