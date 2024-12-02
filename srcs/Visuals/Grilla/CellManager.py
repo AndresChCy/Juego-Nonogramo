@@ -4,7 +4,7 @@ from srcs.Visuals.Colores import Colores
 
 
 class CellManager:
-    def __init__(self, grid_width, grid_height, cell_size, offset_x, offset_y):
+    def __init__(self, grid_width, grid_height, cell_size, offset_x, offset_y,grillaVisual):
         """
         Inicializa las celdas.
 
@@ -21,7 +21,7 @@ class CellManager:
         self.offset_x = offset_x
         self.offset_y = offset_y
         self.all_cells = pygame.sprite.Group()
-
+        self.grilla = grillaVisual
         # Inicializa las celdas y los mapeos de colores
         self._initialize_cells()
         self.mapping_colores = Colores.get_number_mapping()  # Mapeo numérico de colores
@@ -50,6 +50,7 @@ class CellManager:
             for col in range(self.grid_width):
                 cell_idx = row * self.grid_width + col
                 cell_sprite = self.all_cells.sprites()[cell_idx]
+                cell_pos. = self.grilla.offset_y
                 cell_value = int(grid_logic[row][col])  # Identificador de color o acción especial
                 # Usa el mapeo para determinar el color o la acción especial
                 if 1 <= cell_value <= 36:

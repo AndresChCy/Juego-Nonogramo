@@ -31,3 +31,6 @@ class ProxyPanel(Panel):
 
     def draw(self):
         self.target.draw()
+
+    def handle_clickUp(self,event):
+        self.target.handle_clickUp(event)

@@ -15,6 +15,9 @@ class Panel(ABC):
     @abstractmethod
     def draw(self):
         pass
+
+    def handle_clickUp(self,event):
+        pass
     def getScreen(self):
         return self.screen
 

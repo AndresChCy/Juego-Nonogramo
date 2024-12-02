@@ -18,4 +18,4 @@ class Ejecutador(Command):
 
     def execute(self) -> None:
         for command in self.commands:
-            command.execute()
+            command()

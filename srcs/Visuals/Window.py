@@ -53,6 +53,8 @@ class Window:
                     self.panel.handle_mouse_motion(event.pos)
                 elif event.type == pygame.KEYDOWN:
                     self.panel.handle_key(event)
+                elif event.type == pygame.MOUSEBUTTONUP:
+                    self.panel.handle_clickUp(event)
             self.screen.fill(Colores.WHITE.value)
             self.panel.draw()
             pygame.display.flip()

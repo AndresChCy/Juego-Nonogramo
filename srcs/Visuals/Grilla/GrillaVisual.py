@@ -2,11 +2,13 @@ import sys
 
 import pygame
 from pygame.constants import KEYDOWN, K_ESCAPE
+from pygame.rect import Rect
 
 from Musica.SoundManager import SoundManager
 from srcs.Comandos.Command import Command
 from srcs.Logica.Dibujo import Pintable
 from srcs.Logica.Niveles import Niveles
+from srcs.Visuals.Barra import Slider
 from srcs.Visuals.Grilla.CellManager import CellManager
 from srcs.Visuals.Colores import Colores
 from srcs.Visuals.Grilla.GridLinesRenderer import GridLinesRenderer
@@ -42,8 +44,8 @@ class GrillaRender(Panel,ABC):
         pass
 
 class GrillaVisual(GrillaRender):
-    GRID_WIDTH_PX = 300
-    GRID_HEIGHT_PX = 300
+    GRID_WIDTH_PX = 600
+    GRID_HEIGHT_PX = 600
 
     def __init__(self, screen, tablero: Pintable, proxy:ProxyPanel, enter: Command = None, dibujo: bool = False):
         """
@@ -75,7 +77,7 @@ class GrillaVisual(GrillaRender):
         self.offset_x = (window_width - actual_grid_width_px) // 2
         self.offset_y = (window_height - actual_grid_height_px) // 2
 
-        self.cell_manager = CellManager(self.GRID_WIDTH, self.GRID_HEIGHT,self.cell_size, self.offset_x, self.offset_y)
+        self.cell_manager = CellManager(self.GRID_WIDTH, self.GRID_HEIGHT,self.cell_size, self.offset_x, self.offset_y,self)
         self.grid_lines_renderer = GridLinesRenderer(screen, self.cell_manager, self.offset_x, self.offset_y,self.cell_size)
         self.hovered_row = None
         self.hovered_col = None
@@ -84,7 +86,8 @@ class GrillaVisual(GrillaRender):
         else:
             self.nonogram_panel = NonogramPanel(screen, int(window_width * 0.2), window_height, self ,dibujo=dibujo)
 
-
+        self.barra = Slider(window_width-int(window_width*0.25), 100, 20, 400, 0, 600, 0,self.screen)
+        self.rect = Rect(self.offset_x,self.offset_y,actual_grid_width_px,actual_grid_height_px)
     def handle_mouse_motion(self, pos):
         """
         Maneja el movimiento del ratón.
@@ -101,6 +104,7 @@ class GrillaVisual(GrillaRender):
         else:
             self.hovered_row = None
             self.hovered_col = None
+        self.barra.handle_mouse_motion(pos)
 
     def handle_click(self, pos, button):
         """
@@ -110,7 +114,7 @@ class GrillaVisual(GrillaRender):
             pos (tuple of int): La posición (x, y) del clic del ratón.
             button (int): El botón del ratón que se ha pulsado (1 para clic izquierdo, 3 para clic derecho).
         """
-
+        self.barra.handle_click(pos,button)
         mouse_x, mouse_y = pos
         col = (mouse_x - self.offset_x) // self.cell_size
         row = (mouse_y - self.offset_y) // self.cell_size
@@ -128,6 +132,7 @@ class GrillaVisual(GrillaRender):
                     self.proxy.ponerTarget(VictoryRenderer(self.screen, self.proxy, self.tablero.getProgreso(), self.cell_manager))
                     self.tablero.reiniciar()
 
+
     def handle_mouse_events(self, event):
         """
         Maneja los eventos del ratón.
@@ -142,11 +147,15 @@ class GrillaVisual(GrillaRender):
         """
         Dibuja la cuadrícula y sus componentes en la pantalla.
         """
+        self.offset_y = self.barra.get_value()
         self.cell_manager.update_grid_visual(self.tablero.getProgreso())
         self.cell_manager.draw_cells(self.screen)
         self.draw_hover_effect()
         self.grid_lines_renderer.draw_grid_lines()
         self.nonogram_panel.draw()
+        self.barra.draw()
+        offset_y = self.barra.get_value()
+        self.rect.topleft = (100,-offset_y)
         #self.clues_renderer.draw_horizontal_clues()
        # self.clues_renderer.draw_vertical_clues()
        # self.clues_renderer.draw_clue_borders()
@@ -163,6 +172,9 @@ class GrillaVisual(GrillaRender):
             if self.enter != None:
                 self.enter.execute()
         self.nonogram_panel.handle_key(event)
+
+    def handle_clickUp(self, event):
+        self.barra.handle_clickUp(event)
 
     def draw_hover_effect(self):
         """
