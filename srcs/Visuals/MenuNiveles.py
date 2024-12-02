@@ -46,7 +46,7 @@ class MenuNiveles(Panel):
         ladoDerecho = ventana.get_width()//2+espacio//2
 
         inicio = self.paginaActual*self.nivelesPorPagina
-        fin = min(inicio+self.nivelesPorPagina, self.numNiveles)
+        fin = min(inicio+self.nivelesPorPagina, len(self.listaNiveles))
 
         self.botones = []
         for i in range(inicio, fin):
@@ -87,7 +87,6 @@ class MenuNiveles(Panel):
         gcm = DecoratorMiniatureRender(gc)
         self.proxy.ponerTarget(gcm)
 
-
     def handle_mouse_motion(self, event):
         pass
 
@@ -121,7 +120,23 @@ class MenuNiveles(Panel):
         self.draw_page(self.ventana)
 
         # -----------------------------CREANDO BOTONES----------------------------------   (se repite en draw_page)
+        button_width, button_height, espacio = 200, 50, 50
+        ladoIzquierdo = self.ventana.get_width() // 2 - button_width - espacio // 2
+        ladoDerecho = self.ventana.get_width() // 2 + espacio // 2
+        inicio = self.paginaActual * self.nivelesPorPagina
+        fin = min(inicio + self.nivelesPorPagina, len(self.listaNiveles))
 
+        botones = []
+        for i in range(inicio, fin):
+            fila = (i - inicio) // 2
+            columna = (i - inicio) % 2
+
+            if columna == 0:
+                x = ladoIzquierdo
+            else:
+                x = ladoDerecho
+            y = 150 + (fila * 100)
+            botones.append(pygame.Rect(x, y, button_width, button_height))
         # -----------------------------CREANDO BOTONES------------------------------------ (se repite en draw_page)
 
         # parte que dibuja los botones de navegacion

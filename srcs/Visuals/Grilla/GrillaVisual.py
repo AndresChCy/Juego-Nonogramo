@@ -44,7 +44,7 @@ class GrillaVisual(GrillaRender):
     GRID_WIDTH_PX = 300
     GRID_HEIGHT_PX = 300
 
-    def __init__(self, screen, tablero: Pintable, proxy:ProxyPanel, enter: Command, dibujo: bool = False):
+    def __init__(self, screen, tablero: Pintable, proxy:ProxyPanel, enter: Command = None, dibujo: bool = False):
         """
         Inicializa los componentes gráficos de la cuadrícula.
 
