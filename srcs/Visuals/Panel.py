@@ -5,7 +5,7 @@ class Panel(ABC):
     def handle_mouse_motion(self,event):
         pass
     @abstractmethod
-    def handle_click(self, pos, button):
+    def handle_click(self, pos, button, soundManager):
         pass
     @abstractmethod
     def handle_key(self,event):

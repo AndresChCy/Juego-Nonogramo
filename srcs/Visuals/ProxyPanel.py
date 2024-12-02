@@ -23,8 +23,8 @@ class ProxyPanel(Panel):
     def handle_mouse_motion(self,pos):
         self.target.handle_mouse_motion(pos)
 
-    def handle_click(self, pos, button):
-        self.target.handle_click( pos, button)
+    def handle_click(self, pos, button, soundManager):
+        self.target.handle_click( pos, button, soundManager)
 
     def handle_key(self, event):
         self.target.handle_key( event)

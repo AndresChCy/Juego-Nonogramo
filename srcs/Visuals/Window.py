@@ -4,6 +4,7 @@ from Grid import Grid
 from Colores import Colores
 from Menu import MenuPrincipal
 from MenuNiveles import MenuNiveles
+from Musica.SoundManager import SoundManager
 from ProxyPanel import ProxyPanel
 from srcs.Logica.Niveles import Niveles
 from srcs.Visuals.MenuDificultad import MenuDificultad
@@ -28,7 +29,7 @@ class Window:
         self.panel.addToList(menu)
         #self.panel.addToList(cuadricula)
 
-    def execute(self):
+    def execute(self, soundManager):
         running = True
         while running:
             for event in pygame.event.get():
@@ -37,7 +38,7 @@ class Window:
                     niveles.GuardarNivelesCreados()
                     running = False
                 elif event.type == pygame.MOUSEBUTTONDOWN:
-                    self.panel.handle_click(event.pos, event.button)
+                    self.panel.handle_click(event.pos, event.button, soundManager)
                 elif event.type == pygame.MOUSEMOTION:
                     self.panel.handle_mouse_motion(event.pos)
                 elif event.type == pygame.KEYDOWN:
@@ -61,4 +62,11 @@ if __name__ == "__main__":
       [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ]
-    Window(matrix).execute()
+    soundManager = SoundManager()
+    soundManager.load_sound("MainMenuTheme", "Musica/MainMenuTheme.mp3")
+    soundManager.load_sound("guiclick", "Musica/guiclick.ogg")
+    soundManager.load_sound("victory", "Musica/victory.mp3")
+    soundManager.load_sound("pintar", "Musica/coins-1.wav")
+    soundManager.load_sound("error", "Musica/error.wav")
+    soundManager.play_sound("MainMenuTheme", -1)
+    Window(matrix).execute(soundManager)

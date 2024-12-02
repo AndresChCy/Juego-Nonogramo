@@ -102,7 +102,7 @@ class GrillaVisual(GrillaRender):
             self.hovered_row = None
             self.hovered_col = None
 
-    def handle_click(self, pos, button):
+    def handle_click(self, pos, button, soundManager):
         """
         Maneja los clics del ratón.
 
@@ -110,10 +110,6 @@ class GrillaVisual(GrillaRender):
             pos (tuple of int): La posición (x, y) del clic del ratón.
             button (int): El botón del ratón que se ha pulsado (1 para clic izquierdo, 3 para clic derecho).
         """
-
-        # Manajer Sonidos
-        soundManager = SoundManager()
-        soundManager.load_sound("pintar", "Musica/coins-1.wav")
 
         mouse_x, mouse_y = pos
         col = (mouse_x - self.offset_x) // self.cell_size

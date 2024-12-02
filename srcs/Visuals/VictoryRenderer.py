@@ -39,10 +39,11 @@ class VictoryRenderer(Panel):
         self.right_image_renderer = ImageRenderer(screen, FrameLoader('Gifs_Divididos/Confetti').get_frames())
         self.fullscreen_image_renderer = ImageRenderer(screen, FrameLoader('Gifs_Divididos/Confetti_Fullscreen').get_frames())
 
-        sound_manager = SoundManager()
-        sound_manager.stop_all()
-        sound_manager.load_sound("victory", "Musica/victory.mp3")
-        sound_manager.play_sound("victory")
+        soundManager = SoundManager()
+        soundManager.stop_all()
+        soundManager.load_sound("victory", "Musica/victory.mp3")
+
+        soundManager.play_sound("victory")
 
     def draw(self):
         """
@@ -71,11 +72,9 @@ class VictoryRenderer(Panel):
     def handle_mouse_motion(self, event):
         pass
 
-    def handle_click(self, pos, button):
-        sound_manager = SoundManager()
-        sound_manager.stop_all()
-        sound_manager.load_sound("MainMenuTheme", "Musica/MainMenuTheme.mp3")
-        sound_manager.play_sound("MainMenuTheme")
+    def handle_click(self, pos, button, soundManager):
+        soundManager.stop_all()
+        soundManager.play_sound("MainMenuTheme", -1)
         self.proxy.cambiarTarget(0)
 
     def handle_key(self, event):

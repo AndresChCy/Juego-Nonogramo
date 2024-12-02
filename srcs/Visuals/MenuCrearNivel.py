@@ -69,7 +69,7 @@ class CrearNivel(Panel):
     def handle_mouse_motion(self,event):
         pass
 
-    def handle_click(self, pos, button):
+    def handle_click(self, pos, button, soundManager):
         if self.input_box1.collidepoint(pos):
             self.active1 = not self.active1
         else:

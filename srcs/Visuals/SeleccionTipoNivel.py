@@ -65,7 +65,7 @@ class SeleccionTipoNivel(Panel):
     def handle_mouse_motion(self,event):
         pass
 
-    def handle_click(self, pos, button):
+    def handle_click(self, pos, button, soundManager):
         mx, my = pos
         click = False
         if button == 1:

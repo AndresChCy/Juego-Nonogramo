@@ -40,11 +40,6 @@ class MenuPrincipal(Panel):
         self.button_2 = pygame.Rect((ventana.get_width() - button_width) // 2, 300, button_width, button_height)
         self.button_3 = pygame.Rect((ventana.get_width() - button_width) // 2, 400, button_width, button_height)
 
-        soundManager = SoundManager()
-        soundManager.load_sound("MainMenuTheme", "Musica/MainMenuTheme.mp3")
-        soundManager.load_sound("guiclick", "Musica/guiclick.ogg")
-        soundManager.play_sound("MainMenuTheme")
-
 
         self.menuJugar = SeleccionTipoNivel(self.ventana,self.proxy,CommandCambiarPanel(self,self.proxy))
     def draw_text(self,texto, font, color, superficie, x, y):
@@ -75,20 +70,18 @@ class MenuPrincipal(Panel):
         pygame.display.update()
         fpsControlador.tick(60)
 
-    def handle_click(self, pos, button):
-        soundManager = SoundManager()
-        soundManager.load_sound("guiclick", "Musica/guiclick.ogg")
-
+    def handle_click(self, pos, button, soundManger):
+        self.soundManager = soundManger
         mx, my = pygame.mouse.get_pos()
         self.click = True
         if self.button_1.collidepoint((mx, my)) and self.click:
-            soundManager.play_sound("guiclick")
+            self.soundManager.play_sound("guiclick")
             self.juego()
         if self.button_2.collidepoint((mx, my)) and self.click:
-            soundManager.play_sound("guiclick")
+            self.soundManager.play_sound("guiclick")
             self.crearNivel()
         if self.button_3.collidepoint((mx, my)) and self.click:
-            soundManager.play_sound("guiclick")
+            self.soundManager.play_sound("guiclick")
             self.salir()
         self.click = False
 
@@ -215,14 +208,14 @@ class Window:
         pygame.display.set_caption('Nonograma')
         self.cuadricula = MenuPrincipal(self.screen)
 
-    def execute(self):
+    def execute(self, soundManager):
         running = True
         while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
                 elif event.type == pygame.MOUSEBUTTONDOWN:
-                   self.cuadricula.handle_click(event.pos, event.button)
+                   self.cuadricula.handle_click(event.pos, event.button, soundManager)
                 elif event.type == pygame.MOUSEMOTION:
                     self.cuadricula.handle_mouse_motion(event.pos)
                 elif event.type == pygame.KEYDOWN:

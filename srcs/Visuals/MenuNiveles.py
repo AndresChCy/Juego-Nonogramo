@@ -91,11 +91,7 @@ class MenuNiveles(Panel):
     def handle_mouse_motion(self, event):
         pass
 
-    def handle_click(self, pos, button):
-        soundManager = SoundManager()
-        soundManager.load_sound("guiclick", "Musica/guiclick.ogg")
-        soundManager.load_sound("error", "Musica/error.wav")
-
+    def handle_click(self, pos, button, soundManager):
         mx, my = pos
         click = False
         if button == 1:

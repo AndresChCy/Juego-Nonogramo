@@ -10,11 +10,14 @@ class SoundManager:
         self.sounds[name] = pygame.mixer.Sound(file_path)
 
 
-    def play_sound(self, name):
-
+    def play_sound(self, name, loops=0):
         if name in self.sounds:
-            self.sounds[name].play()
+            self.sounds[name].play(loops=loops)
 
     def stop_all(self):
 
         pygame.mixer.stop()
+
+    def set_volume(self, name, volume):
+        if name in self.sounds:
+            self.sounds[name].set_volume(volume)
