@@ -45,7 +45,7 @@ class MenuDificultad(Panel):
     def handle_mouse_motion(self,event):
         pass
 
-    def handle_click(self, pos, button, soundManager):
+    def handle_click(self, pos, button):
 
         mx, my = pos
         click = False

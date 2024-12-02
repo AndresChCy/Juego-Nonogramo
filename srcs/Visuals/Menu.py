@@ -70,7 +70,7 @@ class MenuPrincipal(Panel):
         pygame.display.update()
         fpsControlador.tick(60)
 
-    def handle_click(self, pos, button, soundManger):
+    def handle_click(self, pos, button):
         self.soundManager = soundManger
         mx, my = pygame.mouse.get_pos()
         self.click = True
@@ -89,6 +89,9 @@ class MenuPrincipal(Panel):
         pass
     def handle_key(self,event):
         if event.type == KEYDOWN and event.key == K_ESCAPE:
+            niveles = Niveles()
+            niveles.GuardarNivelesCreados()
+            niveles.GuardarNivelesPredeterminados()
             pygame.quit()
             sys.exit()
 

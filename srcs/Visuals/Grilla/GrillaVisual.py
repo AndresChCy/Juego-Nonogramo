@@ -45,7 +45,7 @@ class GrillaVisual(GrillaRender):
     GRID_WIDTH_PX = 300
     GRID_HEIGHT_PX = 300
 
-    def __init__(self, screen, tablero: Pintable, proxy:ProxyPanel, enter: Command, dibujo: bool = False):
+    def __init__(self, screen, tablero: Pintable, proxy:ProxyPanel, enter: Command = None, dibujo: bool = False):
         """
         Inicializa los componentes gráficos de la cuadrícula.
 
@@ -59,9 +59,9 @@ class GrillaVisual(GrillaRender):
             cell_size (int): El tamaño de cada celda.
         """
         self.proxy = proxy
-        self.screen = screen
+        super().__init__(screen)
         self.tablero = tablero
-
+        self.soundManager =SoundManager()
         self.right_click_value = -1
         self.left_click_value = 1
         self.enter = enter
@@ -102,7 +102,7 @@ class GrillaVisual(GrillaRender):
             self.hovered_row = None
             self.hovered_col = None
 
-    def handle_click(self, pos, button, soundManager):
+    def handle_click(self, pos, button):
         """
         Maneja los clics del ratón.
 
@@ -118,7 +118,7 @@ class GrillaVisual(GrillaRender):
         if 0 <= col < self.GRID_WIDTH and 0 <= row < self.GRID_HEIGHT:
             if button == 1:  # Clic izquierdo
                 self.tablero.getProgreso()[row][col] = self.left_click_value if self.tablero.getProgreso()[row][col] != self.left_click_value else 0
-                soundManager.play_sound("pintar")
+                self.soundManager.play_sound("pintar")
 
             elif button == 3:  # Clic derecho
                 self.tablero.getProgreso()[row][col] = self.right_click_value if self.tablero.getProgreso()[row][col] != self.right_click_value else 0
@@ -127,6 +127,7 @@ class GrillaVisual(GrillaRender):
                 if self.tablero.CompararDibujos():
                     self.proxy.ponerTarget(VictoryRenderer(self.screen, self.proxy, self.tablero.getProgreso(), self.cell_manager))
                     self.tablero.reiniciar()
+
     def handle_mouse_events(self, event):
         """
         Maneja los eventos del ratón.
@@ -182,6 +183,7 @@ class GrillaVisual(GrillaRender):
     def pista(self):
         self.tablero.pista()
         if (self.tablero.CompararDibujos()):
+
             self.proxy.ponerTarget(VictoryRenderer(self.screen, self.proxy, self.tablero.getProgreso(), self.cell_manager))
             self.tablero.reiniciar()
 

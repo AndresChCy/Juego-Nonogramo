@@ -25,10 +25,11 @@ class MenuNiveles(Panel):
         self.listaNiveles = lista
         self.numNiveles = len(lista)
         self.nivelesPorPagina = 6
-        self.numPaginas = (self.numNiveles+self.nivelesPorPagina-1)//self.nivelesPorPagina
+        self.numPaginas = (len(self.listaNiveles)+self.nivelesPorPagina-1)//self.nivelesPorPagina
         self.paginaActual = 0
         self.ejecutando = True
         self.botones = []
+        self.soundManager= SoundManager()
         ancho_flechas = 50
         alto_flechas = 30
         margen_inferior = 20
@@ -46,9 +47,8 @@ class MenuNiveles(Panel):
         espacio = 50
         ladoIzquierdo = ventana.get_width()//2-button_width-espacio//2
         ladoDerecho = ventana.get_width()//2+espacio//2
-
         inicio = self.paginaActual*self.nivelesPorPagina
-        fin = min(inicio+self.nivelesPorPagina, self.numNiveles)
+        fin = min(inicio+self.nivelesPorPagina, len(self.listaNiveles))
 
         self.botones = []
         for i in range(inicio, fin):
@@ -82,7 +82,7 @@ class MenuNiveles(Panel):
             [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
         ]
         aux = Dibujo(1, 1)
-        aux.cargarMatriz("Niveles/nivel1")
+        self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
         g = GrillaVisual(self.ventana, self.listaNiveles[n-1], self.proxy,None)
         gc = DecoratorClues(g)
         gcm = DecoratorMiniatureRender(gc)
@@ -91,7 +91,8 @@ class MenuNiveles(Panel):
     def handle_mouse_motion(self, event):
         pass
 
-    def handle_click(self, pos, button, soundManager):
+    def handle_click(self, pos, button):
+        self.numPaginas = (len(self.listaNiveles) + self.nivelesPorPagina - 1) // self.nivelesPorPagina
         mx, my = pos
         click = False
         if button == 1:
@@ -100,24 +101,24 @@ class MenuNiveles(Panel):
             # parte de accionar de los botones de navegacion
 
         if self.boton_izquierda.collidepoint(mx, my) and self.paginaActual > 0 and click:
-            soundManager.play_sound("guiclick")
+            self.soundManager.play_sound("guiclick")
             self.paginaActual -= 1
 
-        if self.boton_izquierda.collidepoint(mx, my) and self.paginaActual <= 0 and click:
-            soundManager.play_sound("error")
+        elif self.boton_izquierda.collidepoint(mx, my) and self.paginaActual <= 0 and click:
+            self.soundManager.play_sound("error")
 
         if self.boton_derecha.collidepoint(mx, my) and self.paginaActual < self.numPaginas - 1 and click:
-            soundManager.play_sound("guiclick")
+            self.soundManager.play_sound("guiclick")
             self.paginaActual += 1
 
-        if self.boton_derecha.collidepoint(mx, my) and self.paginaActual >= self.numPaginas - 1 and click:
-            soundManager.play_sound("error")
+        elif self.boton_derecha.collidepoint(mx, my) and self.paginaActual >= self.numPaginas - 1 and click:
+            self.soundManager.play_sound("error")
 
 
             # parte para la interaccion delos botones
         for numBoton, boton in enumerate(self.botones, start=self.paginaActual * self.nivelesPorPagina + 1):
             if boton.collidepoint(mx, my) and click:
-                soundManager.play_sound("guiclick")
+                self.soundManager.play_sound("guiclick")
                 self.botonClick(numBoton)
 
 
@@ -132,7 +133,23 @@ class MenuNiveles(Panel):
         self.draw_page(self.ventana)
 
         # -----------------------------CREANDO BOTONES----------------------------------   (se repite en draw_page)
+        button_width, button_height, espacio = 200, 50, 50
+        ladoIzquierdo = self.ventana.get_width() // 2 - button_width - espacio // 2
+        ladoDerecho = self.ventana.get_width() // 2 + espacio // 2
+        inicio = self.paginaActual * self.nivelesPorPagina
+        fin = min(inicio + self.nivelesPorPagina, len(self.listaNiveles))
 
+        botones = []
+        for i in range(inicio, fin):
+            fila = (i - inicio) // 2
+            columna = (i - inicio) % 2
+
+            if columna == 0:
+                x = ladoIzquierdo
+            else:
+                x = ladoDerecho
+            y = 150 + (fila * 100)
+            botones.append(pygame.Rect(x, y, button_width, button_height))
         # -----------------------------CREANDO BOTONES------------------------------------ (se repite en draw_page)
 
         # parte que dibuja los botones de navegacion
