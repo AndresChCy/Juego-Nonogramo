@@ -51,6 +51,7 @@ class Tablero(Pintable):
                 count = 0
             elif count != 0:
                 aux.append((count,color))
+                self.colors.add(color)
                 count = 0
             comprVert.append(aux)
             aux = []
