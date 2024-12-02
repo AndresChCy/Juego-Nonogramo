@@ -63,6 +63,7 @@ class MenuNiveles(Panel):
             self.botones.append(pygame.Rect(x, y, button_width, button_height))
 
         for numBoton, boton in enumerate(self.botones, start=inicio+1):
+
             pygame.draw.rect(ventana, (255, 0, 0), boton)
             self.draw_text(f'Nivel {numBoton}', font, (255, 255, 255), ventana, boton.centerx, boton.centery)
 

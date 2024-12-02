@@ -8,6 +8,7 @@ from srcs.Comandos.CommandCambiarPanel import CommandCambiarPanel
 from srcs.Comandos.CommandGuardar import CommandGuardar
 from srcs.Logica.Dibujo import Dibujo
 from srcs.Visuals.Grilla.GrillaVisual import GrillaVisual
+from srcs.Visuals.ImageManager import ImageManager
 from srcs.Visuals.ProxyPanel import ProxyPanel
 
 pygame.init()
@@ -45,7 +46,13 @@ class CrearNivel(Panel):
 
         self.input_box1 = pygame.Rect(self.rect.x + (self.rect.w - 140) // 2, self.rect.y + (self.rect.h - 32) // 3, 140, 32)
         self.input_box2 = pygame.Rect(self.rect.x + (self.rect.w - 140) // 2, self.rect.y + (self.rect.h - 32) // 3 + 50, 140, 32)
-        self.boton_aceptar = pygame.Rect((ventana.get_width() - 200) // 2, ventana.get_height() - 70, 200, 50)
+        self.boton_aceptar = pygame.Rect((ventana.get_width() - 200) // 2, ventana.get_height() - 255, 200, 50)
+
+        self.image_manager = ImageManager()
+        self.image_manager.load_image("background", "Img/backgroun.jpg", scale=(1000, 700))
+        # Cargar la imagen de fondo usando el ImageManager
+        self.background_image = self.image_manager.get_image("background")
+        self.ventana.blit(self.background_image, (0, 0))
 
     def execute(self):
         running = True
@@ -120,14 +127,15 @@ class CrearNivel(Panel):
                 self.text2 += event.unicode
 
     def draw(self):
+        self.ventana.blit(self.background_image, (0, 0))
         pygame.draw.rect(self.ventana, (0, 0, 0), self.rect)
         self.draw_text('Escoger dimensiones', font, (255, 255, 255), self.ventana, self.rect.centerx, self.rect.top + 20)
 
         txt_surface1 = font.render(self.text1, True, self.color1)
         txt_surface2 = font.render(self.text2, True, self.color2)
 
-        self.draw_text("Ancho:", font_2, (255, 255, 255), self.ventana, self.input_box1.left - 50, self.input_box1.centery)
-        self.draw_text("Alto:", font_2, (255, 255, 255), self.ventana, self.input_box2.left - 50, self.input_box2.centery)
+        self.draw_text("Alto:", font_2, (255, 255, 255), self.ventana, self.input_box1.left - 50, self.input_box1.centery)
+        self.draw_text("Ancho:", font_2, (255, 255, 255), self.ventana, self.input_box2.left - 50, self.input_box2.centery)
 
         self.ventana.blit(txt_surface1, (self.input_box1.x + 5, self.input_box1.y + 5))
         self.ventana.blit(txt_surface2, (self.input_box2.x + 5, self.input_box2.y + 5))

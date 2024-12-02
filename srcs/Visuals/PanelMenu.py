@@ -3,6 +3,7 @@ import sys
 
 from pygame.constants import K_ESCAPE, KEYDOWN
 from pygame.locals import *
+from pygame.rect import Rect
 
 from Musica.SoundManager import SoundManager
 from PanelDibujo import panelDibujo
@@ -16,10 +17,12 @@ from srcs.Visuals.Colores import Colores
 from Panel import Panel
 from ProxyPanel import ProxyPanel
 from srcs.Visuals.Grilla.GrillaVisual import GrillaRender, GrillaVisual
+from srcs.Visuals.ImageManager import ImageManager
 from srcs.Visuals.MenuCrearNivel import CrearNivel
 from srcs.Visuals.MenuNiveles import MenuNiveles
 from srcs.Visuals.NonogramPanel import NonogramPanel
 from srcs.Visuals.SeleccionTipoNivel import SeleccionTipoNivel
+from srcs.Visuals.TextRenderer import TextRenderer
 
 pygame.init()
 pygame.display.set_caption('Juego Nonogram')
@@ -31,24 +34,39 @@ font = pygame.font.SysFont(None, 40)
 #click = False
 class Menu(Panel):
 
-    def __init__(self,ventana,proxy:ProxyPanel,comandos , nombres,volver= None):
+    def __init__(self,ventana,proxy:ProxyPanel,comandos , nombres, title ,volver= None):
         self.ventana = ventana
         self.proxy = proxy
         self.clock = pygame.time.Clock()
         self.FPS = 60
         self.click = False
         self.volver = volver
-        ventana.fill((0, 0, 0))
+        self.image_manager = ImageManager()
+        self.image_manager.load_image("background", "Img/backgroun.jpg", scale=(1000, 700))
+        # Cargar la imagen de fondo usando el ImageManager
+        self.background_image = self.image_manager.get_image("background")
+        self.ventana.blit(self.background_image, (0, 0))
         button_width = 200
         button_height = 50
         center = (ventana.get_width() - button_width) // 2
         self.buttons = []
+        self.titulo = title
+        self.palabras = title.split()
+        # Encontrar la palabra más larga
+        palabra_larga = max(self.palabras, key=len)
+        self.font_size = int(400/len(palabra_larga))
+
+        # Ejemplo de uso
+
+
+        self.t = TextRenderer(self.ventana,"Title.otf",self.font_size,Colores.DARK_GREEN.value)
+        self.t2 = TextRenderer(self.ventana,"Title.otf",self.font_size,Colores.BLACK.value)
         for i in range (len(comandos)):
             if len(comandos) != len(nombres):
                 nombre = comandos[i].__class__.__name__
             else:
                 nombre = nombres[i]
-            boton = Button(self.ventana,button_width,button_height,center,200 + 100*i,Colores.BLUE.value,comandos[i]
+            boton = Button(self.ventana,button_width,button_height,center,300 + 70*i,Colores.BLUE.value,comandos[i]
                            ,Colores.WHITE.value,nombre)
             self.buttons.append(boton)
 
@@ -64,6 +82,14 @@ class Menu(Panel):
         superficie.blit(textobj, textrect)
 
     def draw(self):
+        self.ventana.blit(self.background_image, (0, 0))
+        rect = Rect((ventana.get_width() /2 )-150 , 100, 330, 150)
+        pygame.draw.rect(self.ventana, Colores.DARK_BLUE.value, rect)
+        pygame.draw.rect(self.ventana, Colores.LIGHT_BLUE.value, Rect((ventana.get_width() /2 )-145,105, 320, 140))
+        for i ,palabras in enumerate(self.palabras):
+            self.t.render(palabras,(rect.centerx, rect.centery+i*self.font_size+20*i - 30))
+            self.t2.render(palabras,(rect.centerx+2, rect.centery+i*self.font_size+20*i - 30+2))
+        #self.t.render(self.titulo,(rect.centerx, rect.centery))
         for buttons in self.buttons:
             buttons.draw()
 

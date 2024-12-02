@@ -13,6 +13,7 @@ from srcs.Comandos.CommandCambiarPanel import CommandCambiarPanel
 from srcs.Logica.Niveles import Niveles
 from srcs.Visuals.Grilla.GrillaDecorator import DecoratorClues, DecoratorMiniatureRender
 from srcs.Visuals.Grilla.GrillaVisual import GrillaVisual
+from srcs.Visuals.ImageManager import ImageManager
 from srcs.Visuals.MenuCrearNivel import CrearNivel
 from srcs.Visuals.MenuDificultad import MenuDificultad
 from srcs.Visuals.PanelMenu import Menu
@@ -23,6 +24,11 @@ class Window:
     def __init__(self, matrix):
         pygame.init()
         self.screen = pygame.display.set_mode((1000, 650))
+        self.image_manager = ImageManager()
+        self.image_manager.load_image("background", "Img/backgroun.jpg", scale=(1000, 700))
+        # Cargar la imagen de fondo usando el ImageManager
+        self.background_image = self.image_manager.get_image("background")
+        self.screen.blit(self.background_image, (0, 0))
         #self.screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN)
         pygame.display.set_caption('Nonograma')
         self.panel = ProxyPanel([])
@@ -67,40 +73,42 @@ class Window:
         volver = CommandCambiarPanel(None,self.panel)
         #Crear menus para juegos
         nombres= ["Facil","Normal","Dificil" ]
+        titulo = "Seleccionar Dificultad"
         commands = []
         commands.append(CommandCambiarPanel(MenuNiveles(self.screen,niveles.getFaciles()[0],self.panel),self.panel))
         commands.append(CommandCambiarPanel(MenuNiveles(self.screen,niveles.getNormal()[0],self.panel),self.panel))
         commands.append(CommandCambiarPanel(MenuNiveles(self.screen,niveles.getDificil()[0], self.panel), self.panel))
-        menuSeleccionarDificultadBase = Menu(self.screen,self.panel,commands,nombres,volver)
+        menuSeleccionarDificultadBase = Menu(self.screen,self.panel,commands,nombres,titulo,volver)
 
         commands = []
         commands.append(CommandCambiarPanel(MenuNiveles(self.screen, niveles.getFaciles()[1], self.panel), self.panel))
         commands.append(CommandCambiarPanel(MenuNiveles(self.screen, niveles.getNormal()[1], self.panel), self.panel))
         commands.append(CommandCambiarPanel(MenuNiveles(self.screen, niveles.getDificil()[1], self.panel), self.panel))
-        menuSeleccionarDificultadBaseColor = Menu(self.screen,self.panel,commands,nombres,volver)
+        menuSeleccionarDificultadBaseColor = Menu(self.screen,self.panel,commands,nombres,titulo,volver)
 
         commands= []
         commands.append(CommandCambiarPanel(MenuNiveles(self.screen, niveles.getFacilesCreados()[0], self.panel), self.panel))
         commands.append(CommandCambiarPanel(MenuNiveles(self.screen, niveles.getNormalCreados()[0], self.panel), self.panel))
         commands.append(CommandCambiarPanel(MenuNiveles(self.screen, niveles.getDificilCreados()[0], self.panel), self.panel))
-        menuSeleccionarDificultadCrea = Menu(self.screen, self.panel, commands, nombres,volver)
+        menuSeleccionarDificultadCrea = Menu(self.screen, self.panel, commands, nombres,titulo,volver)
 
         commands = []
         commands.append(CommandCambiarPanel(MenuNiveles(self.screen, niveles.getFacilesCreados()[1], self.panel), self.panel))
         commands.append(CommandCambiarPanel(MenuNiveles(self.screen, niveles.getNormalCreados()[1], self.panel), self.panel))
         commands.append(CommandCambiarPanel(MenuNiveles(self.screen, niveles.getDificilCreados()[1], self.panel), self.panel))
-        menuSeleccionarDificultadCreaColor = Menu(self.screen, self.panel, commands, nombres,volver)
+        menuSeleccionarDificultadCreaColor = Menu(self.screen, self.panel, commands, nombres,titulo,volver)
 
         nombres= ["Sin Color","Con Color"]
+        titulo = "Seleccionar Nivel"
         commands= []
         commands.append(CommandCambiarPanel(menuSeleccionarDificultadCrea, self.panel))
         commands.append(CommandCambiarPanel(menuSeleccionarDificultadCreaColor, self.panel))
-        menuEscogerCreados = Menu(self.screen, self.panel, commands, nombres,volver)
+        menuEscogerCreados = Menu(self.screen, self.panel, commands, nombres,titulo,volver)
 
         commands = []
         commands.append(CommandCambiarPanel(menuSeleccionarDificultadBase, self.panel))
         commands.append(CommandCambiarPanel(menuSeleccionarDificultadBaseColor, self.panel))
-        menuEscogerBase = Menu(self.screen, self.panel, commands, nombres,volver)
+        menuEscogerBase = Menu(self.screen, self.panel, commands, nombres,titulo,volver)
 
         nombres = ["Niveles","Niveles creados","Nivel al azar"]
         commands = []
@@ -113,8 +121,9 @@ class Window:
             gcm = DecoratorMiniatureRender(gc)
             self.panel.ponerTarget(gcm)
         commands.append(nivelAlAzar)
-        menuJuego = Menu(self.screen,self.panel,commands,nombres,volver)
+        menuJuego = Menu(self.screen,self.panel,commands,nombres,titulo,volver)
         nombres = ["Jugar","Crear Nivel","Salir"]
+        titulo = "Nonograma The_Game"
         commands = []
         commands.append(CommandCambiarPanel(menuJuego,self.panel))
 
@@ -129,7 +138,7 @@ class Window:
             niveles.GuardarNivelesPredeterminados()
             sys.exit()
         commands.append(salir)
-        menuInicial = Menu(self.screen,self.panel,commands,nombres)
+        menuInicial = Menu(self.screen,self.panel,commands,nombres,titulo)
         volver.setPanel(menuInicial)
         self.panel.addToList(menuInicial)
         self.panel.ponerTarget(menuInicial)

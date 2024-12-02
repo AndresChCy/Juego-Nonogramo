@@ -1,7 +1,7 @@
 import sys
 
 import pygame
-from pygame.constants import KEYDOWN, K_ESCAPE
+from pygame.constants import KEYDOWN, K_ESCAPE, FULLSCREEN
 
 from Musica.SoundManager import SoundManager
 from srcs.Comandos.Command import Command
@@ -11,6 +11,7 @@ from srcs.Visuals.Grilla.CellManager import CellManager
 from srcs.Visuals.Colores import Colores
 from srcs.Visuals.Grilla.GridLinesRenderer import GridLinesRenderer
 from srcs.Logica.Tablero import Tablero
+from srcs.Visuals.ImageManager import ImageManager
 from srcs.Visuals.NonogramPanel import NonogramPanel
 from srcs.Visuals.Panel import Panel
 from srcs.Visuals.ProxyPanel import ProxyPanel
@@ -42,8 +43,8 @@ class GrillaRender(Panel,ABC):
         pass
 
 class GrillaVisual(GrillaRender):
-    GRID_WIDTH_PX = 300
-    GRID_HEIGHT_PX = 300
+    GRID_WIDTH_PX = 500
+    GRID_HEIGHT_PX = 500
 
     def __init__(self, screen, tablero: Pintable, proxy:ProxyPanel, enter: Command = None, dibujo: bool = False):
         """
@@ -72,8 +73,8 @@ class GrillaVisual(GrillaRender):
         self.cell_size = min(self.GRID_WIDTH_PX // self.GRID_WIDTH, self.GRID_HEIGHT_PX // self.GRID_HEIGHT)
         actual_grid_width_px = self.GRID_WIDTH * self.cell_size
         actual_grid_height_px = self.GRID_HEIGHT * self.cell_size
-        self.offset_x = (window_width - actual_grid_width_px) // 2
-        self.offset_y = (window_height - actual_grid_height_px) // 2
+        self.offset_x = (window_width - actual_grid_width_px) // 2 +20
+        self.offset_y = (window_height - actual_grid_height_px) // 2 + 40
 
         self.cell_manager = CellManager(self.GRID_WIDTH, self.GRID_HEIGHT,self.cell_size, self.offset_x, self.offset_y)
         self.grid_lines_renderer = GridLinesRenderer(screen, self.cell_manager, self.offset_x, self.offset_y,self.cell_size)
@@ -84,6 +85,10 @@ class GrillaVisual(GrillaRender):
         else:
             self.nonogram_panel = NonogramPanel(screen, int(window_width * 0.2), window_height, self ,dibujo=dibujo)
 
+        self.image_manager = ImageManager()
+        self.image_manager.load_image("background", "Img/nonogram_back.jpg",screen.get_size())
+        # Cargar la imagen de fondo usando el ImageManager
+        self.background_image = self.image_manager.get_image("background")
 
     def handle_mouse_motion(self, pos):
         """
@@ -142,6 +147,7 @@ class GrillaVisual(GrillaRender):
         """
         Dibuja la cuadrícula y sus componentes en la pantalla.
         """
+        self.screen.blit(self.background_image, (0, 0))
         self.cell_manager.update_grid_visual(self.tablero.getProgreso())
         self.cell_manager.draw_cells(self.screen)
         self.draw_hover_effect()
