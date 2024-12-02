@@ -66,6 +66,7 @@ class VictoryRenderer(Panel):
 
     def handle_click(self, pos, button):
         self.proxy.cambiarTarget(0)
+        self.screen = pygame.display.set_mode((1000, 650))
 
     def handle_key(self, event):
         pass
