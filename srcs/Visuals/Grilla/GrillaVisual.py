@@ -5,8 +5,10 @@ from pygame.constants import KEYDOWN, K_ESCAPE, FULLSCREEN
 
 from Musica.SoundManager import SoundManager
 from srcs.Comandos.Command import Command
+from srcs.Comandos.CommandCambiarPanel import CommandReturnInicio
 from srcs.Logica.Dibujo import Pintable
 from srcs.Logica.Niveles import Niveles
+from srcs.Visuals.Button import Button
 from srcs.Visuals.Grilla.CellManager import CellManager
 from srcs.Visuals.Colores import Colores
 from srcs.Visuals.Grilla.GridLinesRenderer import GridLinesRenderer
@@ -89,6 +91,8 @@ class GrillaVisual(GrillaRender):
         self.image_manager.load_image("background", "Img/nonogram_back.jpg",screen.get_size())
         # Cargar la imagen de fondo usando el ImageManager
         self.background_image = self.image_manager.get_image("background")
+        self.botonVolver = Button(self.screen, 210, 50, 50, 50, Colores.BLUE.value, enter
+                                  , Colores.WHITE.value, "Volver y Guardar")
 
     def handle_mouse_motion(self, pos):
         """
@@ -132,6 +136,8 @@ class GrillaVisual(GrillaRender):
                 if self.tablero.CompararDibujos():
                     self.proxy.ponerTarget(VictoryRenderer(self.screen, self.proxy, self.tablero.getProgreso(), self.cell_manager))
                     self.tablero.reiniciar()
+        if self.botonVolver.is_clicked(pos):
+            self.botonVolver.click()
 
     def handle_mouse_events(self, event):
         """
@@ -153,6 +159,7 @@ class GrillaVisual(GrillaRender):
         self.draw_hover_effect()
         self.grid_lines_renderer.draw_grid_lines()
         self.nonogram_panel.draw()
+        self.botonVolver.draw()
         #self.clues_renderer.draw_horizontal_clues()
        # self.clues_renderer.draw_vertical_clues()
        # self.clues_renderer.draw_clue_borders()
@@ -160,11 +167,11 @@ class GrillaVisual(GrillaRender):
 
     def handle_key(self, event):
         if event.type == KEYDOWN and event.key == K_ESCAPE:
-            pygame.quit()
+
             niveles = Niveles()
             niveles.GuardarNivelesCreados()
             niveles.GuardarNivelesPredeterminados()
-            sys.exit()
+            CommandReturnInicio(self.proxy,self.screen).execute()
         elif event.key == pygame.K_RETURN:
             if self.enter != None:
                 self.enter.execute()

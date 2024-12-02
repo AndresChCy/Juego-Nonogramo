@@ -18,6 +18,7 @@ from srcs.Visuals.MenuCrearNivel import CrearNivel
 from srcs.Visuals.MenuDificultad import MenuDificultad
 from srcs.Visuals.PanelMenu import Menu
 from srcs.Visuals.SeleccionTipoNivel import SeleccionTipoNivel
+from srcs.Visuals.Tutorial import mostrar_tutorial
 
 
 class Window:
@@ -59,7 +60,7 @@ class Window:
                     self.panel.handle_mouse_motion(event.pos)
                 elif event.type == pygame.KEYDOWN:
                     self.panel.handle_key(event)
-            self.screen.fill(Colores.WHITE.value)
+            #self.screen.fill(Colores.WHITE.value)
             self.panel.draw()
             pygame.display.flip()
         pygame.quit()
@@ -122,7 +123,7 @@ class Window:
             self.panel.ponerTarget(gcm)
         commands.append(nivelAlAzar)
         menuJuego = Menu(self.screen,self.panel,commands,nombres,titulo,volver)
-        nombres = ["Jugar","Crear Nivel","Salir"]
+        nombres = ["Jugar","Crear Nivel","Como jugar","Salir"]
         titulo = "Nonograma The_Game"
         commands = []
         commands.append(CommandCambiarPanel(menuJuego,self.panel))
@@ -131,6 +132,7 @@ class Window:
             self.panel.ponerTarget(CrearNivel(self.screen, "Escoger dimensiones", 400, 300, self.panel,
                                     volver))
         commands.append(crearNivel)
+        commands.append(mostrar_tutorial)
         def salir():
             pygame.quit()
             niveles = Niveles()

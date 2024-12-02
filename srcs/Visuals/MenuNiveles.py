@@ -1,7 +1,10 @@
 import pygame
 from pygame.locals import *
 
+from srcs.Comandos.CommandCambiarPanel import CommandReturnInicio
 from srcs.Logica.Dibujo import Dibujo
+from srcs.Visuals.Button import Button
+from srcs.Visuals.Colores import Colores
 from srcs.Visuals.Grid import Grid
 from Panel import Panel
 from ProxyPanel import ProxyPanel
@@ -39,8 +42,11 @@ class MenuNiveles(Panel):
                                       alto_flechas)
         self.boton_derecha = pygame.Rect(3 * ventana.get_width() // 4 - ancho_flechas // 2,
                                     ventana.get_height() - alto_flechas - margen_inferior, ancho_flechas, alto_flechas)
-
-
+        self.ventana.fill((0, 0, 0))
+        def volver():
+            self.proxy.cambiarTarget(0)
+        self.botonVolver = Button(self.ventana,100,25,100,100,Colores.RED.value,volver
+                           ,Colores.WHITE.value,"<")
     def draw_page(self, ventana):
         button_width = 200
         button_height = 50
@@ -84,7 +90,8 @@ class MenuNiveles(Panel):
         ]
         aux = Dibujo(1, 1)
         self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-        g = GrillaVisual(self.ventana, self.listaNiveles[n-1], self.proxy,None)
+
+        g = GrillaVisual(self.ventana, self.listaNiveles[n-1], self.proxy,CommandReturnInicio(self.proxy,self.ventana))
         gc = DecoratorClues(g)
         gcm = DecoratorMiniatureRender(gc)
         self.proxy.ponerTarget(gcm)
@@ -121,6 +128,8 @@ class MenuNiveles(Panel):
             if boton.collidepoint(mx, my) and click:
                 self.soundManager.play_sound("guiclick")
                 self.botonClick(numBoton)
+        if self.botonVolver.is_clicked(pos):
+            self.botonVolver.click()
 
 
     def handle_key(self, event):
@@ -129,6 +138,10 @@ class MenuNiveles(Panel):
 
     def draw(self):
         self.ventana.fill((0, 0, 0))
+        a = len(self.listaNiveles)
+        if a== 0:
+            self.draw_text("En este momento no hay niveles aqui :(", font, (255, 255, 255), ventana, 500, 325)
+        #self.ventana.fill((0, 0, 0))
         self.draw_text('Niveles', font, (255, 255, 255), self.ventana, ventana.get_width() // 2, 100)
         mx, my = pygame.mouse.get_pos()
         self.draw_page(self.ventana)
@@ -158,7 +171,11 @@ class MenuNiveles(Panel):
         pygame.draw.rect(ventana, (100, 100, 100), self.boton_derecha)
         self.draw_text('<<', font, (255, 255, 255), ventana, self.boton_izquierda.centerx, self.boton_izquierda.centery)
         self.draw_text('>>', font, (255, 255, 255), ventana, self.boton_derecha.centerx, self.boton_derecha.centery)
+        self.botonVolver.draw()
         pygame.display.update()
         fpsControlador.tick(60)
+
+
+
 if __name__ == "__main__":
     MenuNiveles(ventana, [1,2,3,4,5,6,7,8,9])

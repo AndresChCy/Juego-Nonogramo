@@ -56,9 +56,6 @@ class Menu(Panel):
         palabra_larga = max(self.palabras, key=len)
         self.font_size = int(400/len(palabra_larga))
 
-        # Ejemplo de uso
-
-
         self.t = TextRenderer(self.ventana,"Title.otf",self.font_size,Colores.DARK_GREEN.value)
         self.t2 = TextRenderer(self.ventana,"Title.otf",self.font_size,Colores.BLACK.value)
         for i in range (len(comandos)):
@@ -70,6 +67,11 @@ class Menu(Panel):
                            ,Colores.WHITE.value,nombre)
             self.buttons.append(boton)
 
+        if self.volver:
+            self.botonVolver = Button(self.ventana,100,25,100,100,Colores.BLUE.value,volver
+                           ,Colores.WHITE.value,"<<")
+        else:
+            self.botonVolver = None
 
         #self.button_1 = pygame.Rect((ventana.get_width() - button_width) // 2, 200, button_width, button_height)
         #self.button_2 = pygame.Rect((ventana.get_width() - button_width) // 2, 300, button_width, button_height)
@@ -92,7 +94,8 @@ class Menu(Panel):
         #self.t.render(self.titulo,(rect.centerx, rect.centery))
         for buttons in self.buttons:
             buttons.draw()
-
+        if self.botonVolver:
+            self.botonVolver.draw()
         fpsControlador.tick(60)
 
     def handle_click(self, pos, button):
@@ -104,6 +107,8 @@ class Menu(Panel):
                 sound = SoundManager()
                 sound.play_sound("guiclick")
                 break
+        if self.botonVolver and self.botonVolver.is_clicked(pos):
+            self.botonVolver.click()
         self.click = False
 
     def handle_mouse_motion(self,pos):
