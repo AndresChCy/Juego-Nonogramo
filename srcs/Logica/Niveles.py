@@ -127,6 +127,8 @@ class Niveles:
         nivelesCrea = self.nivelesCreados[0] + self.nivelesCreados[1]+self.nivelesCreados[2]
         niveles = nivelesCrea + nivelesBase
         print("yeah")
+        if not any(niveles):
+            return None
         return random.choice(niveles)
         listaAleatoria = random.choice((self.nivelesPredeterminados, self.nivelesCreados))
         if not any(listaAleatoria):

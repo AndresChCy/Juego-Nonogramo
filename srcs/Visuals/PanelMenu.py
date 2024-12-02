@@ -4,6 +4,7 @@ import sys
 from pygame.constants import K_ESCAPE, KEYDOWN
 from pygame.locals import *
 
+from Musica.SoundManager import SoundManager
 from PanelDibujo import panelDibujo
 from srcs.Comandos.Command import Ejecutador
 from srcs.Comandos.CommandCambiarPanel import CommandCambiarPanel
@@ -74,6 +75,8 @@ class Menu(Panel):
         for btn in self.buttons:
             if btn and btn.is_clicked(pos):
                 btn.click()
+                sound = SoundManager()
+                sound.play_sound("guiclick")
                 break
         self.click = False
 

@@ -9,6 +9,8 @@ from srcs.Logica.Tablero import Tablero
 from srcs.Visuals.Grilla.GrillaDecorator import DecoratorClues, DecoratorMiniatureRender
 from srcs.Visuals.Grilla.GrillaVisual import GrillaVisual
 
+from Musica.SoundManager import *
+
 pygame.init()
 pygame.display.set_caption('Juego Nonogram')
 ventana = pygame.display.set_mode((800, 600), 0, 32)
@@ -23,10 +25,11 @@ class MenuNiveles(Panel):
         self.listaNiveles = lista
         self.numNiveles = len(lista)
         self.nivelesPorPagina = 6
-        self.numPaginas = (self.numNiveles+self.nivelesPorPagina-1)//self.nivelesPorPagina
+        self.numPaginas = (len(self.listaNiveles)+self.nivelesPorPagina-1)//self.nivelesPorPagina
         self.paginaActual = 0
         self.ejecutando = True
         self.botones = []
+        self.soundManager= SoundManager()
         ancho_flechas = 50
         alto_flechas = 30
         margen_inferior = 20
@@ -44,7 +47,6 @@ class MenuNiveles(Panel):
         espacio = 50
         ladoIzquierdo = ventana.get_width()//2-button_width-espacio//2
         ladoDerecho = ventana.get_width()//2+espacio//2
-
         inicio = self.paginaActual*self.nivelesPorPagina
         fin = min(inicio+self.nivelesPorPagina, len(self.listaNiveles))
 
@@ -80,7 +82,6 @@ class MenuNiveles(Panel):
             [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
         ]
         aux = Dibujo(1, 1)
-        aux.cargarMatriz("Niveles/nivel1")
         self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
         g = GrillaVisual(self.ventana, self.listaNiveles[n-1], self.proxy,None)
         gc = DecoratorClues(g)
@@ -91,6 +92,7 @@ class MenuNiveles(Panel):
         pass
 
     def handle_click(self, pos, button):
+        self.numPaginas = (len(self.listaNiveles) + self.nivelesPorPagina - 1) // self.nivelesPorPagina
         mx, my = pos
         click = False
         if button == 1:
@@ -99,13 +101,24 @@ class MenuNiveles(Panel):
             # parte de accionar de los botones de navegacion
 
         if self.boton_izquierda.collidepoint(mx, my) and self.paginaActual > 0 and click:
+            self.soundManager.play_sound("guiclick")
             self.paginaActual -= 1
+
+        elif self.boton_izquierda.collidepoint(mx, my) and self.paginaActual <= 0 and click:
+            self.soundManager.play_sound("error")
+
         if self.boton_derecha.collidepoint(mx, my) and self.paginaActual < self.numPaginas - 1 and click:
+            self.soundManager.play_sound("guiclick")
             self.paginaActual += 1
+
+        elif self.boton_derecha.collidepoint(mx, my) and self.paginaActual >= self.numPaginas - 1 and click:
+            self.soundManager.play_sound("error")
+
 
             # parte para la interaccion delos botones
         for numBoton, boton in enumerate(self.botones, start=self.paginaActual * self.nivelesPorPagina + 1):
             if boton.collidepoint(mx, my) and click:
+                self.soundManager.play_sound("guiclick")
                 self.botonClick(numBoton)
 
 

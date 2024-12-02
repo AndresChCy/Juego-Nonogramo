@@ -3,6 +3,7 @@ import sys
 import pygame
 from pygame.constants import KEYDOWN, K_ESCAPE
 
+from Musica.SoundManager import SoundManager
 from srcs.Comandos.Command import Command
 from srcs.Logica.Dibujo import Pintable
 from srcs.Logica.Niveles import Niveles
@@ -60,7 +61,7 @@ class GrillaVisual(GrillaRender):
         self.proxy = proxy
         super().__init__(screen)
         self.tablero = tablero
-
+        self.soundManager =SoundManager()
         self.right_click_value = -1
         self.left_click_value = 1
         self.enter = enter
@@ -109,6 +110,7 @@ class GrillaVisual(GrillaRender):
             pos (tuple of int): La posición (x, y) del clic del ratón.
             button (int): El botón del ratón que se ha pulsado (1 para clic izquierdo, 3 para clic derecho).
         """
+
         mouse_x, mouse_y = pos
         col = (mouse_x - self.offset_x) // self.cell_size
         row = (mouse_y - self.offset_y) // self.cell_size
@@ -116,6 +118,8 @@ class GrillaVisual(GrillaRender):
         if 0 <= col < self.GRID_WIDTH and 0 <= row < self.GRID_HEIGHT:
             if button == 1:  # Clic izquierdo
                 self.tablero.getProgreso()[row][col] = self.left_click_value if self.tablero.getProgreso()[row][col] != self.left_click_value else 0
+                self.soundManager.play_sound("pintar")
+
             elif button == 3:  # Clic derecho
                 self.tablero.getProgreso()[row][col] = self.right_click_value if self.tablero.getProgreso()[row][col] != self.right_click_value else 0
             self.cell_manager.update_grid_visual(self.tablero.getProgreso())

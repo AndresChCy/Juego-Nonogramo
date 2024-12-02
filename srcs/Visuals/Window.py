@@ -7,6 +7,7 @@ from Grid import Grid
 from Colores import Colores
 from Menu import MenuPrincipal
 from MenuNiveles import MenuNiveles
+from Musica.SoundManager import SoundManager
 from ProxyPanel import ProxyPanel
 from srcs.Comandos.CommandCambiarPanel import CommandCambiarPanel
 from srcs.Logica.Niveles import Niveles
@@ -25,7 +26,7 @@ class Window:
         #self.screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN)
         pygame.display.set_caption('Nonograma')
         self.panel = ProxyPanel([])
-
+        self.iniciarMusica()
         self.iniciarMenus()
         #cuadricula = Grid(self.screen, matrix,self.panel)
         #niveles = Niveles()
@@ -132,6 +133,18 @@ class Window:
         volver.setPanel(menuInicial)
         self.panel.addToList(menuInicial)
         self.panel.ponerTarget(menuInicial)
+
+    def iniciarMusica(self):
+        self.soundManager = SoundManager()
+        self.soundManager.load_sound_as_music("MainMenuTheme", "Musica/MainMenuTheme.mp3")
+        self.soundManager.load_sound("guiclick", "Musica/guiclick.ogg")
+        self.soundManager.load_sound("victory", "Musica/victory.mp3")
+        self.soundManager.load_sound("pintar", "Musica/coins-1.wav")
+        self.soundManager.load_sound("error", "Musica/error.wav")
+        #soundManager.play_sound_as( "MainMenuTheme", -1)
+        self.soundManager.play_music()
+        self.soundManager.set_volume_music(0.3)
+        self.soundManager.set_volume_sounds(1)
 
 
 
