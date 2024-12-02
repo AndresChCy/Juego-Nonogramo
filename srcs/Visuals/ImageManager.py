@@ -3,17 +3,17 @@ import pygame
 
 class ImageManager:
     def __init__(self):
-        pygame.init()
         self.images = {}
 
-    def load_image(self, name, file_path, scale=None):
-        image = pygame.image.load(file_path)  #
-        if scale:
-            image = pygame.transform.scale(image, scale)
-        self.images[name] = image
+    def load_image(self, key, path, scale=None):
+        try:
+            image = pygame.image.load(path)
+            if scale:
+                image = pygame.transform.scale(image, scale)
+            self.images[key] = image
+        except pygame.error as e:
+            print(f"Error al cargar la imagen {path}: {e}")
+            self.images[key] = None
 
-    def get_image(self, name):
-        if name in self.images:
-            return self.images[name]
-        else:
-            return None
+    def get_image(self, key):
+        return self.images.get(key)

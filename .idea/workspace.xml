@@ -9,14 +9,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lista_Niveles_Usuario" beforeDir="false" afterPath="$PROJECT_DIR$/Lista_Niveles_Usuario" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/Logica/Niveles.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Logica/Niveles.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/Logica/Tablero.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Logica/Tablero.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/Visuals/Grilla/GrillaVisual.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Grilla/GrillaVisual.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/Visuals/ImageManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/ImageManager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/Visuals/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/Visuals/MenuDificultad.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/MenuDificultad.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/Visuals/MenuNiveles.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/MenuNiveles.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/Visuals/SeleccionTipoNivel.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/SeleccionTipoNivel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/Visuals/VictoryRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/VictoryRenderer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/Visuals/Window.py" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/Visuals/Window.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,41 +53,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python tests.Python tests in almacenar_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in tablero_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_matrizTotext.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_textTomatriz.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Grid.executor&quot;: &quot;Run&quot;,
-    &quot;Python.GrillaVisual.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Menu.executor&quot;: &quot;Run&quot;,
-    &quot;Python.MenuDificultad.executor&quot;: &quot;Run&quot;,
-    &quot;Python.MenuNiveles.executor&quot;: &quot;Run&quot;,
-    &quot;Python.PanelDibujo.executor&quot;: &quot;Run&quot;,
-    &quot;Python.SeleccionTipoNivel.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Tablero.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Window (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.Window.executor&quot;: &quot;Run&quot;,
-    &quot;Python.au.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/martin/Codigo/Python/Juego-Nonogramo&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python tests.Python tests in almacenar_test.py.executor": "Run",
+    "Python tests.Python tests in tablero_test.py.executor": "Run",
+    "Python tests.Python tests in test_matrizTotext.py.executor": "Run",
+    "Python tests.Python tests in test_textTomatriz.py.executor": "Run",
+    "Python.Grid.executor": "Run",
+    "Python.GrillaVisual.executor": "Run",
+    "Python.Menu.executor": "Run",
+    "Python.MenuDificultad.executor": "Run",
+    "Python.MenuNiveles.executor": "Run",
+    "Python.PanelDibujo.executor": "Run",
+    "Python.SeleccionTipoNivel.executor": "Run",
+    "Python.Tablero.executor": "Run",
+    "Python.Window (1).executor": "Run",
+    "Python.Window.executor": "Run",
+    "Python.au.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "new-visuals",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "/home/martin/Codigo/Python/Juego-Nonogramo",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Andrés\Documents\ProyectosGit\Juego-Nonogramo\srcs\Visuals" />
       <recent name="C:\Users\Andrés\Documents\ProyectosGit\Juego-Nonogramo\srcs\Logica" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.MenuDificultad">
+  <component name="RunManager" selected="Python.Window">
     <configuration name="MenuDificultad" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Juego-Nonograma" />
       <option name="ENV_FILES" value="" />
@@ -230,8 +225,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PY-242.23726.102" />
-        <option value="bundled-python-sdk-5e1850174b45-399fe30bd8c1-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.23726.102" />
+        <option value="bundled-python-sdk-d7ad00fb9fc3-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23726.102" />
       </set>
     </attachedChunks>
   </component>

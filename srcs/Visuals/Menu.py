@@ -14,6 +14,7 @@ from ProxyPanel import ProxyPanel
 from srcs.Visuals.Grilla.GrillaVisual import GrillaRender, GrillaVisual
 from srcs.Visuals.MenuCrearNivel import CrearNivel
 from srcs.Visuals.SeleccionTipoNivel import SeleccionTipoNivel
+from ImageManager import ImageManager
 
 pygame.init()
 pygame.display.set_caption('Juego Nonogram')
@@ -31,6 +32,10 @@ class MenuPrincipal(Panel):
         self.clock = pygame.time.Clock()
         self.FPS = 60
         self.click = False
+        self.image_manager = ImageManager()
+        self.image_manager.load_image("background", "Img/background.png", scale=(1000, 700))
+        # Cargar la imagen de fondo usando el ImageManager
+        self.background_image = self.image_manager.get_image("background")
         ventana.fill((0, 0, 0))
         button_width = 200
         button_height = 50
@@ -45,6 +50,12 @@ class MenuPrincipal(Panel):
         superficie.blit(textobj, textrect)
 
     def draw(self):
+
+        if self.background_image:
+            self.ventana.blit(self.background_image, (0, 0))
+        else:
+            self.ventana.fill((0, 0, 0))  # Fondo negro si no hay imagen
+
         pygame.draw.rect(self.ventana, (255, 0, 0), self.button_1)
         pygame.draw.rect(self.ventana, (255, 0, 0), self.button_2)
         pygame.draw.rect(self.ventana, (255, 0, 0), self.button_3)
@@ -193,13 +204,12 @@ class MenuPrincipal(Panel):
             pygame.display.flip()
             clock.tick(30)
 
-
 class Window:
     def __init__(self, matrix):
         pygame.init()
-        self.screen = pygame.display.set_mode((1000, 600))
+        self.screen = pygame.display.set_mode((1000, 700))
         pygame.display.set_caption('Nonograma')
-        self.cuadricula = MenuPrincipal(self.screen)
+        self.cuadricula = MenuPrincipal(self.screen, ProxyPanel(), self.screen)
 
     def execute(self):
         running = True
@@ -219,6 +229,7 @@ class Window:
         pygame.quit()
         sys.exit()
 if __name__ == "__main__":
+
     matrix = [
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
