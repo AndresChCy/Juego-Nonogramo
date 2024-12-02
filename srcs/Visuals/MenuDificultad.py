@@ -5,6 +5,8 @@ from Panel import Panel
 from ProxyPanel import ProxyPanel
 from srcs.Comandos.Command import Command
 
+from Musica.SoundManager import *
+
 pygame.init()
 pygame.display.set_caption('Juego Nonogram')
 ventana = pygame.display.set_mode((800, 600), 0, 32)
@@ -44,16 +46,20 @@ class MenuDificultad(Panel):
         pass
 
     def handle_click(self, pos, button):
+
         mx, my = pos
         click = False
         if button == 1:
             click = True
 
         if self.button_facil.collidepoint(mx, my) and click:
+            soundManager.play_sound("guiclick")
             self.facil.execute()
         if self.button_normal.collidepoint(mx, my) and click:
+            soundManager.play_sound("guiclick")
             self.mid.execute()
         if self.button_dificil.collidepoint(mx, my) and click:
+            soundManager.play_sound("guiclick")
             self.hard.execute()
 
     def handle_key(self,event):
