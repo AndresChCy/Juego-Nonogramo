@@ -1,7 +1,7 @@
 import pygame
 
 class ImageRenderer:
-    def __init__(self, screen, frames, flip_x=False, flip_y=False):
+    def __init__(self, screen, frames, flip_x=False, flip_y=False, size=None):
         """
         Inicializa el renderizador de imágenes.
 
@@ -13,6 +13,8 @@ class ImageRenderer:
         """
         self.screen = screen
         self.frames = [pygame.transform.flip(frame, flip_x, flip_y) for frame in frames]
+        if size:
+            self.frames = [pygame.transform.scale(frame, size) for frame in self.frames]
         self.current_frame = 0
         self.frame_delay = 4
         self.frame_counter = 0
