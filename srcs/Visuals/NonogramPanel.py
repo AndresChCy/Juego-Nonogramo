@@ -31,7 +31,7 @@ class NonogramPanel(Panel):
             grilla_visual (objeto): Objeto visual de la grilla para controlar las interacciones.
             colores_extra (list): Lista de botones extra para mostrar en un panel desplegable (opcional).
         """
-        super().__init__()
+        #super().__init__()
         self.screen = screen
         self.width = width
         self.height = height

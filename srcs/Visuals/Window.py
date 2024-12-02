@@ -8,7 +8,6 @@ from ProxyPanel import ProxyPanel
 from srcs.Logica.Niveles import Niveles
 from srcs.Visuals.MenuDificultad import MenuDificultad
 from srcs.Visuals.SeleccionTipoNivel import SeleccionTipoNivel
-from ImageManager import ImageManager
 
 
 class Window:
@@ -18,16 +17,16 @@ class Window:
         pygame.display.set_caption('Nonograma')
         self.panel = ProxyPanel([])
 
-        # cuadricula = Grid(self.screen, matrix,self.panel)
+        #cuadricula = Grid(self.screen, matrix,self.panel)
         niveles = Niveles()
-        # niveles.GuardarNivelesCreados()
-        # niveles.GuardarNivelesPredeterminados()
+        #niveles.GuardarNivelesCreados()
+        #niveles.GuardarNivelesPredeterminados()
         niveles.CargarNivelesCreados()
         niveles.CargarNivelesPredeterminados()
-        menu = MenuPrincipal(self.screen, self.panel)
-        # menuTipos = SeleccionTipoNivel(self.screen, self.panel)
+        menu = MenuPrincipal(self.screen,self.panel)
+        #menuTipos = SeleccionTipoNivel(self.screen, self.panel)
         self.panel.addToList(menu)
-        # self.panel.addToList(cuadricula)
+        #self.panel.addToList(cuadricula)
 
     def execute(self):
         running = True

@@ -93,6 +93,9 @@ class MenuPrincipal(Panel):
         pass
     def handle_key(self,event):
         if event.type == KEYDOWN and event.key == K_ESCAPE:
+            niveles = Niveles()
+            niveles.GuardarNivelesCreados()
+            niveles.GuardarNivelesPredeterminados()
             pygame.quit()
             sys.exit()
 
