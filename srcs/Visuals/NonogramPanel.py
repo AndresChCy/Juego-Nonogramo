@@ -2,8 +2,8 @@ import pygame
 from srcs.Visuals.Button import Button
 from srcs.Visuals.Panel import Panel
 from srcs.Visuals.Colores import Colores
+from srcs.Visuals.Tutorial import mostrar_tutorial
 
-BUTTON_SIZE = 50
 
 class NonogramPanel(Panel):
     """
@@ -40,27 +40,26 @@ class NonogramPanel(Panel):
         self.colores_extra = colores_extra
         self.reverse_mapping_colores = Colores.get_reverse_mapping()
         self.dibujo = dibujo
+        self.BUTTON_SIZE = int(self.width / 4)
+        self.margin = int(self.width / 16)
 
         # Crear los botones principales del panel
         if not self.dibujo:
+            BUTTON_SIZE = self.BUTTON_SIZE
             self.buttons = [
-                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - 10, height - BUTTON_SIZE - 10,
+                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - self.margin, height - BUTTON_SIZE - self.margin,
                        Colores.WHITE.value, self.button1_action, image_path="Img/config.png", button_margin=False,
                        background_opacity=100),
-                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + 10, height - BUTTON_SIZE - 10,
+                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.margin, height - BUTTON_SIZE - self.margin,
                        Colores.RED.value, self.button2_action, image_path="Img/pista.png", button_margin=False),
-                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + 10, 10,
+                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.margin, self.margin,
                        Colores.WHITE.value, self.button3_action, draw_rectangle=True, opacity=150),
-                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width // 2 - BUTTON_SIZE // 2, 10,
+                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width // 2 - BUTTON_SIZE // 2, self.margin,
                        Colores.WHITE.value, self.button4_action, draw_cross=True, opacity=150),
-                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - 10, 10,
+                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - self.margin, self.margin,
                        Colores.WHITE.value, self.button5_action, draw_point=True, opacity=150),
-                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + 10, 20 + BUTTON_SIZE,
-                       Colores.GREEN.value, self.button6_action, text="6"),
-                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width // 2 - BUTTON_SIZE // 2, 20 + BUTTON_SIZE,
-                       Colores.GREEN.value, self.button7_action, text="7"),
-                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - 10, 20 + BUTTON_SIZE,
-                       Colores.GREEN.value, self.button8_action, text="8")
+                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.margin, 2 * self.margin + BUTTON_SIZE,
+                       Colores.GREEN.value, mostrar_tutorial, text="?",text_color=Colores.DARK_GREY.value)
             ]
 
         else:
@@ -70,7 +69,7 @@ class NonogramPanel(Panel):
 
         if colores_extra is not None:
             self.extended_panel_button_visible = True
-            colors = Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width // 2 - BUTTON_SIZE // 2, 30 + 2 * BUTTON_SIZE,
+            colors = Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width // 2 - BUTTON_SIZE // 2, 2 * self.margin + BUTTON_SIZE,
                             Colores.WHITE.value, self.button9_action, image_path="Img/palette.png")
             self.buttons.append(colors)
             self._create_extended_buttons()
@@ -87,43 +86,48 @@ class NonogramPanel(Panel):
             list: Lista de instancias de botones adicionales.
         """
         self.botones_extra = []
+        BUTTON_SIZE = self.BUTTON_SIZE
+        retroceso = Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.margin, self.margin, Colores.WHITE.value,
+                           self.button9_action, image_path="Img/retroceso_panel.png", button_margin=False)
+        self.botones_extra.append(retroceso)
         retroceso = Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.width // 2 - BUTTON_SIZE // 2,
-                           self.height - BUTTON_SIZE - 10, Colores.RED.value, self.button9_action)
+                           self.height - BUTTON_SIZE - self.margin, Colores.RED.value, self.button9_action)
         for i, color in enumerate(self.colores_extra, start=2):
             color = Colores.get_number_mapping().get(color)
             if i % 3 == 1:
-                color = Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + 10,
-                               ((i // 3) + 1) * 10 + (i // 3) * BUTTON_SIZE,
+                color = Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.margin,
+                               ((i // 3) + 1) * self.margin + (i // 3) * BUTTON_SIZE,
                                color, lambda c=color: self.button10_action(c))
             elif i % 3 == 2:
                 color = Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.width // 2 - BUTTON_SIZE // 2,
-                               ((i // 3) + 1) * 10 + (i // 3) * BUTTON_SIZE, color,
+                               ((i // 3) + 1) * self.margin + (i // 3) * BUTTON_SIZE, color,
                                lambda c=color: self.button10_action(c))
             else:
-                color = Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.width - BUTTON_SIZE - 10,
-                               (i // 3) * 10 + ((i // 3) - 1) * BUTTON_SIZE, color,
+                color = Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.width - BUTTON_SIZE - self.margin,
+                               (i // 3) * self.margin + ((i // 3) - 1) * BUTTON_SIZE, color,
                                lambda c=color: self.button10_action(c))
 
             self.botones_extra.append(color)
 
     def _create_color_buttons(self):
         self.buttons = []
+        BUTTON_SIZE = self.BUTTON_SIZE
 
         # Filtrar los colores que no deben ser considerados
         colores_filtrados = [color for color in self.reverse_mapping_colores if color not in [(255, 255, 255), (245, 245, 245)]]
 
         for i, color in enumerate(colores_filtrados):
             if i % 3 == 1:
-                color = Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + 10,
-                               ((i // 3) + 1) * 10 + (i // 3) * BUTTON_SIZE,
+                color = Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.margin,
+                               ((i // 3) + 1) * self.margin + (i // 3) * BUTTON_SIZE,
                                color, lambda c=color: self.button10_action(c))
             elif i % 3 == 2:
                 color = Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.width // 2 - BUTTON_SIZE // 2,
-                               ((i // 3) + 1) * 10 + (i // 3) * BUTTON_SIZE, color,
+                               ((i // 3) + 1) * self.margin + (i // 3) * BUTTON_SIZE, color,
                                lambda c=color: self.button10_action(c))
             else:
-                color = Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.width - BUTTON_SIZE - 10,
-                               (i // 3) * 10 + ((i // 3) - 1) * BUTTON_SIZE, color,
+                color = Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.width - BUTTON_SIZE - self.margin,
+                               (i // 3) * self.margin + ((i // 3) - 1) * BUTTON_SIZE, color,
                                lambda c=color: self.button10_action(c))
 
             self.buttons.append(color)

@@ -1,18 +1,23 @@
 import sys
 
 import pygame
-from pygame.constants import KEYDOWN, K_ESCAPE
+
+
 from pygame.rect import Rect
+from pygame.constants import KEYDOWN, K_ESCAPE, FULLSCREEN
 
 from Musica.SoundManager import SoundManager
 from srcs.Comandos.Command import Command
+from srcs.Comandos.CommandCambiarPanel import CommandReturnInicio
 from srcs.Logica.Dibujo import Pintable
 from srcs.Logica.Niveles import Niveles
 from srcs.Visuals.Barra import Slider
+from srcs.Visuals.Button import Button
 from srcs.Visuals.Grilla.CellManager import CellManager
 from srcs.Visuals.Colores import Colores
 from srcs.Visuals.Grilla.GridLinesRenderer import GridLinesRenderer
 from srcs.Logica.Tablero import Tablero
+from srcs.Visuals.ImageManager import ImageManager
 from srcs.Visuals.NonogramPanel import NonogramPanel
 from srcs.Visuals.Panel import Panel
 from srcs.Visuals.ProxyPanel import ProxyPanel
@@ -43,9 +48,19 @@ class GrillaRender(Panel,ABC):
     def getGridDimensions(self):
         pass
 
+    @abstractmethod
+    def getPanelOpciones(self):
+        pass
+
+    @abstractmethod
+    def getBarras(self):
+        pass
+
 class GrillaVisual(GrillaRender):
-    GRID_WIDTH_PX = 600
-    GRID_HEIGHT_PX = 1000000
+
+    GRID_WIDTH_PX = 440
+    GRID_HEIGHT_PX = 440
+
 
     def __init__(self, screen, tablero: Pintable, proxy:ProxyPanel, enter: Command = None, dibujo: bool = False):
         """
@@ -75,8 +90,8 @@ class GrillaVisual(GrillaRender):
         self.cell_size = max(self.cell_size,25)
         actual_grid_width_px = self.GRID_WIDTH * self.cell_size
         actual_grid_height_px = self.GRID_HEIGHT * self.cell_size
-        self.offset_x = (window_width - actual_grid_width_px) // 2
-        self.offset_y = (window_height - actual_grid_height_px) // 2
+        self.offset_x = (window_width - actual_grid_width_px) // 2 +20
+        self.offset_y = (window_height - actual_grid_height_px) // 2 + 40
 
         self.cell_manager = CellManager(self.GRID_WIDTH, self.GRID_HEIGHT,self.cell_size, self.offset_x, self.offset_y,self)
         self.grid_lines_renderer = GridLinesRenderer(screen, self.cell_manager, self.offset_x, self.offset_y,self.cell_size)
@@ -87,9 +102,19 @@ class GrillaVisual(GrillaRender):
         else:
             self.nonogram_panel = NonogramPanel(screen, int(window_width * 0.2), window_height, self ,dibujo=dibujo)
 
+
         self.barraVer = Slider(window_width - int(window_width * 0.2) -20, 150, 20, 400, -500, 1000, self.offset_y, self.screen)
         self.barraHor = Slider(window_width - int(window_width * 0.25)-810, window_height-20, 800, 20, -500, 1000, self.offset_x, self.screen,ver = False)
         self.rect = Rect(self.offset_x,self.offset_y,actual_grid_width_px,actual_grid_height_px)
+
+        self.image_manager = ImageManager()
+        self.image_manager.load_image("background", "Img/nonogram_back.jpg",screen.get_size())
+        # Cargar la imagen de fondo usando el ImageManager
+        self.background_image = self.image_manager.get_image("background")
+        self.botonVolver = Button(self.screen, 210, 50, 50, 50, Colores.BLUE.value, enter
+                                  , Colores.WHITE.value, "Volver y Guardar")
+
+
     def handle_mouse_motion(self, pos):
         """
         Maneja el movimiento del ratón.
@@ -135,6 +160,8 @@ class GrillaVisual(GrillaRender):
                 if self.tablero.CompararDibujos():
                     self.proxy.ponerTarget(VictoryRenderer(self.screen, self.proxy, self.tablero.getProgreso(), self.cell_manager))
                     self.tablero.reiniciar()
+        if self.botonVolver.is_clicked(pos):
+            self.botonVolver.click()
 
 
     def handle_mouse_events(self, event):
@@ -151,6 +178,7 @@ class GrillaVisual(GrillaRender):
         """
         Dibuja la cuadrícula y sus componentes en la pantalla.
         """
+        self.screen.blit(self.background_image, (0, 0))
         offset_y = self.barraVer.get_value()
         offset_x = self.barraHor.get_value()
         if self.offset_y != offset_y or self.offset_x != offset_x:
@@ -158,15 +186,22 @@ class GrillaVisual(GrillaRender):
             self.offset_y = offset_y
             self.cell_manager.update_posicion(self.offset_x,self.offset_y)
             self.grid_lines_renderer.update_posicion(self.offset_x,self.offset_y)
+
+        #self.screen.blit(self.background_image, (0, 0))
+
         self.cell_manager.update_grid_visual(self.tablero.getProgreso())
         self.cell_manager.draw_cells(self.screen)
         self.draw_hover_effect()
         self.grid_lines_renderer.draw_grid_lines()
         self.nonogram_panel.draw()
+
         self.barraVer.draw()
         self.barraHor.draw()
 
         #self.rect.topleft = (100,-offset_y)
+
+        self.botonVolver.draw()
+
         #self.clues_renderer.draw_horizontal_clues()
        # self.clues_renderer.draw_vertical_clues()
        # self.clues_renderer.draw_clue_borders()
@@ -174,11 +209,11 @@ class GrillaVisual(GrillaRender):
 
     def handle_key(self, event):
         if event.type == KEYDOWN and event.key == K_ESCAPE:
-            pygame.quit()
+
             niveles = Niveles()
             niveles.GuardarNivelesCreados()
             niveles.GuardarNivelesPredeterminados()
-            sys.exit()
+            CommandReturnInicio(self.proxy,self.screen).execute()
         elif event.key == pygame.K_RETURN:
             if self.enter != None:
                 self.enter.execute()
@@ -221,3 +256,8 @@ class GrillaVisual(GrillaRender):
         return self.tablero
     def getGridDimensions(self):
         return self.GRID_HEIGHT,self.GRID_WIDTH
+    def getPanelOpciones(self):
+        return self.nonogram_panel
+
+    def getBarras(self):
+        return self.barraHor,self.barraVer

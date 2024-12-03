@@ -13,8 +13,8 @@ class SoundManager:
             pygame.mixer.init()
             self.sounds = {}
             self.music = None
-            self.volumenMusic = 0.5
-            self.volumenSounds = 0.5
+            self.volumenMusic = 50
+            self.volumenSounds = 50
             self.initialized = True
 
     def load_sound(self, name, file_path):
@@ -27,12 +27,12 @@ class SoundManager:
 
     def play_sound(self, name, loops=0):
         if name in self.sounds:
-            self.sounds[name].set_volume(self.volumenSounds)
+            self.sounds[name].set_volume(self.volumenSounds / 100)
             self.sounds[name].play(loops=loops)
 
 
     def play_music(self,loops=-1):
-        self.music.set_volume(self.volumenMusic)
+        self.music.set_volume(self.volumenMusic / 100)
         self.music.play(loops=loops)
 
 
@@ -40,11 +40,28 @@ class SoundManager:
         pygame.mixer.stop()
 
     def set_volume_sounds(self, volume):
-        self.volumenSounds = volume
+        self.volumenSounds = max(0, min(100, volume))
         for name in self.sounds:
-            self.sounds[name].set_volume(volume)
+            self.sounds[name].set_volume(self.volumenSounds / 100)
 
     def set_volume_music(self, volume):
-        self.volumenMusic = volume
-        self.music.set_volume(volume)
+        self.volumenMusic = max(0, min(100, volume))
+        self.music.set_volume(self.volumenMusic / 100)
 
+    def bajarSonido(self):
+        self.set_volume_sounds(self.volumenSounds - 10)
+
+    def subirSonido(self):
+        self.set_volume_sounds(self.volumenSounds + 10)
+
+    def bajarMusica(self):
+        self.set_volume_music(self.volumenMusic - 10)
+
+    def subirMusica(self):
+        self.set_volume_music(self.volumenMusic + 10)
+
+    def get_volume_music(self):
+        return self.volumenMusic
+
+    def get_volume_sound(self):
+        return self.volumenSounds

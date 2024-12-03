@@ -41,12 +41,21 @@ class DecoratorGrilla(GrillaRender):
     def getGridDimensions(self):
         return self._component.getGridDimensions()
 
+    def getPanelOpciones(self):
+        return self._component.getPanelOpciones()
+
+    def getBarras(self):
+        return self._component.getBarras()
+
 class DecoratorClues(DecoratorGrilla):
 
     def draw(self):
-        self.draw_clues()
         super().draw()
-
+        self.draw_clues()
+        self._component.getPanelOpciones().draw()
+        h,v = self._component.getBarras()
+        h.draw()
+        v.draw()
 
     def draw_clues(self):
         hor, ver = self._component.getTablero().getCompresiones()
