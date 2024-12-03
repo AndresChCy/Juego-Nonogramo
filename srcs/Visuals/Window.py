@@ -156,8 +156,8 @@ class Window:
         self.soundManager.load_sound("error", "Musica/error.wav")
         #soundManager.play_sound_as( "MainMenuTheme", -1)
         self.soundManager.play_music()
-        self.soundManager.set_volume_music(0.3)
-        self.soundManager.set_volume_sounds(1)
+        self.soundManager.set_volume_music(50)
+        self.soundManager.set_volume_sounds(50)
 
 
 
