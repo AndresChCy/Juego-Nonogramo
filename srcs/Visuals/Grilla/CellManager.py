@@ -50,7 +50,7 @@ class CellManager:
             for col in range(self.grid_width):
                 cell_idx = row * self.grid_width + col
                 cell_sprite = self.all_cells.sprites()[cell_idx]
-                cell_pos. = self.grilla.offset_y
+                #cell_pos. = self.grilla.offset_y
                 cell_value = int(grid_logic[row][col])  # Identificador de color o acción especial
                 # Usa el mapeo para determinar el color o la acción especial
                 if 1 <= cell_value <= 36:
@@ -73,3 +73,10 @@ class CellManager:
         """
         for cell in self.all_cells:
             cell.draw(screen)
+
+    def update_posicion(self,offset_x,offset_y):
+        self.offset_x = offset_x
+        self.offset_y = offset_y
+        for row in range(self.grid_height):
+            for col in range(self.grid_width):
+                self.all_cells.sprites()[col+row*self.grid_width].update_posicion(self.offset_x + col * self.cell_size, self.offset_y + row * self.cell_size)

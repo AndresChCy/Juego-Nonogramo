@@ -38,3 +38,7 @@ class GridLinesRenderer:
                              (self.offset_x + col * self.cell_size,
                               self.offset_y + self.cell_manager.grid_height * self.cell_size),
                              line_thickness)
+
+    def update_posicion(self,x,y):
+        self.offset_x = x
+        self.offset_y = y

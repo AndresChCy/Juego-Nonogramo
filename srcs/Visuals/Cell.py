@@ -30,6 +30,7 @@ class Cell(pygame.sprite.Sprite):
         """
         super().__init__()
         self.image = pygame.Surface((size, size))
+        self.size = size
         self.rect = self.image.get_rect(topleft=(x, y))
         self.filled = False
         self.marked = False
@@ -95,3 +96,7 @@ class Cell(pygame.sprite.Sprite):
                                (self.rect.x + self.rect.width // 2, self.rect.y + self.rect.height // 2), 5)
         elif not self.filled and not self.marked and not self.pointed:
             pygame.draw.rect(screen, Colores.WHITE.value, self.rect, 1)
+
+    def update_posicion(self,x,y):
+        self.image = pygame.Surface((self.size, self.size))
+        self.rect = self.image.get_rect(topleft=(x, y))

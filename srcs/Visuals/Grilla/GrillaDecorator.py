@@ -44,8 +44,9 @@ class DecoratorGrilla(GrillaRender):
 class DecoratorClues(DecoratorGrilla):
 
     def draw(self):
-        super().draw()
         self.draw_clues()
+        super().draw()
+
 
     def draw_clues(self):
         hor, ver = self._component.getTablero().getCompresiones()
