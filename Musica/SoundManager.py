@@ -48,3 +48,16 @@ class SoundManager:
         self.volumenMusic = volume
         self.music.set_volume(volume)
 
+    def bajarSonido(self):
+        self.volumenSounds = self.volumenSounds - 0.1
+
+    def subirSonido(self):
+        self.volumenSounds = self.volumenSounds + 0.1
+
+    def bajarMusica(self):
+        self.volumenMusic = self.volumenMusic - 0.1
+        self.music.set_volume(self.volumenMusic)
+    def subirMusica(self):
+        self.volumenMusic = self.volumenMusic + 0.1
+        self.music.set_volume(self.volumenMusic)
+

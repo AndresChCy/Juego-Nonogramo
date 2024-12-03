@@ -1,10 +1,11 @@
 import pygame
+from pygame.constants import FULLSCREEN
 
 from srcs.Visuals.Colores import Colores
 from Button import Button
 
 pygame.init()
-screen = pygame.display.set_mode((800, 600))
+screen = pygame.display.set_mode((0, 0),FULLSCREEN)
 pygame.display.set_caption("Tutorial de Nonogramas")
 
 def mostrar_tutorial():

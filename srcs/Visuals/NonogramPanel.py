@@ -2,6 +2,8 @@ import pygame
 from srcs.Visuals.Button import Button
 from srcs.Visuals.Panel import Panel
 from srcs.Visuals.Colores import Colores
+from srcs.Visuals.Tutorial import mostrar_tutorial
+
 
 class NonogramPanel(Panel):
     """
@@ -57,11 +59,7 @@ class NonogramPanel(Panel):
                 Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - self.margin, self.margin,
                        Colores.WHITE.value, self.button5_action, draw_point=True, opacity=150),
                 Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.margin, 2 * self.margin + BUTTON_SIZE,
-                       Colores.GREEN.value, self.button6_action, text="6"),
-                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width // 2 - BUTTON_SIZE // 2, 2 * self.margin + BUTTON_SIZE,
-                       Colores.GREEN.value, self.button7_action, text="7"),
-                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - self.margin, 2 * self.margin + BUTTON_SIZE,
-                       Colores.GREEN.value, self.button8_action, text="8")
+                       Colores.GREEN.value, mostrar_tutorial, text="?",text_color=Colores.DARK_GREY.value)
             ]
 
         else:
@@ -71,7 +69,7 @@ class NonogramPanel(Panel):
 
         if colores_extra is not None:
             self.extended_panel_button_visible = True
-            colors = Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width // 2 - BUTTON_SIZE // 2, 3 * self.margin + 2 * BUTTON_SIZE,
+            colors = Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width // 2 - BUTTON_SIZE // 2, 2 * self.margin + BUTTON_SIZE,
                             Colores.WHITE.value, self.button9_action, image_path="Img/palette.png")
             self.buttons.append(colors)
             self._create_extended_buttons()

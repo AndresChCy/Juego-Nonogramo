@@ -9,6 +9,7 @@ from Menu import MenuPrincipal
 from MenuNiveles import MenuNiveles
 from Musica.SoundManager import SoundManager
 from ProxyPanel import ProxyPanel
+from srcs.Comandos.CommandAbrirMenu import CommandMenu
 from srcs.Comandos.CommandCambiarPanel import CommandCambiarPanel
 from srcs.Logica.Niveles import Niveles
 from srcs.Visuals.Grilla.GrillaDecorator import DecoratorClues, DecoratorMiniatureRender
@@ -123,7 +124,7 @@ class Window:
             self.panel.ponerTarget(gcm)
         commands.append(nivelAlAzar)
         menuJuego = Menu(self.screen,self.panel,commands,nombres,titulo,volver)
-        nombres = ["Jugar","Crear Nivel","Como jugar","Salir"]
+        nombres = ["Jugar","Crear Nivel","Como jugar","Opciones","Salir"]
         titulo = "Nonograma The_Game"
         commands = []
         commands.append(CommandCambiarPanel(menuJuego,self.panel))
@@ -133,6 +134,7 @@ class Window:
                                     volver))
         commands.append(crearNivel)
         commands.append(mostrar_tutorial)
+        commands.append(CommandMenu(self.screen))
         def salir():
             pygame.quit()
             niveles = Niveles()

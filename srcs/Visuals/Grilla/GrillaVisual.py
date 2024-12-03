@@ -45,8 +45,8 @@ class GrillaRender(Panel,ABC):
         pass
 
 class GrillaVisual(GrillaRender):
-    GRID_WIDTH_PX = 500
-    GRID_HEIGHT_PX = 500
+    GRID_WIDTH_PX = 350
+    GRID_HEIGHT_PX = 350
 
     def __init__(self, screen, tablero: Pintable, proxy:ProxyPanel, enter: Command = None, dibujo: bool = False):
         """
