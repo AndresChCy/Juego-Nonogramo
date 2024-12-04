@@ -16,7 +16,9 @@ def mostrar_tutorial():
     panels = [
         {"buttons": [("", Colores.RED.value, "Img/tutorial1.png")], "background": Colores.LIGHT_BLUE.value},
         {"buttons": [("", Colores.GREEN.value, "Img/tutorial2.png")], "background": Colores.LIGHT_GREEN.value},
-        {"buttons": [("", Colores.YELLOW.value, "Img/tutorial3.png")], "background": Colores.LIGHT_YELLOW.value}
+        {"buttons": [("", Colores.YELLOW.value, "Img/tutorial3.png")], "background": Colores.LIGHT_YELLOW.value},
+        {"buttons": [("", Colores.YELLOW.value, "Img/tutorial4.jpeg")], "background": Colores.LIGHT_BLUE.value},
+        {"buttons": [("", Colores.YELLOW.value, "Img/tutorial5.jpeg")], "background": Colores.LIGHT_PINK.value}
     ]
 
     def siguiente():
