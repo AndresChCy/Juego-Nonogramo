@@ -50,7 +50,6 @@ class Window:
     def execute(self):
         running = True
         while running:
-            self.screen.blit(self.image_manager.get_image('background'), (0, 0))
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     niveles = Niveles()

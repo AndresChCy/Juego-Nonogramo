@@ -118,12 +118,14 @@ class CrearNivel(Panel):
                 com = Ejecutador()
                 com.addCommand(CommandGuardar(dibujo))
                 com.addCommand(self.volver)
+
                 def pantallaNormal():
                     self.screen = pygame.display.set_mode((1000, 650))
+
                 com.addCommand(pantallaNormal)
                 # self.proxy.ponerTarget(panelDibujo(ventana,x,y,self.proxy))
                 self.screen = pygame.display.set_mode((0, 0), FULLSCREEN)
-                self.proxy.ponerTarget(GrillaVisual(ventana, dibujo, self.proxy, com))
+                self.proxy.ponerTarget(GrillaVisual(ventana, dibujo, self.proxy, com, dibujo=True))
 
         if self.active1:
             if event.key == pygame.K_BACKSPACE:

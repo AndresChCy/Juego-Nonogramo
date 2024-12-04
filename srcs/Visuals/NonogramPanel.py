@@ -1,4 +1,6 @@
 import pygame
+
+from srcs.Comandos.CommandAbrirMenu import CommandMenu
 from srcs.Visuals.Button import Button
 from srcs.Visuals.Panel import Panel
 from srcs.Visuals.Colores import Colores
@@ -52,7 +54,7 @@ class NonogramPanel(Panel):
             BUTTON_SIZE = self.BUTTON_SIZE
             self.buttons = [
                 Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - self.margin, height - BUTTON_SIZE - self.margin,
-                       Colores.WHITE.value, self.button1_action, image_path="Img/config.png", button_margin=False,
+                       Colores.WHITE.value, CommandMenu(self.screen), image_path="Img/config.png", button_margin=False,
                        background_opacity=100),
                 Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.margin, height - BUTTON_SIZE - self.margin,
                        Colores.RED.value, self.button2_action, image_path="Img/pista.png", button_margin=False),
