@@ -1,6 +1,4 @@
 import pygame
-
-from srcs.Comandos.CommandAbrirMenu import CommandMenu
 from srcs.Visuals.Button import Button
 from srcs.Visuals.Panel import Panel
 from srcs.Visuals.Colores import Colores
@@ -54,7 +52,7 @@ class NonogramPanel(Panel):
             BUTTON_SIZE = self.BUTTON_SIZE
             self.buttons = [
                 Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - self.margin, height - BUTTON_SIZE - self.margin,
-                       Colores.WHITE.value, CommandMenu(self.screen), image_path="Img/config.png", button_margin=False,
+                       Colores.WHITE.value, self.button1_action, image_path="Img/config.png", button_margin=False,
                        background_opacity=100),
                 Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.margin, height - BUTTON_SIZE - self.margin,
                        Colores.RED.value, self.button2_action, image_path="Img/pista.png", button_margin=False),
@@ -64,14 +62,12 @@ class NonogramPanel(Panel):
                        Colores.WHITE.value, self.button4_action, draw_cross=True, opacity=150),
                 Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - self.margin, self.margin,
                        Colores.WHITE.value, self.button5_action, draw_point=True, opacity=150),
-                Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.margin, 2 * self.margin + BUTTON_SIZE,
+                Button(screen, BUTTON_SIZE, BUTTON_SIZE,  self.x + width // 2 - BUTTON_SIZE // 2, 3 * self.margin + BUTTON_SIZE * 2,
                        Colores.GREEN.value, mostrar_tutorial, text="?",text_color=Colores.DARK_GREY.value),
-                Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.margin, 2*self.margin + BUTTON_SIZE*2,
-                                   Colores.WHITE.value,
-                                   un, image_path="Img/undo.png", button_margin=False),
-                Button(self.screen, BUTTON_SIZE, BUTTON_SIZE,  self.x + width // 2 - BUTTON_SIZE // 2, 2 * self.margin + BUTTON_SIZE * 2,
-                       Colores.WHITE.value,
-                       rUn, image_path="Img/r.png", button_margin=False)
+                Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.margin, 3*self.margin + BUTTON_SIZE*2,
+                                   Colores.WHITE.value, un, image_path="Img/retroceso.png", button_margin=False),
+                Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - self.margin, 3 * self.margin + BUTTON_SIZE * 2,
+                       Colores.WHITE.value, rUn, image_path="Img/retroceso_flip.png", button_margin=False)
             ]
 
         else:

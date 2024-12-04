@@ -128,11 +128,14 @@ class DecoratorMiniatureRender(DecoratorGrilla):
         height, width = self._component.getGridDimensions()
         offset_x , offset_y = self._component.getOffsets()
         window_width, window_height = self.screen.get_size()
-        self.miniature_size = min(125 // width, 125 // height)
+        self.miniature_total_size = window_width * 0.15
+        self.miniature_size = min(self.miniature_total_size // width, self.miniature_total_size // height)
         #self.miniature_offset_x = offset_x - (width * self.miniature_size) - 5
         #self.miniature_offset_y = offset_y - (height * self.miniature_size) - 5
-        self.miniature_offset_x =  window_width - int(window_width * 0.2)//1.4
-        self.miniature_offset_y = window_height - window_height//3
+        self.tam_x = width * self.miniature_size
+        self.tam_y = height * self.miniature_size
+        self.miniature_offset_x =  window_width * 0.9 - self.tam_x / 2
+        self.miniature_offset_y = window_height * 0.45
         self.color_mapping = Colores.get_number_mapping()  # Mapeo de colores
 
     def draw(self):
@@ -153,3 +156,6 @@ class DecoratorMiniatureRender(DecoratorGrilla):
                                  (self.miniature_offset_x + col * self.miniature_size,
                                   self.miniature_offset_y + row * self.miniature_size,
                                   self.miniature_size, self.miniature_size))
+                pygame.draw.rect(self.screen, Colores.BLACK.value,
+                                 (self.miniature_offset_x - 5, self.miniature_offset_y - 5,
+                                  self.tam_x + 5, self.tam_y + 5), 5)
