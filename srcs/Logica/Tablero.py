@@ -85,7 +85,6 @@ class Tablero(Pintable):
     def pintar(self, x, y, color):
         if color != self.getProgreso()[x][y]:
             self.undo.append([x, y,self.getProgreso()[x][y]])
-            print("si")
             self.progreso.pintar(x,y,color)
             self.CompararDibujos()
 

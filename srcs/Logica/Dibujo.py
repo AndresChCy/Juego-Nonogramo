@@ -10,7 +10,6 @@ class Pintable(ABC):
     def getProgreso(self):
         pass
 
-
     def reiniciar(self):
         pass
 
@@ -19,10 +18,14 @@ class Dibujo(Pintable):
     
     def __init__(self , x ,y):
         self.boceto = numpy.zeros((x, y),dtype=int)
+        self.undo = []
+        self.rUndo = []
 
     def pintar(self, x, y,color):
-        self.boceto[x][y] = color
-
+        if color != self.getProgreso()[x][y]:
+            self.undo.append([x, y,self.boceto[x][y]])
+            self.boceto[x][y] = color
+        
     def comprimir(self, x, y, color):
         pass
     def getProgreso(self):
@@ -39,3 +42,20 @@ class Dibujo(Pintable):
         for i in range(len(matriz)):
             for j in range(len(matriz[0])):
                 self.pintar(i,j,(int)(matriz[i][j]))
+
+    def getUndo(self):
+        if len(self.undo) == 0:
+            return
+        cima = self.undo.pop()
+        color = self.getProgreso()[cima[0]][cima[1]]
+        self.rUndo.append([cima[0],cima[1],color])
+        self.boceto[cima[0]][cima[1]] = cima[2]
+
+
+    def getRUndo(self):
+        if len(self.rUndo) == 0:
+            return
+        cima = self.rUndo.pop()
+        self.pintar(cima[0],cima[1],cima[2])
+
+
