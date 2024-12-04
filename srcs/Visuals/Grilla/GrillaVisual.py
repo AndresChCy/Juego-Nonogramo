@@ -150,12 +150,12 @@ class GrillaVisual(GrillaRender):
         self.nonogram_panel.handle_click(pos, button)
         if 0 <= col < self.GRID_WIDTH and 0 <= row < self.GRID_HEIGHT:
             if button == 1:  # Clic izquierdo
-                self.tablero.getProgreso()[row][col] = self.left_click_value if self.tablero.getProgreso()[row][col] != self.left_click_value else 0
+                self.tablero.pintar(row,col,self.left_click_value) if self.tablero.getProgreso()[row][col] != self.left_click_value else self.tablero.pintar(row,col,0)
                 self.soundManager.play_sound("pintar")
 
             elif button == 3:  # Clic derecho
-                self.tablero.getProgreso()[row][col] = self.right_click_value if self.tablero.getProgreso()[row][col] != self.right_click_value else 0
-            self.cell_manager.update_grid_visual(self.tablero.getProgreso())
+                self.tablero.pintar(row,col,self.right_click_value) if self.tablero.getProgreso()[row][col] != self.right_click_value else self.tablero.pintar(row,col,0)
+            #self.cell_manager.update_grid_visual(self.tablero.getProgreso())
             if self.tablero.__class__ == Tablero:
                 if self.tablero.CompararDibujos():
                     self.proxy.ponerTarget(VictoryRenderer(self.screen, self.proxy, self.tablero.getProgreso(), self.cell_manager))

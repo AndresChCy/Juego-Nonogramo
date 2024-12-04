@@ -9,6 +9,8 @@ class Tablero(Pintable):
         self.progreso = Dibujo(len(solucion.getProgreso()), len(solucion.getProgreso()[0]))
         self.colors = set()
         self.comprVer,self.comprHor = self.Compresion()
+        self.undo = []
+        self.rUndo = []
 
 
     def CompararDibujos(self):
@@ -81,8 +83,11 @@ class Tablero(Pintable):
         return comprVert, comprHor
 
     def pintar(self, x, y, color):
-        self.progreso.pintar(x,y,color)
-        self.CompararDibujos()
+        if color != self.getProgreso()[x][y]:
+            self.undo.append([x, y,self.getProgreso()[x][y]])
+            print("si")
+            self.progreso.pintar(x,y,color)
+            self.CompararDibujos()
 
     def cargarProgreso(directorio):
             with open(directorio, 'r') as f:
@@ -128,4 +133,21 @@ class Tablero(Pintable):
 
     def reiniciar(self):
         self.progreso = Dibujo(len(self.solucion.getProgreso()), len(self.solucion.getProgreso()[0]))
+
+    def getUndo(self):
+        if len(self.undo) == 0:
+            return
+        cima = self.undo.pop()
+        color = self.getProgreso()[cima[0]][cima[1]]
+        self.rUndo.append([cima[0],cima[1],color])
+        self.progreso.pintar(cima[0],cima[1],cima[2])
+        print("lol")
+
+    def getRUndo(self):
+        if len(self.rUndo) == 0:
+            return
+        cima = self.rUndo.pop()
+        self.pintar(cima[0],cima[1],cima[2])
+        print("lil")
+
 

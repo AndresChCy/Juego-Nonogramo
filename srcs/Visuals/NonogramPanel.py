@@ -3,7 +3,7 @@ from srcs.Visuals.Button import Button
 from srcs.Visuals.Panel import Panel
 from srcs.Visuals.Colores import Colores
 from srcs.Visuals.Tutorial import mostrar_tutorial
-
+from srcs.Logica.Tablero import Tablero
 
 class NonogramPanel(Panel):
     """
@@ -42,7 +42,11 @@ class NonogramPanel(Panel):
         self.dibujo = dibujo
         self.BUTTON_SIZE = int(self.width / 4)
         self.margin = int(self.width / 16)
-
+        tab = grilla_visual.getTablero()
+        def un():
+            tab.getUndo()
+        def rUn():
+            tab.getRUndo()
         # Crear los botones principales del panel
         if not self.dibujo:
             BUTTON_SIZE = self.BUTTON_SIZE
@@ -59,7 +63,13 @@ class NonogramPanel(Panel):
                 Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + width - BUTTON_SIZE - self.margin, self.margin,
                        Colores.WHITE.value, self.button5_action, draw_point=True, opacity=150),
                 Button(screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.margin, 2 * self.margin + BUTTON_SIZE,
-                       Colores.GREEN.value, mostrar_tutorial, text="?",text_color=Colores.DARK_GREY.value)
+                       Colores.GREEN.value, mostrar_tutorial, text="?",text_color=Colores.DARK_GREY.value),
+                Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.margin, 2*self.margin + BUTTON_SIZE*2,
+                                   Colores.WHITE.value,
+                                   un, image_path="Img/retroceso_panel.png", button_margin=False),
+                Button(self.screen, BUTTON_SIZE, BUTTON_SIZE,  self.x + width // 2 - BUTTON_SIZE // 2, 2 * self.margin + BUTTON_SIZE * 2,
+                       Colores.WHITE.value,
+                       rUn, image_path="Img/retroceso_panel.png", button_margin=False)
             ]
 
         else:
