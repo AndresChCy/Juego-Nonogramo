@@ -127,9 +127,12 @@ class DecoratorMiniatureRender(DecoratorGrilla):
         self.screen = self._component.getScreen()
         height, width = self._component.getGridDimensions()
         offset_x , offset_y = self._component.getOffsets()
+        window_width, window_height = self.screen.get_size()
         self.miniature_size = min(125 // width, 125 // height)
-        self.miniature_offset_x = offset_x - (width * self.miniature_size) - 5
-        self.miniature_offset_y = offset_y - (height * self.miniature_size) - 5
+        #self.miniature_offset_x = offset_x - (width * self.miniature_size) - 5
+        #self.miniature_offset_y = offset_y - (height * self.miniature_size) - 5
+        self.miniature_offset_x =  window_width - int(window_width * 0.2)//1.4
+        self.miniature_offset_y = window_height - window_height//3
         self.color_mapping = Colores.get_number_mapping()  # Mapeo de colores
 
     def draw(self):
