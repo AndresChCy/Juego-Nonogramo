@@ -260,11 +260,11 @@ class Niveles:
     def getNivelesCreados(self):
         return self.nivelesCreados
     def getFaciles(self):
-        return self.nivelesBaseNormal
+        return self.nivelesBaseFacil
     def getNormal(self):
-        return self.nivelesBaseDificil
+        return self.nivelesBaseNormal
     def getDificil(self):
-        return self.nivelesCreadosFacil
+        return self.nivelesBaseDificil
 
     def getFacilesCreados(self):
         return self.nivelesCreadosFacil
