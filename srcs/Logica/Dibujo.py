@@ -25,7 +25,8 @@ class Dibujo(Pintable):
         if color != self.getProgreso()[x][y]:
             self.undo.append([x, y,self.boceto[x][y]])
             self.boceto[x][y] = color
-        
+            self.rUndo = []
+
     def comprimir(self, x, y, color):
         pass
     def getProgreso(self):
@@ -56,6 +57,8 @@ class Dibujo(Pintable):
         if len(self.rUndo) == 0:
             return
         cima = self.rUndo.pop()
-        self.pintar(cima[0],cima[1],cima[2])
+        self.undo.append([cima[0], cima[1], self.boceto[cima[0]][cima[1]]])
+        self.boceto[cima[0]][cima[1]] = cima[2]
+
 
 

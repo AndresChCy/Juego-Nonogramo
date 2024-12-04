@@ -66,10 +66,10 @@ class NonogramPanel(Panel):
                        Colores.GREEN.value, mostrar_tutorial, text="?",text_color=Colores.DARK_GREY.value),
                 Button(self.screen, BUTTON_SIZE, BUTTON_SIZE, self.x + self.margin, 2*self.margin + BUTTON_SIZE*2,
                                    Colores.WHITE.value,
-                                   un, image_path="Img/retroceso_panel.png", button_margin=False),
+                                   un, image_path="Img/undo.png", button_margin=False),
                 Button(self.screen, BUTTON_SIZE, BUTTON_SIZE,  self.x + width // 2 - BUTTON_SIZE // 2, 2 * self.margin + BUTTON_SIZE * 2,
                        Colores.WHITE.value,
-                       rUn, image_path="Img/retroceso_panel.png", button_margin=False)
+                       rUn, image_path="Img/r.png", button_margin=False)
             ]
 
         else:

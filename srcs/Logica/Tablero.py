@@ -86,6 +86,7 @@ class Tablero(Pintable):
         if color != self.getProgreso()[x][y]:
             self.undo.append([x, y,self.getProgreso()[x][y]])
             self.progreso.pintar(x,y,color)
+            self.rUndo = []
             self.CompararDibujos()
 
     def cargarProgreso(directorio):
@@ -146,7 +147,7 @@ class Tablero(Pintable):
         if len(self.rUndo) == 0:
             return
         cima = self.rUndo.pop()
-        self.pintar(cima[0],cima[1],cima[2])
-        print("lil")
+        self.undo.append([cima[0], cima[1], self.getProgreso()[cima[0]][cima[1]]])
+        self.progreso.pintar(cima[0],cima[1],cima[2])
 
 
